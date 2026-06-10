@@ -213,6 +213,17 @@ export const SiteSchema = z.object({
     phoneLabel: z.string().min(1),
     submitLabel: z.string().min(1),
   }),
+  checkout: z.object({
+    success: z.object({
+      headline: z.string().min(1),
+      body: z.string().min(1),
+    }),
+    cancelled: z.object({
+      headline: z.string().min(1),
+      body: z.string().min(1),
+    }),
+    backLabel: z.string().min(1),
+  }),
   nav: z.array(Cta).min(1),
   footerLinks: z.array(Cta),
   footer: z.object({

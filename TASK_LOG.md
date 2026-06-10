@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T3.2 — Dormant Stripe scaffolding — APPROVED
+- Plan: env-gated stripe factory + NotConfiguredError; POST /api/checkout (zod, dormancy gate → 501, mode by billing); webhook stub 501 with activation TODO; success/cancelled pages from site.json checkout block.
+- Changes: src/lib/stripe.ts, src/app/api/checkout/{route.ts,checkout.test.ts}, src/app/api/webhooks/stripe/route.ts, src/app/checkout/{success,cancelled}/page.tsx, schema + site.json (checkout block), package.json (+stripe)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (76 passing) · build ✓ (api routes dynamic, all pages static)
+- Critic issues found → resolved: route initially gated on purchasable before configuration, making the SPEC'd 501 path unreachable — dormancy gate now comes first
+- Follow-ups (not built): webhook signature verification + checkout.session.completed handling at activation (documented in the stub)
+- Decisions made where SPEC was silent: checkout success/cancelled copy invented (no live equivalent), stored in site.json where owner/agent can edit; checkout pages noindex; error envelope vocabulary (invalid_json/invalid_body/unknown_package/package_not_purchasable/payments_not_configured)
+
 ## 2026-06-10 · T3.1 — Sign-up flow — APPROVED
 - Plan: pure mailto composers (buildMailto + buildEnquiryMailto) with encoding tests; SignUpFlow client component (select package → name/phone → live mailto anchor) rendered via packageGrid.selectable; reuse composer in footer/contact/faq.
 - Changes: src/lib/{mailto.ts,mailto.test.ts}, src/components/sections/{SignUpFlow.tsx,PackageGrid.tsx,signup-flow.test.tsx,FaqAccordion.tsx,ContactPanel.tsx}, src/components/layout/Footer.tsx, schema + site.json (signup block), content/pages/get-started.json (selectable), 2 test updates

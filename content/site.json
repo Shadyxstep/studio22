@@ -41,6 +41,17 @@
     "phoneLabel": "Your Phone",
     "submitLabel": "Sign Up"
   },
+  "checkout": {
+    "success": {
+      "headline": "Thank you",
+      "body": "Your payment was successful. We'll meet you where you are — see you in the studio."
+    },
+    "cancelled": {
+      "headline": "Payment cancelled",
+      "body": "No charge was made. If something went wrong, get in touch and we'll sort it out."
+    },
+    "backLabel": "Home"
+  },
   "social": [
     { "label": "Instagram", "href": "https://www.instagram.com/studio22dublin" },
     { "label": "TikTok", "href": "https://www.tiktok.com/@studio22dublin" }

@@ -46,6 +46,12 @@ export default function RootLayout({
       <body
         className={`${tenor.variable} ${hanken.variable} bg-ink font-body text-bone antialiased`}
       >
+        {/* runs before paint so a stored light preference never flashes dark */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("studio22-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`,
+          }}
+        />
         <Nav site={site} />
         {children}
         <Footer site={site} />

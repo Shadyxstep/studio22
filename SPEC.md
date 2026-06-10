@@ -26,7 +26,8 @@ A ground-up rebuild of https://studio-22.ie — a premium gym, golf simulator, a
 - Real payments, auth, accounts, member areas, databases of any kind.
 - Form backends or email-sending services — all enquiry CTAs are client-composed `mailto:` links.
 - Class scheduling/booking logic — exercise.com handles members' day-to-day; the site only links out.
-- Blog, i18n, light theme (dark only), native apps.
+- Blog, i18n, native apps.
+- ~~Light theme~~ — scope change 2026-06-10, owner-directed: a user-toggleable light theme exists as token value overrides (see §8.1). Dark remains the default and the brand-primary presentation.
 
 ## 3. Locked technology stack
 
@@ -200,7 +201,7 @@ Nav structure, footer, contact email + phone + address (from live site), Google 
 | `line` | `#2A2723` | hairline borders |
 | `mid` | `#8E8A82` | secondary text |
 
-Dark theme only. Sage is used sparingly — if a screen has more than ~3 sage elements visible, it's wrong.
+Dark theme is the default. A light theme (owner-directed scope change, 2026-06-10) is implemented purely as CSS-variable overrides of these six tokens under `html[data-theme="light"]` — components never branch on theme. Light values keep ≥4.5:1 text contrast (sage/mid are darkened variants). Sage is used sparingly — if a screen has more than ~3 sage elements visible, it's wrong.
 
 ### 8.2 Typography
 

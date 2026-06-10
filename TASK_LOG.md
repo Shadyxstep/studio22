@@ -18,6 +18,9 @@
 
 ---
 
+## 2026-06-10 · NOTE (human-directed scope change) — light/dark mode toggle
+Owner requested a light mode toggle, overriding the SPEC §2 "dark only" non-goal. SPEC §2 and §8.1 updated to record the change. Implementation: light theme is pure CSS-variable overrides of the six tokens under html[data-theme="light"] (components never branch on theme — token semantics ink=background/bone=foreground made this a value swap); ThemeToggle client component in the nav (aria-pressed, sun/moon SVG); choice persisted to localStorage with a pre-paint inline script to avoid FOUC; dark remains default; light sage/mid darkened for ≥4.5:1 contrast. Tests: toggle + persistence + pre-set theme (62 passing). Gates green incl. build. Invented a11y label "Toggle theme" (logged per protocol).
+
 ## 2026-06-10 · NOTE (human feedback) + fix — card grids not uniform
 Human reported janky, non-uniform package cards. Root causes: (1) cards lacked w-full/h-full inside their flex wrappers so they shrank to content size; (2) the gap-px-over-bg-line "hairline mosaic" renders empty cells as solid blocks whenever a row isn't full (2-package category, 5 testimonials in 3 cols, gallery span pattern). Fix: per-card borders + real gaps across PackageCard, PackageGrid, PackageTeaser, Testimonials, PillarGrid, Gallery; grids now tolerate any item count (matters for v2 agent edits). Gates green (60 passing, build ✓). Commit: fix(ui).
 

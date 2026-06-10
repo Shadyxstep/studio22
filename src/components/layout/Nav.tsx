@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import type { Site } from "@/lib/content/schema";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Nav({ site }: { site: Site }) {
   const [open, setOpen] = useState(false);
@@ -23,24 +24,27 @@ export function Nav({ site }: { site: Site }) {
           {site.name}
         </Link>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {site.nav.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`text-[11px] font-medium uppercase tracking-[0.2em] transition-colors duration-300 hover:text-sage ${
-                  pathname === item.href ? "text-sage" : "text-mid"
-                }`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-4">
+          <ul className="hidden items-center gap-8 md:flex">
+            {site.nav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`text-[11px] font-medium uppercase tracking-[0.2em] transition-colors duration-300 hover:text-sage ${
+                    pathname === item.href ? "text-sage" : "text-mid"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        <button
-          type="button"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={site.name}
@@ -52,7 +56,8 @@ export function Nav({ site }: { site: Site }) {
           <span
             className={`h-px w-6 bg-bone transition-transform duration-300 ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
           />
-        </button>
+          </button>
+        </div>
       </nav>
 
       {open && (

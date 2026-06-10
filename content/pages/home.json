@@ -39,7 +39,12 @@
       },
       "cta": { "label": "See How We Help You", "href": "/get-started" }
     },
-    { "type": "packageTeaser", "heading": "Our Packages" },
+    {
+      "type": "packageTeaser",
+      "heading": "Our Packages",
+      "tagline": "Performance is the greatest motivator",
+      "cta": { "label": "Our Packages", "href": "/packages" }
+    },
     {
       "type": "testimonials",
       "heading": "Trusted By Our Community",

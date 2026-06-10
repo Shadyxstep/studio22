@@ -10,9 +10,23 @@
   "links": {
     "booking": "https://calendar.app.google/czDrog5tJp515A1x6",
     "assessment": "https://fitness.studio-22.ie/a/assessment/2541068/",
-    "review": "https://search.google.com/local/writereview?placeid=ChIJV6gbKv0HZ0gRig71rOCeM18",
     "whatsapp": "https://api.whatsapp.com/message/65QFIMXJ4BDOO1",
     "map": "https://www.google.com/maps/search/?api=1&query=Studio+22%2C+77+Georges+Street+Upper%2C+Dun+Laoghaire"
+  },
+  "reviewCta": {
+    "label": "Leave Us A Google Review",
+    "href": "https://search.google.com/local/writereview?placeid=ChIJV6gbKv0HZ0gRig71rOCeM18"
+  },
+  "packageCta": { "label": "Want more info?", "href": "/get-started" },
+  "packageCategories": {
+    "gym": "Gym Class Packages",
+    "pilates": "Pilates Packages",
+    "online-golf": "Online Coaching and Golf"
+  },
+  "sauna": {
+    "label": "Sauna",
+    "heading": "Recovery & Relaxation",
+    "body": "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing."
   },
   "social": [
     { "label": "Instagram", "href": "https://www.instagram.com/studio22dublin" },
@@ -37,7 +51,6 @@
     "socialHeading": "We're pretty active on social, check us out.",
     "exploreHeading": "Or keep exploring our site to learn more."
   },
-  "saunaPerk": "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing.",
   "pillars": {
     "gym": {
       "label": "Strength",

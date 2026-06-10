@@ -92,3 +92,20 @@ export function loadPage(name: PageName): Page {
   const rel = path.join("pages", `${name}.json`);
   return parseContent(PageSchema, readJson(rel), rel);
 }
+
+export type Globals = {
+  site: Site;
+  packages: Package[];
+  testimonials: Testimonial[];
+  faqs: Faq[];
+};
+
+/** Everything the section renderer needs beyond the page file itself. */
+export function loadGlobals(): Globals {
+  return {
+    site: loadSite(),
+    packages: loadPackages(),
+    testimonials: loadTestimonials(),
+    faqs: loadFaqs(),
+  };
+}

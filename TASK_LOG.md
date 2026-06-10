@@ -18,6 +18,17 @@
 
 ---
 
+## 2026-06-10 · MILESTONE 1 COMPLETE — Foundation
+All five tasks approved. Gates green from clean state including `pnpm build` (static prerender). The repo now has: pinned Next 15 scaffold with the six tokens + Tenor Sans/Hanken Grotesk; zod-validated content model (11-section closed union); all content seeded verbatim from the live site; 11 photos in public/images; motion presets with reduced-motion fallback; nav/footer/UI primitives; full section component library with registry renderer. 47 tests. Next session starts Milestone 2 (T2.1 Home).
+
+## 2026-06-10 · T1.5 — Section component library — APPROVED
+- Plan: 11 section components + registry renderer keyed to SECTION_TYPES; copy-bearing strings pushed into site.json; price formatting + getPackageCta helpers; smoke test per type.
+- Changes: src/components/sections/* (13 files incl. registry + PackageCard), src/lib/{format.ts,format.test.ts,packages.ts}, schema/site.json additions (reviewCta, packageCta, packageCategories, sauna block replacing saunaPerk), content/pages/home.json teaser cta, vitest.setup.ts (IntersectionObserver stub)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (47 passing) · build ✓
+- Critic issues found → resolved: jsdom lacks IntersectionObserver for whileInView → vitest.setup.ts stub; copy-purity grep over src/components clean (only a test fixture matches)
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: price format strings ("€N/week", "One Time Payment: €N" — verbatim from live site) live in lib/format.ts as presentation logic; category labels/review CTA/package CTA/sauna banner moved into site.json as agent-editable data; getPackageCta routes unpurchasable packages to site.packageCta (/get-started); empty-FAQ state renders the contact email rather than invented copy
+
 ## 2026-06-10 · T1.4 — Motion, layout & UI primitives — APPROVED
 - Plan: three presets in lib/motion.ts + pure reduced-motion resolver; client wrappers in components/motion.tsx; Nav/Footer from site.json; Button + SectionLabel primitives.
 - Changes: src/lib/motion.ts, src/lib/motion.test.ts, src/components/motion.tsx, src/components/ui/{Button,SectionLabel}.tsx, src/components/layout/{Nav,Footer}.tsx, src/components/layout/layout.test.tsx, src/app/layout.tsx, schema/site.json (social links became labeled data), package.json (+framer-motion)

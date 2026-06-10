@@ -95,6 +95,7 @@ const PackageTeaserSection = z.object({
   heading: z.string().optional(),
   tagline: z.string().optional(),
   limit: z.number().int().positive().optional(),
+  cta: Cta.optional(),
 });
 
 const TestimonialsSection = z.object({
@@ -185,11 +186,18 @@ export const SiteSchema = z.object({
   links: z.object({
     booking: z.string().min(1),
     assessment: z.string().min(1),
-    review: z.string().min(1),
     whatsapp: z.string().min(1),
     map: z.string().min(1),
   }),
   social: z.array(Cta).min(1),
+  reviewCta: Cta,
+  packageCta: Cta,
+  packageCategories: z.record(z.enum(PACKAGE_CATEGORIES), z.string().min(1)),
+  sauna: z.object({
+    label: z.string().min(1),
+    heading: z.string().min(1),
+    body: z.string().min(1),
+  }),
   nav: z.array(Cta).min(1),
   footerLinks: z.array(Cta),
   footer: z.object({
@@ -197,7 +205,6 @@ export const SiteSchema = z.object({
     socialHeading: z.string().min(1),
     exploreHeading: z.string().min(1),
   }),
-  saunaPerk: z.string().min(1),
   pillars: z.record(
     z.enum(PILLARS),
     z.object({

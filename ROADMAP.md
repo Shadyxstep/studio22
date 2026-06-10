@@ -35,7 +35,7 @@
   `lib/motion.ts` with exactly `reveal`, `revealStagger`, `heroFade` + `prefers-reduced-motion` handling. Nav + Footer rendered from `site.json`. UI primitives (Button, SectionLabel, hairline dividers).
   *Accept:* reduced-motion fallback unit-tested; nav/footer contain zero hardcoded copy; primitives use tokens only.
 
-- [~] **T1.5 Section component library** (SPEC §6.2, §8)
+- [x] **T1.5 Section component library** (SPEC §6.2, §8)
   One component per section type (all 11), registry renderer mapping `type` → component; unknown type = build failure.
   *Accept:* smoke test per section type renders fixture content and asserts its text appears; registry covers exactly `SECTION_TYPES`; grep of `src/components` finds no `€`, no sentence-length string literals, no image paths.
 

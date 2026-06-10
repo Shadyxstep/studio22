@@ -23,11 +23,11 @@
   Next.js 15 App Router + TypeScript strict + pnpm + Tailwind with the six design tokens + next/font (Tenor Sans, Hanken Grotesk) + ESLint + Vitest wiring. Scripts: `dev`, `build`, `typecheck`, `lint`, `test`. `.env.example` per SPEC §5.
   *Accept:* `pnpm typecheck && pnpm lint && pnpm test && pnpm build` all pass; a placeholder home page renders ink background, bone Tenor Sans display text, sage accent; only approved dependencies installed.
 
-- [~] **T1.2 Content schemas & loaders** (SPEC §6.1, §6.2)
+- [x] **T1.2 Content schemas & loaders** (SPEC §6.1, §6.2)
   `lib/content/schema.ts`: zod schemas for all 11 section types as a discriminated union, page schema, package/site/testimonial/faq schemas, constants. `lib/content/load.ts`: typed loaders that throw `ContentValidationError`.
   *Accept:* tests prove a valid page parses, an unknown section type throws, an invalid field throws with a useful message; constants match SPEC §6.1 exactly.
 
-- [ ] **T1.3 Content files & images** (SPEC §6.3, §6.4, §7)
+- [~] **T1.3 Content files & images** (SPEC §6.3, §6.4, §7)
   Seed `content/` from the T0.2 inventory: `site.json`, `packages.json`, `testimonials.json`, `faqs.json`, `pages/*.json` (all six). Copy the 11 photos from `/Users/leomorgan/Desktop/Studio22/IMAGES` into `public/images/` with kebab-case names.
   *Accept:* content tests pass: every content file parses; package catalog matches SPEC §6.3 exactly (ids, prices, billing); every image path referenced exists; every internal href resolves to a real route; `HUMAN TODO` placeholders match the inventory list.
 

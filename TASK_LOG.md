@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T1.2 — Content schemas & loaders — APPROVED
+- Plan: zod schemas for the 11-section discriminated union + page/package/site/testimonial/faq files; pure parseContent + fs loaders throwing ContentValidationError.
+- Changes: src/lib/content/{schema.ts,load.ts,schema.test.ts}, package.json (+zod 4.4.3)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (9 passing)
+- Critic issues found → resolved: none
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: pages carry title+description for SPEC §11 per-page metadata (content-as-data extends to SEO strings); pillar display data (label/description/image) lives in site.json so pillarGrid sections stay references; packages.json is a bare array; testimonials carry their attribution string ("Posted on Google") as content
+
 ## 2026-06-10 · T1.1 — Scaffold — APPROVED
 - Plan: manual Next.js 15 scaffold (create-next-app refuses non-empty dirs): configs, tokens, fonts, placeholder page, vitest wiring, .env.example.
 - Changes: package.json, tsconfig.json, next.config.ts, postcss.config.mjs, eslint.config.mjs, vitest.config.ts, pnpm-workspace.yaml, .env.example, .gitignore, src/app/{globals.css,layout.tsx,page.tsx,page.test.tsx}

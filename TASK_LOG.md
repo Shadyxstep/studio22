@@ -18,6 +18,12 @@
 
 ---
 
+## 2026-06-10 · T4.1 — Deploy & cutover — agent-side COMPLETE, human steps pending
+- Done: legacy 301/308 redirects (src/lib/redirects.ts via next.config.ts, 3 tests incl. destination/route integrity, verified live), docs/deployment.md runbook, Vercel project `studio22` created and deployed — Ready at https://studio22-qmlira8w6-shadyxsteps-projects.vercel.app (60s build).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (79 passing) · build ✓
+- Blocked on human (per runbook): (1) deployment URL returns 401 — Vercel Dashboard → studio22 → Settings → Deployment Protection → disable (or use a Share link) so the owner can review; (2) NEXT_PUBLIC_SITE_URL env var in project settings; (3) domain add + DNS cutover §3; (4) pre-cutover checks §2 incl. manual Lighthouse; (5) keep fitness.studio-22.ie DNS untouched.
+- Decisions: deployed without custom domain so studio-22.ie is unaffected; redirects use Next 308 (permanent, SEO-equivalent to 301).
+
 ## 2026-06-10 · NOTE (human) — themed photo-opacity change reverted
 Owner asked to undo the photo-opacity UI changes; `git revert 35a6187` (f17d6ed). State: hero opacity-90 (owner's value), gallery 0.8, pillar tiles back to 0.6, light scrims at the accepted 82%/26% stops, no photo-opacity classes. Gates green (76).
 

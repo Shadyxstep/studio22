@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T2.2 — Facility — APPROVED
+- Plan: facility route from pages/facility.json; test asserts per-pillar editorials + gallery alts.
+- Changes: src/app/facility/{page.tsx,facility.test.tsx}
+- Gates: typecheck ✓ · lint ✓ · test ✓ (49 passing)
+- Critic issues found → resolved: none
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: none
+
 ## 2026-06-10 · T2.1 — Home — APPROVED
 - Plan: replace placeholder with loadPage("home") + SectionRenderer; metadata from page file; test asserts full section composition + hero priority image.
 - Changes: src/app/page.tsx, src/app/page.test.tsx, vitest.setup.ts (RTL cleanup)

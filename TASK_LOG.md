@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T2.1 — Home — APPROVED
+- Plan: replace placeholder with loadPage("home") + SectionRenderer; metadata from page file; test asserts full section composition + hero priority image.
+- Changes: src/app/page.tsx, src/app/page.test.tsx, vitest.setup.ts (RTL cleanup)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (48 passing)
+- Critic issues found → resolved: RTL auto-cleanup inactive without vitest globals → explicit afterEach(cleanup) in setup; duplicate-element test failure resolved by it
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: none
+
 ## 2026-06-10 · MILESTONE 1 COMPLETE — Foundation
 All five tasks approved. Gates green from clean state including `pnpm build` (static prerender). The repo now has: pinned Next 15 scaffold with the six tokens + Tenor Sans/Hanken Grotesk; zod-validated content model (11-section closed union); all content seeded verbatim from the live site; 11 photos in public/images; motion presets with reduced-motion fallback; nav/footer/UI primitives; full section component library with registry renderer. 47 tests. Next session starts Milestone 2 (T2.1 Home).
 

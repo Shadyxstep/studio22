@@ -1,6 +1,7 @@
 import type { Globals } from "@/lib/content/load";
 import type { Section } from "@/lib/content/schema";
 import { Reveal } from "@/components/motion";
+import { buildMailto } from "@/lib/mailto";
 
 type Props = {
   section: Extract<Section, { type: "faqAccordion" }>;
@@ -8,7 +9,10 @@ type Props = {
 };
 
 export function FaqAccordion({ section, globals }: Props) {
-  const mailto = `mailto:${globals.site.contact.email}?subject=${encodeURIComponent(globals.site.contact.mailtoSubject)}`;
+  const mailto = buildMailto(
+    globals.site.contact.email,
+    globals.site.contact.mailtoSubject,
+  );
   return (
     <section className="mx-auto max-w-3xl px-6 py-24">
       {section.heading && (

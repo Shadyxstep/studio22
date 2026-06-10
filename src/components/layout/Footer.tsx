@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { Site } from "@/lib/content/schema";
+import { buildMailto } from "@/lib/mailto";
 
 export function Footer({ site }: { site: Site }) {
-  const mailto = `mailto:${site.contact.email}?subject=${encodeURIComponent(site.contact.mailtoSubject)}`;
+  const mailto = buildMailto(site.contact.email, site.contact.mailtoSubject);
 
   return (
     <footer className="border-t border-line">

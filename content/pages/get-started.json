@@ -38,7 +38,7 @@
         "href": "https://calendar.app.google/czDrog5tJp515A1x6"
       }
     },
-    { "type": "packageGrid", "heading": "Our Packages" },
+    { "type": "packageGrid", "heading": "Our Packages", "selectable": true },
     {
       "type": "editorialSplit",
       "headline": "How Do We Help You Reach Your Goals?",

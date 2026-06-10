@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import FaqsPage from "./faqs/page";
 import ContactPage from "./contact/page";
 import { loadFaqs, loadSite } from "@/lib/content/load";
+import { buildMailto } from "@/lib/mailto";
 
 vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
 
@@ -29,9 +30,8 @@ test("contact renders tel, mailto, map address and review CTA from site.json", (
   expect(tel.getAttribute("href")).toBe(`tel:${site.contact.phone}`);
 
   const mail = screen.getByRole("link", { name: site.contact.email });
-  expect(mail.getAttribute("href")).toContain(`mailto:${site.contact.email}`);
-  expect(mail.getAttribute("href")).toContain(
-    encodeURIComponent(site.contact.mailtoSubject),
+  expect(mail.getAttribute("href")).toBe(
+    buildMailto(site.contact.email, site.contact.mailtoSubject),
   );
 
   const map = screen.getByRole("link", { name: site.contact.address });

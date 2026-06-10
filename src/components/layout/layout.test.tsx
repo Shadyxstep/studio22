@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { Footer } from "./Footer";
 import { Nav } from "./Nav";
 import { loadSite } from "@/lib/content/load";
+import { buildMailto } from "@/lib/mailto";
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
@@ -29,7 +30,7 @@ test("Footer renders contact details, social and footer links from site.json", (
     expect(screen.getByRole("link", { name: s.label })).toBeDefined();
   }
   const mail = screen.getByText(site.contact.email).closest("a");
-  expect(mail?.getAttribute("href")).toContain(
-    encodeURIComponent(site.contact.mailtoSubject),
+  expect(mail?.getAttribute("href")).toBe(
+    buildMailto(site.contact.email, site.contact.mailtoSubject),
   );
 });

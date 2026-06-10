@@ -3,6 +3,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Globals } from "@/lib/content/load";
 import { PACKAGE_CATEGORIES, type Section } from "@/lib/content/schema";
 import { PackageCard } from "./PackageCard";
+import { SignUpFlow } from "./SignUpFlow";
 
 type Props = {
   section: Extract<Section, { type: "packageGrid" }>;
@@ -17,6 +18,18 @@ export function PackageGrid({ section, globals }: Props) {
           {section.heading}
         </h2>
       )}
+      {section.selectable ? (
+        <SignUpFlow globals={globals} />
+      ) : (
+        <StaticGrid globals={globals} />
+      )}
+    </section>
+  );
+}
+
+function StaticGrid({ globals }: { globals: Globals }) {
+  return (
+    <>
       <div className="flex flex-col gap-20">
         {PACKAGE_CATEGORIES.map((category) => {
           const pkgs = globals.packages.filter(
@@ -49,6 +62,6 @@ export function PackageGrid({ section, globals }: Props) {
           {globals.site.sauna.body}
         </p>
       </aside>
-    </section>
+    </>
   );
 }

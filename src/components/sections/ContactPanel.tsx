@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion";
 import { Button } from "@/components/ui/Button";
+import { buildMailto } from "@/lib/mailto";
 import type { Globals } from "@/lib/content/load";
 import type { Section } from "@/lib/content/schema";
 
@@ -10,7 +11,7 @@ type Props = {
 
 export function ContactPanel({ section, globals }: Props) {
   const { contact, links, reviewCta } = globals.site;
-  const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(contact.mailtoSubject)}`;
+  const mailto = buildMailto(contact.email, contact.mailtoSubject);
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">

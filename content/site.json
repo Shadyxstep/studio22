@@ -35,6 +35,12 @@
     "heading": "Recovery & Relaxation",
     "body": "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing."
   },
+  "signup": {
+    "intro": "If you are ready to get started, choose from one of our packages below.",
+    "nameLabel": "Your Name",
+    "phoneLabel": "Your Phone",
+    "submitLabel": "Sign Up"
+  },
   "social": [
     { "label": "Instagram", "href": "https://www.instagram.com/studio22dublin" },
     { "label": "TikTok", "href": "https://www.tiktok.com/@studio22dublin" }

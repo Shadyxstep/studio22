@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T3.1 — Sign-up flow — APPROVED
+- Plan: pure mailto composers (buildMailto + buildEnquiryMailto) with encoding tests; SignUpFlow client component (select package → name/phone → live mailto anchor) rendered via packageGrid.selectable; reuse composer in footer/contact/faq.
+- Changes: src/lib/{mailto.ts,mailto.test.ts}, src/components/sections/{SignUpFlow.tsx,PackageGrid.tsx,signup-flow.test.tsx,FaqAccordion.tsx,ContactPanel.tsx}, src/components/layout/Footer.tsx, schema + site.json (signup block), content/pages/get-started.json (selectable), 2 test updates
+- Gates: typecheck ✓ · lint ✓ · test ✓ (70 passing)
+- Critic issues found → resolved: URLSearchParams encodes apostrophes ('→%27) unlike the old inline encodeURIComponent — two stale assertions updated to assert against buildMailto itself
+- Follow-ups (not built): none (T1.4 mailto-reuse follow-up cleared here)
+- Decisions made where SPEC was silent: sign-up flow mounts via optional packageGrid.selectable flag (keeps the 11-type registry closed); submit is a live-recomputed mailto anchor (no JS navigation, testable, no POST); enquiry body field labels (Package/Price/Name/Phone) and a11y-required form labels are logged inventions, stored in site.json where editable; spaces encoded %20 not + (mail clients render + literally)
+
 ## 2026-06-10 · NOTE (human feedback) + fix — photo overlays too bright in light mode
 Hero and pillar-tile gradients were hard-coded from the ink token, becoming a near-opaque white wash in light mode. Replaced with themed scrim variables (.scrim-hero/.scrim-tile beside the tokens in globals.css): dark mode keeps the original stops exactly; light mode uses weaker color-mix stops (82%/26%/0) so photos read through. Gates green. Commit: fix(theme).
 

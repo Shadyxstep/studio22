@@ -50,9 +50,9 @@
 
 ## Milestone 3 — Flows, dormant commerce & launch readiness
 
-- [ ] **T3.1 Sign-up flow** (SPEC §9 flow) — `lib/mailto.ts` pure composer + client component on /get-started: package selection (grouped, sage selected state) → name/phone fields → submit opens composed `mailto:`.
+- [x] **T3.1 Sign-up flow** (SPEC §9 flow) — `lib/mailto.ts` pure composer + client component on /get-started: package selection (grouped, sage selected state) → name/phone fields → submit opens composed `mailto:`.
   *Accept:* mailto tests cover subject/body composition and URL encoding (spaces, `€`, newlines) for both billing types; CTA routed through `getPackageCta`; no POST endpoint exists.
-- [ ] **T3.2 Dormant Stripe scaffolding** (SPEC §10) — `lib/stripe.ts` factory (`NotConfiguredError` unless `STUDIO22_PAYMENTS=true` + all keys), `POST /api/checkout` (zod, 501 envelope when unconfigured, subscription vs payment mode by billing), webhook stub (501), `/checkout/success` + `/checkout/cancelled` pages.
+- [~] **T3.2 Dormant Stripe scaffolding** (SPEC §10) — `lib/stripe.ts` factory (`NotConfiguredError` unless `STUDIO22_PAYMENTS=true` + all keys), `POST /api/checkout` (zod, 501 envelope when unconfigured, subscription vs payment mode by billing), webhook stub (501), `/checkout/success` + `/checkout/cancelled` pages.
   *Accept:* tests: unconfigured path returns 501 envelope; bad body rejected by zod; no test needs a key.
 - [ ] **T3.3 Launch readiness** (SPEC §11, §13, §14) — README quickstart + "Before launch" checklist consolidating every `HUMAN TODO` (booking URL, contact details, Stripe keys + price IDs, exercise.com links, domain/DNS); final full-gate run.
   *Accept:* `pnpm typecheck && pnpm lint && pnpm test && pnpm build` green from clean state; checklist complete; note Lighthouse ≥95 is a manual milestone check.

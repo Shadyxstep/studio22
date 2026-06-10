@@ -88,6 +88,8 @@ const StatBarSection = z.object({
 const PackageGridSection = z.object({
   type: z.literal("packageGrid"),
   heading: z.string().optional(),
+  /** When true, renders the interactive sign-up flow (SPEC §9) instead of the static grid. */
+  selectable: z.boolean().optional(),
 });
 
 const PackageTeaserSection = z.object({
@@ -204,6 +206,12 @@ export const SiteSchema = z.object({
     label: z.string().min(1),
     heading: z.string().min(1),
     body: z.string().min(1),
+  }),
+  signup: z.object({
+    intro: z.string().min(1),
+    nameLabel: z.string().min(1),
+    phoneLabel: z.string().min(1),
+    submitLabel: z.string().min(1),
   }),
   nav: z.array(Cta).min(1),
   footerLinks: z.array(Cta),

@@ -31,7 +31,7 @@ export function Gallery({ section }: Props) {
                 alt={img.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover opacity-80 transition-opacity duration-500 hover:opacity-100"
+                className="photo-muted object-cover transition-opacity duration-500 hover:opacity-100"
               />
             </div>
           </RevealItem>

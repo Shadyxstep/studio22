@@ -49,9 +49,26 @@ html[data-theme="light"] {
   --scrim-weak: color-mix(in srgb, var(--color-ink) 20%, transparent);
 }
 html[data-theme="light"] {
-  --scrim-strong: color-mix(in srgb, var(--color-ink) 82%, transparent);
-  --scrim-mid: color-mix(in srgb, var(--color-ink) 26%, transparent);
+  --scrim-strong: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --scrim-mid: color-mix(in srgb, var(--color-ink) 16%, transparent);
   --scrim-weak: transparent;
+}
+
+/*
+ * Themed photo opacity. In dark mode, reduced opacity mutes a photo toward
+ * the dark ground — the intended look. In light mode the same opacity
+ * composites the photo toward near-white and washes it out, so photos
+ * render at full strength and the scrim alone handles text contrast.
+ */
+.photo-hero {
+  opacity: 0.5;
+}
+.photo-muted {
+  opacity: 0.8;
+}
+html[data-theme="light"] .photo-hero,
+html[data-theme="light"] .photo-muted {
+  opacity: 1;
 }
 
 .scrim-hero {

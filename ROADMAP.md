@@ -13,7 +13,7 @@
   Restructure ROADMAP.md into this milestone/task format; adapt CLAUDE.md from the AEGIS template to Studio 22.
   *Accept:* every task has acceptance criteria; total scope identical to SPEC (nothing added/removed); CLAUDE.md Critic lenses and stop conditions reference this SPEC's semantics, no AEGIS concepts remain.
 
-- [ ] **T0.2 Content inventory** (SPEC §7 — the only task permitted network access, read-only fetches of studio-22.ie)
+- [x] **T0.2 Content inventory** (SPEC §7 — the only task permitted network access, read-only fetches of studio-22.ie)
   Fetch each live page (Home, Get Started, Our Packages, FAQs, Contact, Our Facility; note Free Resources content but default-omit per SPEC §7). Transcribe copy verbatim into `docs/content-inventory.md`, organised by target page → section. Capture contact details, booking URL, Google review link, exercise.com / fitness.studio-22.ie URLs.
   *Accept:* all 6 target pages covered; package data cross-checked against SPEC §6.3; every value that couldn't be captured is listed as `HUMAN TODO`; any copy gaps flagged rather than invented.
 

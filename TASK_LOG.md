@@ -18,6 +18,9 @@
 
 ---
 
+## 2026-06-10 · NOTE (human-directed change) — display font now Oswald + font-chain repair
+Owner switched display font to Oswald (edited layout.tsx directly). Root cause of "fonts not persisting": globals.css still mapped the tokens to the removed --font-bodoni variable — and at some point --font-body was also pointed at it — so every font-family resolved to an undefined var and the browser fell back. Repaired: --font-display→var(--font-oswald), --font-body→var(--font-hanken); killed stale dev/prod servers and wiped .next so no cached bundle can serve old fonts. Chain verified in compiled+served output (font-face Oswald, preloaded woff2, both vars resolving). SPEC §3/§8.2 updated. Gates green (79, build ✓).
+
 ## 2026-06-10 · NOTE (human-directed change) — display font now Bodoni Moda
 Owner swapped the locked display font Tenor Sans → Bodoni Moda (Google Fonts, variable). SPEC §3 and §8.2 updated to record it. Changes: layout.tsx font import/variable, globals.css --font-display mapping. Body/labels remain Hanken Grotesk; no component changes (font flows through the --font-display token). Gates green (79, build ✓).
 

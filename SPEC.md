@@ -38,7 +38,7 @@ A ground-up rebuild of https://studio-22.ie — a premium gym, golf simulator, a
 | Styling | Tailwind CSS, design tokens per §8 only |
 | Motion | Framer Motion, presets-only per §8.4 |
 | Content validation | zod — every `content/*.json` file parses against a schema at build time |
-| Fonts | next/font/google: **Bodoni Moda** (display — owner-directed change 2026-06-10, was Tenor Sans), **Hanken Grotesk** (body + labels) |
+| Fonts | next/font/google: **Oswald** (display — owner-directed change 2026-06-10; was Tenor Sans, briefly Bodoni Moda), **Hanken Grotesk** (body + labels) |
 | Images | next/image; assets from `/Users/leomorgan/Desktop/Studio22/IMAGES` copied into `public/images/` |
 | Payments (dormant) | `stripe` SDK, env-gated stubs only |
 | Tests | Vitest + @testing-library/react |
@@ -205,7 +205,7 @@ Dark theme is the default. A light theme (owner-directed scope change, 2026-06-1
 
 ### 8.2 Typography
 
-- **Display:** Bodoni Moda 400 (owner-directed change 2026-06-10; was Tenor Sans), large sizes (clamp 2.5rem → 6rem), tight leading, `bone`. Sentence case or uppercase per the reference — airy, never bold; the didone contrast carries the luxury register.
+- **Display:** Oswald (owner-directed change 2026-06-10; was Tenor Sans, briefly Bodoni Moda), large sizes (clamp 2.5rem → 6rem), tight leading, `bone`. The condensed athletic register now leads display type (the Nike pole); luxury comes from spacing, restraint, and photography.
 - **Body:** Hanken Grotesk 300/400, `bone`/`mid`, relaxed leading, measure ≤ 65ch.
 - **Micro-labels:** Hanken Grotesk 500/600, uppercase, `tracking-[0.2em]`, 11–12px, `sage` or `mid` (the "PORTFOLIO" / "INSPIRE" pattern from the reference).
 - No font weights above 600 anywhere. The Nike energy comes from photography and copy, not heavy type.

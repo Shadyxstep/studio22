@@ -18,6 +18,9 @@
 
 ---
 
+## 2026-06-10 · NOTE (human feedback) + fix — photo overlays too bright in light mode
+Hero and pillar-tile gradients were hard-coded from the ink token, becoming a near-opaque white wash in light mode. Replaced with themed scrim variables (.scrim-hero/.scrim-tile beside the tokens in globals.css): dark mode keeps the original stops exactly; light mode uses weaker color-mix stops (82%/26%/0) so photos read through. Gates green. Commit: fix(theme).
+
 ## 2026-06-10 · NOTE (human-directed scope change) — light/dark mode toggle
 Owner requested a light mode toggle, overriding the SPEC §2 "dark only" non-goal. SPEC §2 and §8.1 updated to record the change. Implementation: light theme is pure CSS-variable overrides of the six tokens under html[data-theme="light"] (components never branch on theme — token semantics ink=background/bone=foreground made this a value swap); ThemeToggle client component in the nav (aria-pressed, sun/moon SVG); choice persisted to localStorage with a pre-paint inline script to avoid FOUC; dark remains default; light sage/mid darkened for ≥4.5:1 contrast. Tests: toggle + persistence + pre-set theme (62 passing). Gates green incl. build. Invented a11y label "Toggle theme" (logged per protocol).
 

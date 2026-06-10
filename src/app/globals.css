@@ -37,3 +37,31 @@ html {
 html[data-theme="light"] {
   color-scheme: light;
 }
+
+/*
+ * Photo scrims — the only sanctioned gradients over imagery. Derived from
+ * the ink token so they always blend into the page background; light mode
+ * uses weaker stops so photos aren't washed out by a bright overlay.
+ */
+:root {
+  --scrim-strong: var(--color-ink);
+  --scrim-mid: color-mix(in srgb, var(--color-ink) 40%, transparent);
+  --scrim-weak: color-mix(in srgb, var(--color-ink) 20%, transparent);
+}
+html[data-theme="light"] {
+  --scrim-strong: color-mix(in srgb, var(--color-ink) 82%, transparent);
+  --scrim-mid: color-mix(in srgb, var(--color-ink) 26%, transparent);
+  --scrim-weak: transparent;
+}
+
+.scrim-hero {
+  background: linear-gradient(
+    to top,
+    var(--scrim-strong),
+    var(--scrim-mid) 55%,
+    var(--scrim-weak)
+  );
+}
+.scrim-tile {
+  background: linear-gradient(to top, var(--scrim-strong), transparent 65%);
+}

@@ -20,7 +20,7 @@ export function Hero({ section }: Props) {
             sizes="100vw"
             className="object-cover opacity-35"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/20" />
+          <div className="scrim-hero absolute inset-0" />
         </HeroFade>
       )}
       <Reveal className="relative mx-auto flex min-h-[70vh] max-w-6xl flex-col items-start justify-end gap-6 px-6 pb-20 pt-32">

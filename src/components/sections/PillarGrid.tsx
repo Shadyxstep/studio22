@@ -39,7 +39,7 @@ export function PillarGrid({ section, globals }: Props) {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
+                <div className="scrim-tile absolute inset-0" />
                 <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-6">
                   <p className="font-display text-sm text-sage">
                     {String(i + 1).padStart(2, "0")}.

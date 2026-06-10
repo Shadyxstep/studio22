@@ -59,7 +59,7 @@
 
 ## Milestone 4 — Launch (human-led; agent assists on request only)
 
-- [ ] **T4.1 Vercel deploy + domain cutover + old-URL redirects** — requires Vercel/DNS access: human task. Agent may prepare `vercel.json` redirects from old WordPress paths if asked.
+- [~] **T4.1 Vercel deploy + domain cutover + old-URL redirects** — requires Vercel/DNS access: human task. Agent may prepare `vercel.json` redirects from old WordPress paths if asked.
 
 ---
 

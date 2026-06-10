@@ -3,6 +3,7 @@ import { Tenor_Sans, Hanken_Grotesk } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { loadSite } from "@/lib/content/load";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const tenor = Tenor_Sans({
@@ -18,9 +19,21 @@ const hanken = Hanken_Grotesk({
   display: "swap",
 });
 
+const site = loadSite();
+
 export const metadata: Metadata = {
-  title: "Studio 22",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: site.name,
+    template: `%s — ${site.name}`,
+  },
   description: "Movement. Strength. Recovery. Community",
+  openGraph: {
+    siteName: site.name,
+    type: "website",
+    locale: "en_IE",
+    images: ["/images/signage-founders.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +41,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const site = loadSite();
   return (
     <html lang="en">
       <body

@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
 import { SectionRenderer } from "@/components/sections";
-import { loadGlobals, loadPage } from "@/lib/content/load";
+import { loadGlobals, loadPage, loadSite } from "@/lib/content/load";
+import { buildLocalBusinessJsonLd } from "@/lib/seo";
 
 const page = loadPage("home");
 
 export const metadata: Metadata = {
-  title: page.title,
+  // title.template only applies to child segments; the root page sets it absolutely
+  title: { absolute: `${page.title} — ${loadSite().name}` },
   description: page.description,
 };
 
 export default function HomePage() {
+  const globals = loadGlobals();
+  const jsonLd = buildLocalBusinessJsonLd(globals.site);
   return (
     <main>
-      <SectionRenderer sections={page.sections} globals={loadGlobals()} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SectionRenderer sections={page.sections} globals={globals} />
     </main>
   );
 }

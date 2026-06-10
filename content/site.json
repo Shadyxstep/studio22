@@ -5,7 +5,14 @@
     "phone": "+353 874094321",
     "email": "admin@studio-22.ie",
     "mailtoSubject": "I'm Interested In Studio 22",
-    "address": "77 Georges Street Upper, Dun Laoghaire, Dublin, Ireland A96 RX61"
+    "address": "77 Georges Street Upper, Dun Laoghaire, Dublin, Ireland A96 RX61",
+    "addressParts": {
+      "street": "77 Georges Street Upper",
+      "locality": "Dun Laoghaire",
+      "region": "Dublin",
+      "postalCode": "A96 RX61",
+      "country": "IE"
+    }
   },
   "links": {
     "booking": "https://calendar.app.google/czDrog5tJp515A1x6",

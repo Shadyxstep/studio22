@@ -18,6 +18,17 @@
 
 ---
 
+## 2026-06-10 · MILESTONE 2 COMPLETE — Pages & SEO
+All six tasks approved. The full six-page site renders statically (11 routes incl. sitemap/robots), every page composed from its content file, gates green from clean state, 60 tests. Production server smoke-checked: all routes 200, title pattern verified, JSON-LD present on home. Lighthouse ≥95 remains a manual check at launch (T3.3 notes it). Next session starts Milestone 3 (T3.1 sign-up flow).
+
+## 2026-06-10 · T2.6 — SEO — APPROVED
+- Plan: metadataBase + title template + OG defaults in layout; sitemap.ts/robots.ts; pure LocalBusiness JSON-LD builder rendered on home; structured addressParts in site.json.
+- Changes: src/app/layout.tsx, src/app/{sitemap.ts,robots.ts,page.tsx}, src/lib/{seo.ts,seo.test.ts}, schema + site.json (addressParts)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (60 passing) · build ✓ (11 static routes)
+- Critic issues found → resolved: Next's title.template does not apply to the root segment's own page → home sets an absolute title from content; stale prod server initially masked the fix during verification
+- Follow-ups (not built): hours absent from JSON-LD until owner supplies opening hours
+- Decisions made where SPEC was silent: structured addressParts added to site.json for valid PostalAddress markup (display string unchanged); OG image is signage-founders.jpg
+
 ## 2026-06-10 · T2.5 — FAQs & Contact — APPROVED
 - Plan: faqs + contact routes; tests for empty-state accordion and contact link wiring (tel/mailto/map/review).
 - Changes: src/app/faqs/page.tsx, src/app/contact/page.tsx, src/app/faqs-contact.test.tsx

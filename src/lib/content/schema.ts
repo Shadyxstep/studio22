@@ -181,6 +181,13 @@ export const SiteSchema = z.object({
     email: z.string().min(1),
     mailtoSubject: z.string().min(1),
     address: z.string().min(1),
+    addressParts: z.object({
+      street: z.string().min(1),
+      locality: z.string().min(1),
+      region: z.string().min(1),
+      postalCode: z.string().min(1),
+      country: z.string().length(2),
+    }),
     hours: z.string().optional(),
   }),
   links: z.object({

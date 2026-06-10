@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T2.3 — Packages — APPROVED
+- Plan: packages route; tests for category grouping, billing formats, sauna banner, getPackageCta routing.
+- Changes: src/app/packages/{page.tsx,packages.test.tsx}
+- Gates: typecheck ✓ · lint ✓ · test ✓ (52 passing)
+- Critic issues found → resolved: none
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: none
+
 ## 2026-06-10 · T2.2 — Facility — APPROVED
 - Plan: facility route from pages/facility.json; test asserts per-pillar editorials + gallery alts.
 - Changes: src/app/facility/{page.tsx,facility.test.tsx}

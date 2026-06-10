@@ -27,11 +27,11 @@
   `lib/content/schema.ts`: zod schemas for all 11 section types as a discriminated union, page schema, package/site/testimonial/faq schemas, constants. `lib/content/load.ts`: typed loaders that throw `ContentValidationError`.
   *Accept:* tests prove a valid page parses, an unknown section type throws, an invalid field throws with a useful message; constants match SPEC §6.1 exactly.
 
-- [~] **T1.3 Content files & images** (SPEC §6.3, §6.4, §7)
+- [x] **T1.3 Content files & images** (SPEC §6.3, §6.4, §7)
   Seed `content/` from the T0.2 inventory: `site.json`, `packages.json`, `testimonials.json`, `faqs.json`, `pages/*.json` (all six). Copy the 11 photos from `/Users/leomorgan/Desktop/Studio22/IMAGES` into `public/images/` with kebab-case names.
   *Accept:* content tests pass: every content file parses; package catalog matches SPEC §6.3 exactly (ids, prices, billing); every image path referenced exists; every internal href resolves to a real route; `HUMAN TODO` placeholders match the inventory list.
 
-- [ ] **T1.4 Motion, layout & UI primitives** (SPEC §8.3, §8.4)
+- [~] **T1.4 Motion, layout & UI primitives** (SPEC §8.3, §8.4)
   `lib/motion.ts` with exactly `reveal`, `revealStagger`, `heroFade` + `prefers-reduced-motion` handling. Nav + Footer rendered from `site.json`. UI primitives (Button, SectionLabel, hairline dividers).
   *Accept:* reduced-motion fallback unit-tested; nav/footer contain zero hardcoded copy; primitives use tokens only.
 

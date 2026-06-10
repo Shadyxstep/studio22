@@ -1,0 +1,59 @@
+{
+  "title": "Home",
+  "description": "The Future of Wellness. Movement. Strength. Recovery. Community — Studio 22, Dun Laoghaire.",
+  "sections": [
+    {
+      "type": "hero",
+      "label": "Movement. Strength. Recovery. Community",
+      "headline": "The Future of Wellness.",
+      "image": {
+        "src": "/images/signage-founders.jpg",
+        "alt": "The Studio 22 founders beneath the backlit Studio 22 sign"
+      },
+      "ctas": [
+        {
+          "label": "book a discovery call",
+          "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+        },
+        {
+          "label": "Want more info?",
+          "href": "https://fitness.studio-22.ie/a/assessment/2541068/"
+        }
+      ]
+    },
+    {
+      "type": "pillarGrid",
+      "heading": "Our Offering",
+      "tagline": "Performance is the greatest motivator",
+      "pillars": ["gym", "golf", "pilates", "recovery"]
+    },
+    {
+      "type": "editorialSplit",
+      "headline": "Start Today, Feel Better Tomorrow",
+      "paragraphs": [
+        "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are."
+      ],
+      "image": {
+        "src": "/images/coaches-portrait.jpg",
+        "alt": "Two Studio 22 coaches with kettlebells in the gym"
+      },
+      "cta": { "label": "See How We Help You", "href": "/get-started" }
+    },
+    { "type": "packageTeaser", "heading": "Our Packages" },
+    {
+      "type": "testimonials",
+      "heading": "Trusted By Our Community",
+      "sub": "Discover authentic Google reviews from clients who’ve experienced Studio 22 firsthand."
+    },
+    {
+      "type": "ctaBanner",
+      "variant": "discovery-call",
+      "headline": "Need more information?",
+      "body": "Book in in for a discovery call below and we can go over any more queries you may have.",
+      "cta": {
+        "label": "Book A Discovery Call",
+        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+      }
+    }
+  ]
+}

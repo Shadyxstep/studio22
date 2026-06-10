@@ -1,0 +1,117 @@
+{
+  "title": "Our Facility",
+  "description": "Learn more about place where you can change your life! Strength, golf simulator, reformer pilates and recovery at Studio 22, Dun Laoghaire.",
+  "sections": [
+    {
+      "type": "hero",
+      "label": "Our Offering",
+      "headline": "See Our WorldClass Facility"
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Strength",
+      "headline": "Training that actually works",
+      "bullets": [
+        "Foundational barbell and dumbbell lifts",
+        "Proper technique and coaching",
+        "Balanced training for muscle, joints, and mobility"
+      ],
+      "paragraphs": [
+        "Every session is structured to help you improve week after week."
+      ],
+      "image": {
+        "src": "/images/strength-squat-wide.jpg",
+        "alt": "An athlete performing a barbell back squat at Studio 22"
+      }
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Golf",
+      "headline": "Data-driven training that actually works",
+      "bullets": [
+        "TrackMan swing and ball-flight analysis",
+        "Accurate distance and dispersion tracking",
+        "Realistic virtual course play",
+        "Practice plans focused on improvement"
+      ],
+      "paragraphs": [
+        "Every session gives you clear feedback so you can practice smarter and play better."
+      ],
+      "image": {
+        "src": "/images/golf-simulator-swing.jpg",
+        "alt": "A golfer mid-swing in the Studio 22 simulator with TrackMan data on screen"
+      },
+      "reverse": true
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Reformer Pilates",
+      "headline": "Precision training that supports your body",
+      "bullets": [
+        "Controlled reformer-based movements",
+        "Core stability and posture improvement",
+        "Joint-friendly strength and mobility work",
+        "Personalized coaching and progressions"
+      ],
+      "paragraphs": [
+        "Each session helps you build strength, flexibility, and confidence safely."
+      ],
+      "image": {
+        "src": "/images/pilates-studio.jpg",
+        "alt": "A member seated on a mat beneath the backlit Pilates at Studio 22 sign"
+      }
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Sauna",
+      "headline": "Recovery & Relaxation",
+      "paragraphs": [
+        "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing."
+      ],
+      "image": {
+        "src": "/images/sauna.jpg",
+        "alt": "The warm, wood-panelled sauna at Studio 22"
+      },
+      "reverse": true
+    },
+    {
+      "type": "gallery",
+      "images": [
+        {
+          "src": "/images/strength-back-bw.jpg",
+          "alt": "An athlete under a barbell, photographed in black and white"
+        },
+        {
+          "src": "/images/conditioning-ski-erg.jpg",
+          "alt": "A member training on the ski erg in the conditioning area"
+        },
+        {
+          "src": "/images/strength-dumbbells.jpg",
+          "alt": "A coach setting up the dumbbell rack"
+        },
+        {
+          "src": "/images/golf-simulator.jpg",
+          "alt": "A golfer addressing the ball in the Studio 22 golf simulator"
+        },
+        {
+          "src": "/images/coaches-portrait.jpg",
+          "alt": "Two Studio 22 coaches with kettlebells in the gym"
+        },
+        {
+          "src": "/images/signage-founders.jpg",
+          "alt": "The Studio 22 founders beneath the backlit Studio 22 sign"
+        }
+      ]
+    },
+    {
+      "type": "ctaBanner",
+      "variant": "discovery-call",
+      "headline": "Start Today, Feel Better Tomorrow",
+      "body": "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are.",
+      "cta": {
+        "label": "Book A Discovery Call",
+        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+      }
+    }
+  ]
+}

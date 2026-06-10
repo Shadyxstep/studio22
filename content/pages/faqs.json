@@ -1,0 +1,5 @@
+{
+  "title": "FAQs",
+  "description": "Whether you're looking for a gym in Dun Laoghaire or have questions about fitness in general we are here to answer them!",
+  "sections": [{ "type": "faqAccordion", "heading": "FAQs" }]
+}

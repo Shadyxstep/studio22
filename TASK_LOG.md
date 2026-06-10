@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T1.3 — Content files & images — APPROVED
+- Plan: seed all content files verbatim from the T0.2 inventory/source-text; copy 11 photos to public/images with semantic names; content integrity test suite.
+- Changes: content/{site,packages,testimonials,faqs}.json, content/pages/*.json (6), public/images/*.jpg (11), src/lib/content/content.test.ts
+- Gates: typecheck ✓ · lint ✓ · test ✓ (24 passing)
+- Critic issues found → resolved: none
+- Follow-ups (not built): owner to supply FAQ copy (faqs.json ships empty), opening hours, per-package feature confirmation
+- Decisions made where SPEC was silent: image filenames + alt text authored (logged invention); meta descriptions composed from on-page verbatim fragments; Google Maps link constructed from the address + place query; "Purchase Now" CTA retargeted from live /gym-packages/ to internal /packages; live "Fill out the form to get in touch with us." dropped (no form in v1 contact); June trial-pack promo and golf-performance-program landing page excluded per SPEC §9 composition (flagged to owner in inventory); package features seeded from pillar bullets per T0.2 decision
+
 ## 2026-06-10 · T1.2 — Content schemas & loaders — APPROVED
 - Plan: zod schemas for the 11-section discriminated union + page/package/site/testimonial/faq files; pure parseContent + fs loaders throwing ContentValidationError.
 - Changes: src/lib/content/{schema.ts,load.ts,schema.test.ts}, package.json (+zod 4.4.3)

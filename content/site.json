@@ -1,0 +1,73 @@
+{
+  "name": "Studio 22",
+  "copyright": "© Copyright 2026 / Studio 22",
+  "contact": {
+    "phone": "+353 874094321",
+    "email": "admin@studio-22.ie",
+    "mailtoSubject": "I'm Interested In Studio 22",
+    "address": "77 Georges Street Upper, Dun Laoghaire, Dublin, Ireland A96 RX61"
+  },
+  "links": {
+    "booking": "https://calendar.app.google/czDrog5tJp515A1x6",
+    "assessment": "https://fitness.studio-22.ie/a/assessment/2541068/",
+    "review": "https://search.google.com/local/writereview?placeid=ChIJV6gbKv0HZ0gRig71rOCeM18",
+    "whatsapp": "https://api.whatsapp.com/message/65QFIMXJ4BDOO1",
+    "instagram": "https://www.instagram.com/studio22dublin",
+    "tiktok": "https://www.tiktok.com/@studio22dublin",
+    "map": "https://www.google.com/maps/search/?api=1&query=Studio+22%2C+77+Georges+Street+Upper%2C+Dun+Laoghaire"
+  },
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Our Facility", "href": "/facility" },
+    { "label": "Our Packages", "href": "/packages" },
+    { "label": "FAQs", "href": "/faqs" },
+    { "label": "Get Started", "href": "/get-started" },
+    { "label": "Contact Us", "href": "/contact" }
+  ],
+  "footerLinks": [
+    { "label": "Home", "href": "/" },
+    { "label": "Get Started", "href": "/get-started" },
+    { "label": "Our Packages", "href": "/packages" },
+    { "label": "FAQs", "href": "/faqs" }
+  ],
+  "footer": {
+    "locationHeading": "Where we're located, give us a visit.",
+    "socialHeading": "We're pretty active on social, check us out.",
+    "exploreHeading": "Or keep exploring our site to learn more."
+  },
+  "saunaPerk": "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing.",
+  "pillars": {
+    "gym": {
+      "label": "Strength",
+      "description": "Build Real Strength. Move With Confidence. Feel Powerful.",
+      "image": {
+        "src": "/images/strength-squat.jpg",
+        "alt": "An athlete performing a barbell back squat in the Studio 22 gym"
+      }
+    },
+    "golf": {
+      "label": "Golf",
+      "description": "Train smarter. Hit farther. Play better golf.",
+      "image": {
+        "src": "/images/golf-simulator.jpg",
+        "alt": "A golfer addressing the ball in the Studio 22 golf simulator"
+      }
+    },
+    "pilates": {
+      "label": "Reformer Pilates",
+      "description": "You don’t need experience — we coach you through every movement step by step.",
+      "image": {
+        "src": "/images/pilates-studio.jpg",
+        "alt": "A member seated on a mat beneath the backlit Pilates at Studio 22 sign"
+      }
+    },
+    "recovery": {
+      "label": "Recovery & Relaxation",
+      "description": "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing.",
+      "image": {
+        "src": "/images/sauna.jpg",
+        "alt": "The warm, wood-panelled sauna at Studio 22"
+      }
+    }
+  }
+}

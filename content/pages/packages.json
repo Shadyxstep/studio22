@@ -1,0 +1,17 @@
+{
+  "title": "Our Packages",
+  "description": "Gym Class Packages, Pilates Packages, Online Coaching and Golf at Studio 22, Dun Laoghaire. All memberships include sauna access.",
+  "sections": [
+    { "type": "packageGrid", "heading": "Our Packages" },
+    {
+      "type": "ctaBanner",
+      "variant": "enquire",
+      "headline": "Start Today, Feel Better Tomorrow",
+      "body": "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are.",
+      "cta": {
+        "label": "Get Started Today!",
+        "href": "https://fitness.studio-22.ie/a/assessment/2541068/"
+      }
+    }
+  ]
+}

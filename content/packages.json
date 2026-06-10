@@ -1,0 +1,111 @@
+[
+  {
+    "id": "unlimited-gym",
+    "category": "gym",
+    "name": "Unlimited Gym Class Package",
+    "price": 55,
+    "billing": "weekly",
+    "features": [
+      "Foundational barbell and dumbbell lifts",
+      "Proper technique and coaching",
+      "Balanced training for muscle, joints, and mobility"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "performance",
+    "category": "gym",
+    "name": "Performance Package",
+    "price": 75,
+    "billing": "weekly",
+    "features": [
+      "Strength training & conditioning",
+      "Progressive overload programming",
+      "Technique coaching for all levels",
+      "Improve power and confidence"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "complete-studio",
+    "category": "gym",
+    "name": "Complete Studio Package",
+    "price": 75,
+    "billing": "weekly",
+    "features": [
+      "Strength training & conditioning",
+      "Progressive overload programming",
+      "Core strength and stability",
+      "Improve posture and mobility"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "pilates-membership",
+    "category": "pilates",
+    "name": "Pilates Membership",
+    "price": 50,
+    "billing": "weekly",
+    "features": [
+      "Controlled reformer-based movements",
+      "Core stability and posture improvement",
+      "Joint-friendly strength and mobility work",
+      "Personalized coaching and progressions"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "reformer-10",
+    "category": "pilates",
+    "name": "10 Reformer Pilates Class Package",
+    "price": 225,
+    "billing": "one-time",
+    "features": [
+      "Controlled reformer-based movements",
+      "Core stability and posture improvement",
+      "Joint-friendly strength and mobility work"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "reformer-20",
+    "category": "pilates",
+    "name": "20 Reformer Pilates Class Package",
+    "price": 425,
+    "billing": "one-time",
+    "features": [
+      "Controlled reformer-based movements",
+      "Core stability and posture improvement",
+      "Joint-friendly strength and mobility work"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "online-coaching",
+    "category": "online-golf",
+    "name": "Online Coaching",
+    "price": 35,
+    "billing": "weekly",
+    "features": [
+      "Personalized training program",
+      "Video feedback and technique support",
+      "Progress tracking and adjustments",
+      "Direct communication with your coach"
+    ],
+    "purchasable": false
+  },
+  {
+    "id": "simulator",
+    "category": "online-golf",
+    "name": "Simulator Package",
+    "price": 60,
+    "billing": "weekly",
+    "features": [
+      "TrackMan swing and ball-flight analysis",
+      "Accurate distance and dispersion tracking",
+      "Realistic virtual course play",
+      "Practice plans focused on improvement"
+    ],
+    "purchasable": false
+  }
+]

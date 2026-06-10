@@ -1,0 +1,127 @@
+{
+  "title": "Get Started",
+  "description": "Get Started At Studio 22 — most clients begin with an assessment. Book in for your Movement screening, choose a package, or book a discovery call.",
+  "sections": [
+    {
+      "type": "hero",
+      "headline": "Get Started At Studio 22"
+    },
+    {
+      "type": "editorialSplit",
+      "label": "01.",
+      "headline": "Not sure where to start?",
+      "paragraphs": [
+        "Most clients begin with an assessment. Book in for your Movement screening below."
+      ],
+      "cta": {
+        "label": "Join Us",
+        "href": "https://api.whatsapp.com/message/65QFIMXJ4BDOO1"
+      }
+    },
+    {
+      "type": "editorialSplit",
+      "label": "02.",
+      "headline": "Ready to go ?",
+      "paragraphs": ["Purchase your Studio 22 Membership below"],
+      "cta": { "label": "Purchase Now", "href": "/packages" },
+      "reverse": true
+    },
+    {
+      "type": "editorialSplit",
+      "label": "03.",
+      "headline": "Need more information?",
+      "paragraphs": [
+        "Book in in for a discovery call below and we can go over any more queries you may have."
+      ],
+      "cta": {
+        "label": "Book A Discovery Call",
+        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+      }
+    },
+    { "type": "packageGrid", "heading": "Our Packages" },
+    {
+      "type": "editorialSplit",
+      "headline": "How Do We Help You Reach Your Goals?",
+      "paragraphs": [
+        "Scroll down to see our timeline to get you from today to the future healthier, happier you."
+      ]
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Week 1",
+      "headline": "Week 1 – Foundational Phase",
+      "paragraphs": [
+        "Week one is all about laying the foundations. This phase introduces the key movements and patterns we’ll be building on throughout the programme, with an emphasis on learning correct technique, control, and positioning.",
+        "Loads and volumes are kept manageable and intentional, allowing your body time to adapt while we assess how you move and respond to training. The focus is on quality reps, controlled tempo, and developing confidence in each exercise.",
+        "This week sets the standard for everything that follows — move well, stay consistent, and build a solid base for long-term progress."
+      ]
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Week 2",
+      "headline": "Week 2 – Accumulation Phase",
+      "paragraphs": [
+        "Week two focuses on building volume and confidence in the movements. Now that you’ve been introduced to the exercises, the goal is to become more comfortable, move with better control, and start flowing through each rep.",
+        "We’ll slightly increase the rep ranges this week to accumulate more quality work. This helps improve muscular endurance, reinforce good movement patterns, and reduce overall body stiffness as your body adapts to the training.",
+        "Focus on smooth, controlled reps, consistent breathing, and maintaining good technique throughout each set. This week sets a strong foundation for the progressions to come."
+      ],
+      "reverse": true
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Week 3",
+      "headline": "Week 3 – Intensification Phase 1",
+      "paragraphs": [
+        "This phase marks the shift from building volume to building strength. Rep ranges will drop slightly, allowing us to increase the weights while maintaining the movement quality developed in the earlier phases.",
+        "The focus here is on producing more force through the same solid patterns — lifting with intent, control, and good positioning. Sessions may feel more challenging, but the goal is still clean, repeatable reps rather than pushing to failure.",
+        "This phase helps convert the work you’ve already done into measurable strength gains, setting the platform for further progression later in the programme."
+      ]
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Week 4",
+      "headline": "Week 4 – Intensification Phase 2",
+      "paragraphs": [
+        "In this phase, we continue to build on the strength gains from Intensification Phase 1 by gradually increasing loads using a structured progressive overload approach. Rep ranges remain lower, allowing you to focus on lifting heavier with intent while maintaining strong technique and control.",
+        "As training demands increase, recovery becomes just as important as the work itself. During this week, we recommend making use of our recovery area to support muscle recovery, reduce fatigue, and keep you moving well.",
+        "To balance the heavier lifting, this is also a great time to reduce high-intensity sweat sessions and introduce some lower-impact movement. We strongly encourage trying one of our Reformer Pilates classes, which are available at a reduced rate for current Studio 22 members. This can help improve mobility, core strength, and overall movement quality alongside your training.",
+        "This phase is about training smart — pushing strength forward while supporting your body to perform at its best."
+      ],
+      "reverse": true
+    },
+    {
+      "type": "editorialSplit",
+      "label": "Week 5",
+      "headline": "Week 5 - Realisation Phase",
+      "paragraphs": [
+        "The Realisation Phase is where all the work comes together. Rep ranges drop further and loads increase, allowing you to safely push heavier weights and realise the strength you’ve been building throughout the programme.",
+        "By this stage, your body has been progressively prepared through the foundational, accumulation, and intensification phases. Movement patterns are ingrained, strength capacity is higher, and tissues are better equipped to handle increased demands.",
+        "Training in this phase is focused, intentional, and well-supported. We create a safe, controlled environment where you can challenge yourself confidently, prioritising quality execution while pushing performance.",
+        "This is about expressing strength — not forcing it — and finishing the programme feeling strong, capable, and resilient."
+      ]
+    },
+    {
+      "type": "editorialSplit",
+      "headline": "You deserve to feel confident and strong in your body.",
+      "paragraphs": [
+        "At Studio 22 we focus on real, long-term results.",
+        "Whether you want to keep up with the kids, rock a new swimsuit, or even just carry the groceries in by yourself — our goal is to give everyone the freedom of independent fitness for life.",
+        "For us, fitness is about community and the commitment to working hard for permanent changes that you can be proud of. Our coaches go through rigorous training to help every member improve their quality of life no matter when they decide to start."
+      ],
+      "image": {
+        "src": "/images/strength-back-bw.jpg",
+        "alt": "An athlete under a barbell, photographed in black and white"
+      }
+    },
+    {
+      "type": "ctaBanner",
+      "variant": "discovery-call",
+      "headline": "Start Today, Feel Better Tomorrow",
+      "body": "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are.",
+      "cta": {
+        "label": "book a discovery call",
+        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+      }
+    }
+  ]
+}

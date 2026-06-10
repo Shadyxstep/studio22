@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Tenor_Sans, Hanken_Grotesk } from "next/font/google";
+import { Bodoni_Moda, Hanken_Grotesk } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { loadSite } from "@/lib/content/load";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
-const tenor = Tenor_Sans({
-  weight: "400",
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  variable: "--font-tenor",
+  variable: "--font-bodoni",
   display: "swap",
 });
 
@@ -44,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${tenor.variable} ${hanken.variable} bg-ink font-body text-bone antialiased`}
+        className={`${bodoni.variable} ${hanken.variable} bg-ink font-body text-bone antialiased`}
       >
         {/* runs before paint so a stored light preference never flashes dark */}
         <script

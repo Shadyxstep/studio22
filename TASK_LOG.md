@@ -18,6 +18,9 @@
 
 ---
 
+## 2026-06-10 · NOTE (human-directed change) — display font now Bodoni Moda
+Owner swapped the locked display font Tenor Sans → Bodoni Moda (Google Fonts, variable). SPEC §3 and §8.2 updated to record it. Changes: layout.tsx font import/variable, globals.css --font-display mapping. Body/labels remain Hanken Grotesk; no component changes (font flows through the --font-display token). Gates green (79, build ✓).
+
 ## 2026-06-10 · T4.1 — Deploy & cutover — agent-side COMPLETE, human steps pending
 - Done: legacy 301/308 redirects (src/lib/redirects.ts via next.config.ts, 3 tests incl. destination/route integrity, verified live), docs/deployment.md runbook, Vercel project `studio22` created and deployed — Ready at https://studio22-qmlira8w6-shadyxsteps-projects.vercel.app (60s build).
 - Gates: typecheck ✓ · lint ✓ · test ✓ (79 passing) · build ✓

@@ -18,6 +18,17 @@
 
 ---
 
+## 2026-06-10 · MILESTONE 3 COMPLETE — Flows, dormant commerce & launch readiness
+All three tasks approved. v1 build scope is DONE: sign-up flow (select → mailto), dormant Stripe behind the SPEC §5 gate, README quickstart + consolidated "Before launch" checklist. Gates green from clean state (rm -rf .next): typecheck ✓ lint ✓ test ✓ (76) build ✓ — 6 static pages + checkout pages + sitemap/robots static, 2 API routes dynamic. Remaining: Milestone 4 (deploy/cutover) is human-led; Lighthouse ≥95 is a manual check at deploy time.
+
+## 2026-06-10 · T3.3 — Launch readiness — APPROVED
+- Plan: README quickstart + architecture notes + Before-launch checklist consolidating every HUMAN TODO; full gates from clean state.
+- Changes: README.md
+- Gates: typecheck ✓ · lint ✓ · test ✓ (76 passing) · build ✓ (clean state)
+- Critic issues found → resolved: none
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: checklist also records owner *decisions* (promo, golf program page, Free Resources) alongside inputs, since both block launch sign-off
+
 ## 2026-06-10 · T3.2 — Dormant Stripe scaffolding — APPROVED
 - Plan: env-gated stripe factory + NotConfiguredError; POST /api/checkout (zod, dormancy gate → 501, mode by billing); webhook stub 501 with activation TODO; success/cancelled pages from site.json checkout block.
 - Changes: src/lib/stripe.ts, src/app/api/checkout/{route.ts,checkout.test.ts}, src/app/api/webhooks/stripe/route.ts, src/app/checkout/{success,cancelled}/page.tsx, schema + site.json (checkout block), package.json (+stripe)

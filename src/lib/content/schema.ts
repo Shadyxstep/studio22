@@ -187,10 +187,9 @@ export const SiteSchema = z.object({
     assessment: z.string().min(1),
     review: z.string().min(1),
     whatsapp: z.string().min(1),
-    instagram: z.string().min(1),
-    tiktok: z.string().min(1),
     map: z.string().min(1),
   }),
+  social: z.array(Cta).min(1),
   nav: z.array(Cta).min(1),
   footerLinks: z.array(Cta),
   footer: z.object({

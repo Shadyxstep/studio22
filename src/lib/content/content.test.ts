@@ -33,7 +33,9 @@ function collectFromPage(page: Page) {
 
 function collectFromSite(site: Site) {
   const images = Object.values(site.pillars).map((p) => p.image.src);
-  const hrefs = [...site.nav, ...site.footerLinks].map((l) => l.href);
+  const hrefs = [...site.nav, ...site.footerLinks, ...site.social].map(
+    (l) => l.href,
+  );
   return { images, hrefs };
 }
 

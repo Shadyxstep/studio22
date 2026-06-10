@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T1.4 — Motion, layout & UI primitives — APPROVED
+- Plan: three presets in lib/motion.ts + pure reduced-motion resolver; client wrappers in components/motion.tsx; Nav/Footer from site.json; Button + SectionLabel primitives.
+- Changes: src/lib/motion.ts, src/lib/motion.test.ts, src/components/motion.tsx, src/components/ui/{Button,SectionLabel}.tsx, src/components/layout/{Nav,Footer}.tsx, src/components/layout/layout.test.tsx, src/app/layout.tsx, schema/site.json (social links became labeled data), package.json (+framer-motion)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (31 passing)
+- Critic issues found → resolved: Footer hardcoded "Instagram"/"TikTok" labels → moved to site.json `social` array (zero copy in components holds)
+- Follow-ups (not built): Footer's inline mailto-encode should reuse lib/mailto.ts once T3.1 creates it
+- Decisions made where SPEC was silent: presets live in lib/motion.ts as pure variant objects, client wiring in components/motion.tsx (keeps the single-module rule testable); mobile nav button uses site.name as aria-label to avoid invented copy
+
 ## 2026-06-10 · T1.3 — Content files & images — APPROVED
 - Plan: seed all content files verbatim from the T0.2 inventory/source-text; copy 11 photos to public/images with semantic names; content integrity test suite.
 - Changes: content/{site,packages,testimonials,faqs}.json, content/pages/*.json (6), public/images/*.jpg (11), src/lib/content/content.test.ts

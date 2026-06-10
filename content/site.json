@@ -12,10 +12,12 @@
     "assessment": "https://fitness.studio-22.ie/a/assessment/2541068/",
     "review": "https://search.google.com/local/writereview?placeid=ChIJV6gbKv0HZ0gRig71rOCeM18",
     "whatsapp": "https://api.whatsapp.com/message/65QFIMXJ4BDOO1",
-    "instagram": "https://www.instagram.com/studio22dublin",
-    "tiktok": "https://www.tiktok.com/@studio22dublin",
     "map": "https://www.google.com/maps/search/?api=1&query=Studio+22%2C+77+Georges+Street+Upper%2C+Dun+Laoghaire"
   },
+  "social": [
+    { "label": "Instagram", "href": "https://www.instagram.com/studio22dublin" },
+    { "label": "TikTok", "href": "https://www.tiktok.com/@studio22dublin" }
+  ],
   "nav": [
     { "label": "Home", "href": "/" },
     { "label": "Our Facility", "href": "/facility" },

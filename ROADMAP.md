@@ -31,11 +31,11 @@
   Seed `content/` from the T0.2 inventory: `site.json`, `packages.json`, `testimonials.json`, `faqs.json`, `pages/*.json` (all six). Copy the 11 photos from `/Users/leomorgan/Desktop/Studio22/IMAGES` into `public/images/` with kebab-case names.
   *Accept:* content tests pass: every content file parses; package catalog matches SPEC §6.3 exactly (ids, prices, billing); every image path referenced exists; every internal href resolves to a real route; `HUMAN TODO` placeholders match the inventory list.
 
-- [~] **T1.4 Motion, layout & UI primitives** (SPEC §8.3, §8.4)
+- [x] **T1.4 Motion, layout & UI primitives** (SPEC §8.3, §8.4)
   `lib/motion.ts` with exactly `reveal`, `revealStagger`, `heroFade` + `prefers-reduced-motion` handling. Nav + Footer rendered from `site.json`. UI primitives (Button, SectionLabel, hairline dividers).
   *Accept:* reduced-motion fallback unit-tested; nav/footer contain zero hardcoded copy; primitives use tokens only.
 
-- [ ] **T1.5 Section component library** (SPEC §6.2, §8)
+- [~] **T1.5 Section component library** (SPEC §6.2, §8)
   One component per section type (all 11), registry renderer mapping `type` → component; unknown type = build failure.
   *Accept:* smoke test per section type renders fixture content and asserts its text appears; registry covers exactly `SECTION_TYPES`; grep of `src/components` finds no `€`, no sentence-length string literals, no image paths.
 

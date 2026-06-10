@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — SPEC §8.1. The ONLY colors allowed anywhere in the app.
+ * The v2 agent adjusts tone by editing these tokens, never arbitrary CSS.
+ */
+@theme {
+  --color-ink: #1a1816;
+  --color-slate: #32373c;
+  --color-bone: #eceae6;
+  --color-sage: #b2ac88;
+  --color-line: #2a2723;
+  --color-mid: #8e8a82;
+
+  --font-display: var(--font-tenor);
+  --font-body: var(--font-hanken);
+}

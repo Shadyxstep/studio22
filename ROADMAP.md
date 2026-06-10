@@ -19,11 +19,11 @@
 
 ## Milestone 1 — Foundation
 
-- [ ] **T1.1 Scaffold** (SPEC §3, §4, §5, §8.1, §8.2)
+- [x] **T1.1 Scaffold** (SPEC §3, §4, §5, §8.1, §8.2)
   Next.js 15 App Router + TypeScript strict + pnpm + Tailwind with the six design tokens + next/font (Tenor Sans, Hanken Grotesk) + ESLint + Vitest wiring. Scripts: `dev`, `build`, `typecheck`, `lint`, `test`. `.env.example` per SPEC §5.
   *Accept:* `pnpm typecheck && pnpm lint && pnpm test && pnpm build` all pass; a placeholder home page renders ink background, bone Tenor Sans display text, sage accent; only approved dependencies installed.
 
-- [ ] **T1.2 Content schemas & loaders** (SPEC §6.1, §6.2)
+- [~] **T1.2 Content schemas & loaders** (SPEC §6.1, §6.2)
   `lib/content/schema.ts`: zod schemas for all 11 section types as a discriminated union, page schema, package/site/testimonial/faq schemas, constants. `lib/content/load.ts`: typed loaders that throw `ContentValidationError`.
   *Accept:* tests prove a valid page parses, an unknown section type throws, an invalid field throws with a useful message; constants match SPEC §6.1 exactly.
 

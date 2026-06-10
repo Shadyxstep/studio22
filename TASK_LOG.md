@@ -18,8 +18,8 @@
 
 ---
 
-## 2026-06-10 · NOTE (human feedback) + fix — photos still washed out in light mode
-Root cause was image *opacity*, not the scrim: dimmed images composite toward the page background, which mutes them in dark mode but bleaches them toward white in light mode. Added themed photo-opacity classes next to the scrims (.photo-hero 0.5 dark / 1 light; .photo-muted 0.8 dark / 1 light) and applied to Hero + Gallery (human had already raised pillar tiles to 0.9 inline — kept). Light scrim stops also eased (72%/16%/0). Gates green.
+## 2026-06-10 · NOTE (human) — themed photo-opacity change reverted
+Owner asked to undo the photo-opacity UI changes; `git revert 35a6187` (f17d6ed). State: hero opacity-90 (owner's value), gallery 0.8, pillar tiles back to 0.6, light scrims at the accepted 82%/26% stops, no photo-opacity classes. Gates green (76).
 
 ## 2026-06-10 · MILESTONE 3 COMPLETE — Flows, dormant commerce & launch readiness
 All three tasks approved. v1 build scope is DONE: sign-up flow (select → mailto), dormant Stripe behind the SPEC §5 gate, README quickstart + consolidated "Before launch" checklist. Gates green from clean state (rm -rf .next): typecheck ✓ lint ✓ test ✓ (76) build ✓ — 6 static pages + checkout pages + sitemap/robots static, 2 API routes dynamic. Remaining: Milestone 4 (deploy/cutover) is human-led; Lighthouse ≥95 is a manual check at deploy time.

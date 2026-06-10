@@ -18,7 +18,7 @@ export function Hero({ section }: Props) {
             fill
             priority
             sizes="100vw"
-            className="photo-hero object-cover"
+            className="object-cover opacity-90"
           />
           <div className="scrim-hero absolute inset-0" />
         </HeroFade>

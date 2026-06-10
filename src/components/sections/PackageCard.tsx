@@ -14,7 +14,7 @@ export function PackageCard({
 }) {
   const cta = getPackageCta(pkg, globals.site);
   return (
-    <article className="flex flex-col gap-5 bg-ink p-8">
+    <article className="flex h-full w-full flex-col gap-5 border border-line bg-ink p-8">
       <h3 className="min-h-[3.5rem] font-display text-xl leading-snug text-bone">
         {pkg.name}
       </h3>

@@ -17,11 +17,11 @@ export function Gallery({ section }: Props) {
           {section.heading}
         </h2>
       )}
-      <RevealStagger className="grid grid-cols-2 gap-px border border-line bg-line md:grid-cols-3">
+      <RevealStagger className="grid grid-cols-2 gap-2 md:grid-cols-3">
         {section.images.map((img, i) => (
           <RevealItem
             key={img.src + i}
-            className={`relative bg-ink ${i % 5 === 0 ? "col-span-2" : ""}`}
+            className={`relative ${i % 5 === 0 ? "col-span-2" : ""}`}
           >
             <div
               className={`relative ${i % 5 === 0 ? "aspect-[2/1]" : "aspect-[4/5]"}`}

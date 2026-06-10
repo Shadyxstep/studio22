@@ -28,7 +28,7 @@ export function PackageGrid({ section, globals }: Props) {
               <h3 className="mb-8 border-b border-line pb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-sage">
                 {globals.site.packageCategories[category]}
               </h3>
-              <RevealStagger className="grid gap-px border border-line bg-line md:grid-cols-3">
+              <RevealStagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {pkgs.map((pkg) => (
                   <RevealItem key={pkg.id} className="flex">
                     <PackageCard pkg={pkg} globals={globals} />

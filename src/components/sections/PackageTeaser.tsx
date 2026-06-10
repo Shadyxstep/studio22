@@ -25,7 +25,7 @@ export function PackageTeaser({ section, globals }: Props) {
             )}
           </div>
         )}
-        <RevealStagger className="grid gap-px border border-line bg-line md:grid-cols-3">
+        <RevealStagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {pkgs.map((pkg) => (
             <RevealItem key={pkg.id} className="flex">
               <PackageCard pkg={pkg} globals={globals} />

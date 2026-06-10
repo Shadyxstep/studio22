@@ -18,6 +18,9 @@
 
 ---
 
+## 2026-06-10 · NOTE (human feedback) + fix — card grids not uniform
+Human reported janky, non-uniform package cards. Root causes: (1) cards lacked w-full/h-full inside their flex wrappers so they shrank to content size; (2) the gap-px-over-bg-line "hairline mosaic" renders empty cells as solid blocks whenever a row isn't full (2-package category, 5 testimonials in 3 cols, gallery span pattern). Fix: per-card borders + real gaps across PackageCard, PackageGrid, PackageTeaser, Testimonials, PillarGrid, Gallery; grids now tolerate any item count (matters for v2 agent edits). Gates green (60 passing, build ✓). Commit: fix(ui).
+
 ## 2026-06-10 · MILESTONE 2 COMPLETE — Pages & SEO
 All six tasks approved. The full six-page site renders statically (11 routes incl. sitemap/robots), every page composed from its content file, gates green from clean state, 60 tests. Production server smoke-checked: all routes 200, title pattern verified, JSON-LD present on home. Lighthouse ≥95 remains a manual check at launch (T3.3 notes it). Next session starts Milestone 3 (T3.1 sign-up flow).
 

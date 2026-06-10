@@ -22,12 +22,15 @@ export function PillarGrid({ section, globals }: Props) {
           )}
         </div>
       )}
-      <RevealStagger className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <RevealStagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {section.pillars.map((key, i) => {
           const pillar = globals.site.pillars[key];
           if (!pillar) return null;
           return (
-            <RevealItem key={key} className="group relative bg-ink">
+            <RevealItem
+              key={key}
+              className="group relative border border-line bg-ink"
+            >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src={pillar.image.src}

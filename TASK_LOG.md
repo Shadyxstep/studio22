@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T2.4 — Get Started (static shell) — APPROVED
+- Plan: get-started route; tests for the 3 steps + CTAs, verbatim 5-week timeline, packageGrid slot for T3.1.
+- Changes: src/app/get-started/{page.tsx,get-started.test.tsx}
+- Gates: typecheck ✓ · lint ✓ · test ✓ (55 passing)
+- Critic issues found → resolved: none
+- Follow-ups (not built): T3.1 replaces the packageGrid slot interaction with the selection→mailto flow
+- Decisions made where SPEC was silent: none
+
 ## 2026-06-10 · T2.3 — Packages — APPROVED
 - Plan: packages route; tests for category grouping, billing formats, sauna banner, getPackageCta routing.
 - Changes: src/app/packages/{page.tsx,packages.test.tsx}

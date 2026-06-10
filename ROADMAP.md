@@ -45,8 +45,8 @@
 - [x] **T2.2 Facility** (SPEC §9.2) — *Accept:* gallery-led editorial covering all four pillars from `pages/facility.json`; layout tolerates images being added/removed in content.
 - [x] **T2.3 Packages** (SPEC §9.3) — *Accept:* grid grouped by the three categories; sauna perk banner from `site.json`; per-package CTA via a single `getPackageCta(pkg)`; weekly vs one-time billing displayed correctly.
 - [x] **T2.4 Get Started (static shell)** (SPEC §9.4) — *Accept:* page renders from `pages/get-started.json` with discovery-call CTA (booking URL from `site.json`) and trial-pack highlight; sign-up flow slot present but wired in T3.1.
-- [~] **T2.5 FAQs & Contact** (SPEC §9.5, §9.6) — *Accept:* accordion from `faqs.json` (accessible: keyboard + aria); contactPanel from `site.json` with mailto/tel links, Google Maps link, review CTA.
-- [ ] **T2.6 SEO** (SPEC §11) — *Accept:* per-page metadata (`<Page> — Studio 22`), OG image, `sitemap.ts`, `robots.ts`, LocalBusiness/HealthClub JSON-LD on home sourced from `site.json`; fonts `display: swap`.
+- [x] **T2.5 FAQs & Contact** (SPEC §9.5, §9.6) — *Accept:* accordion from `faqs.json` (accessible: keyboard + aria); contactPanel from `site.json` with mailto/tel links, Google Maps link, review CTA.
+- [~] **T2.6 SEO** (SPEC §11) — *Accept:* per-page metadata (`<Page> — Studio 22`), OG image, `sitemap.ts`, `robots.ts`, LocalBusiness/HealthClub JSON-LD on home sourced from `site.json`; fonts `display: swap`.
 
 ## Milestone 3 — Flows, dormant commerce & launch readiness
 

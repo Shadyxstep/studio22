@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-06-10 · T2.5 — FAQs & Contact — APPROVED
+- Plan: faqs + contact routes; tests for empty-state accordion and contact link wiring (tel/mailto/map/review).
+- Changes: src/app/faqs/page.tsx, src/app/contact/page.tsx, src/app/faqs-contact.test.tsx
+- Gates: typecheck ✓ · lint ✓ · test ✓ (57 passing)
+- Critic issues found → resolved: none
+- Follow-ups (not built): accordion keyboard/aria behaviour comes from native details/summary; revisit only if owner-supplied FAQ copy needs richer interaction
+- Decisions made where SPEC was silent: none
+
 ## 2026-06-10 · T2.4 — Get Started (static shell) — APPROVED
 - Plan: get-started route; tests for the 3 steps + CTAs, verbatim 5-week timeline, packageGrid slot for T3.1.
 - Changes: src/app/get-started/{page.tsx,get-started.test.tsx}

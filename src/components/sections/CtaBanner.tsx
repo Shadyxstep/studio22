@@ -10,8 +10,8 @@ type Props = {
 
 export function CtaBanner({ section }: Props) {
   return (
-    <section className="border-t border-line">
-      <Reveal className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-28 text-center">
+    <section className="mx-auto max-w-6xl px-6 py-16">
+      <Reveal className="flex flex-col items-center gap-6 rounded-card bg-slate px-8 py-20 text-center md:py-24">
         {section.headline && (
           <h2 className="max-w-3xl font-display text-4xl leading-tight text-bone md:text-6xl">
             {section.headline}

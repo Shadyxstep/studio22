@@ -39,7 +39,7 @@ export function FaqAccordion({ section, globals }: Props) {
         </Reveal>
       ) : (
         /* Empty state pending owner FAQ copy — surfaces the contact email. */
-        <Reveal className="border border-line px-8 py-14 text-center">
+        <Reveal className="rounded-card bg-slate px-8 py-14 text-center">
           <a
             href={mailto}
             className="text-[11px] font-medium uppercase tracking-[0.2em] text-sage underline-offset-8 transition-colors duration-300 hover:underline"

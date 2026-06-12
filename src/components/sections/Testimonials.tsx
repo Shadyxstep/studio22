@@ -28,7 +28,7 @@ export function Testimonials({ section, globals }: Props) {
         <RevealStagger className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((t) => (
             <RevealItem key={t.name} className="flex">
-              <figure className="flex h-full w-full flex-col gap-6 border border-line bg-ink p-8">
+              <figure className="flex h-full w-full flex-col gap-6 rounded-card bg-slate p-8">
                 <span
                   aria-hidden
                   className="font-display text-5xl leading-none text-sage"

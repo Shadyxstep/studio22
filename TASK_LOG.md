@@ -184,3 +184,11 @@ Both tasks approved. Build gates (typecheck/lint/test/build) do not exist yet �
 
 ## 2026-06-09 · NOTE (human)
 Repo initialised with SPEC.md, ROADMAP.md, CLAUDE.md, TASK_LOG.md. No code exists yet. First task: T0.1.
+
+## 2026-06-12 · V2 — Wicklowgranite-style UI restyle (owner-directed) — APPROVED
+- Plan: adopt the UI design language of wicklowgranite.vercel.app (serif display type, pill buttons with arrows, 14px-radius cards/imagery, eyebrow labels, blur-on-scroll header, split hero + stat-strip card) while keeping the six Studio 22 color tokens unchanged.
+- Changes: globals.css (font-display → Cormorant Garamond, --radius-card token, base heading weight), layout.tsx (font swap; font variables moved to <html>), Button, SectionLabel, Nav, Hero, StatBar, PillarGrid, EditorialSplit, Gallery, CtaBanner, Testimonials, PackageCard, PackageGrid, SignUpFlow, FaqAccordion, ContactPanel; page.test.tsx + sections.test.tsx (markup-tolerant text matchers).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (79 passing) · build ✓
+- Critic issues found → resolved: BUG (pre-existing) — next/font variables were on <body>, so the :root-level --font-display/--font-body aliases referenced undefined vars and computed invalid; webfonts were not rendering. Fixed by attaching font variable classes to <html>. Verified via headless-browser computed-style probe + screenshots (dark & light themes).
+- Follow-ups (not built): consider a wicklow-style drag carousel for Gallery; scrim utilities in globals.css now unused by Hero/PillarGrid (kept as sanctioned gradients).
+- Decisions made where SPEC was silent: hero headline's final word renders in italic sage (style-only, copy verbatim); nav/buttons drop the uppercase transform per the new design language.

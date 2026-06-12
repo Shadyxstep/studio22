@@ -12,8 +12,26 @@
   --color-line: #2a2723;
   --color-mid: #8e8a82;
 
-  --font-display: var(--font-oswald);
+  --font-display: var(--font-cormorant);
   --font-body: var(--font-hanken);
+
+  /* Shared corner radius for cards and imagery (v2 restyle). */
+  --radius-card: 14px;
+}
+
+/*
+ * v2 typographic baseline: serif display headings render at weight 500 with
+ * tight leading. Components may override with utilities where needed.
+ */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
 }
 
 /*

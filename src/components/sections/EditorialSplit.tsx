@@ -51,7 +51,7 @@ export function EditorialSplit({ section }: Props) {
               section.reverse ? "md:[&>*:first-child]:order-2" : ""
             }`}
           >
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-card">
               <Image
                 src={section.image.src}
                 alt={section.image.alt}

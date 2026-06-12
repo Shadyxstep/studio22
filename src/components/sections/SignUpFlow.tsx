@@ -29,7 +29,7 @@ export function SignUpFlow({ globals }: { globals: Globals }) {
     : undefined;
 
   const inputCls =
-    "w-full border-0 border-b border-line bg-transparent pb-3 pt-1 text-base text-bone outline-none transition-colors duration-300 placeholder:text-mid focus:border-sage";
+    "w-full rounded-[10px] border border-line bg-slate px-4 py-3.5 text-base text-bone outline-none transition-colors duration-300 placeholder:text-mid focus:border-sage";
   const labelCls =
     "text-[11px] font-medium uppercase tracking-[0.2em] text-mid";
 
@@ -57,7 +57,7 @@ export function SignUpFlow({ globals }: { globals: Globals }) {
                       onClick={() =>
                         setSelectedId(isSelected ? null : pkg.id)
                       }
-                      className={`flex h-full w-full flex-col items-start gap-3 border p-6 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
+                      className={`flex h-full w-full flex-col items-start gap-3 rounded-card border p-6 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
                         isSelected
                           ? "border-sage bg-slate"
                           : "border-line bg-ink hover:border-mid"
@@ -115,9 +115,9 @@ export function SignUpFlow({ globals }: { globals: Globals }) {
           href={ready ? href : undefined}
           aria-disabled={!ready}
           tabIndex={ready ? 0 : -1}
-          className={`inline-flex items-center justify-center border px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:col-span-2 md:justify-self-start ${
+          className={`inline-flex items-center justify-center rounded-full border px-7 py-3.5 text-sm tracking-[0.04em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:col-span-2 md:justify-self-start ${
             ready
-              ? "border-sage bg-sage text-ink hover:bg-transparent hover:text-sage"
+              ? "border-sage bg-sage text-ink hover:bg-sage/85"
               : "pointer-events-none border-line text-mid"
           }`}
         >

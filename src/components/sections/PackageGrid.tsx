@@ -53,7 +53,7 @@ function StaticGrid({ globals }: { globals: Globals }) {
         })}
       </div>
 
-      <aside className="mt-20 flex flex-col items-center gap-4 border border-line px-8 py-14 text-center">
+      <aside className="mt-20 flex flex-col items-center gap-4 rounded-card bg-slate px-8 py-14 text-center">
         <SectionLabel>{globals.site.sauna.label}</SectionLabel>
         <h3 className="font-display text-3xl text-bone">
           {globals.site.sauna.heading}

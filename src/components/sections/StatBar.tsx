@@ -9,14 +9,14 @@ type Props = {
 
 export function StatBar({ section }: Props) {
   return (
-    <section className="border-y border-line">
-      <RevealStagger className="mx-auto grid max-w-6xl gap-px bg-line sm:auto-cols-fr sm:grid-flow-col">
+    <section className="mx-auto max-w-6xl px-6 py-10">
+      <RevealStagger className="grid gap-7 rounded-card bg-slate px-7 py-9 sm:auto-cols-fr sm:grid-flow-col sm:gap-0 sm:px-3">
         {section.stats.map((stat) => (
           <RevealItem
             key={stat.label}
-            className="flex flex-col items-center gap-2 bg-ink px-6 py-12"
+            className="flex flex-col gap-2 border-line sm:border-l sm:px-7 sm:first:border-l-0"
           >
-            <p className="font-display text-4xl text-sage md:text-5xl">
+            <p className="font-display text-4xl leading-none text-sage">
               {stat.value}
             </p>
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-mid">

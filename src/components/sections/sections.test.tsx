@@ -98,8 +98,13 @@ describe("section component library", () => {
         <SectionRenderer sections={[fixtures[type]]} globals={globals} />,
       );
       for (const text of expectedText[type]) {
+        /* Copy may span inline elements (e.g. the hero's italic accent),
+         * so match on normalized textContent rather than a single node. */
         expect(
-          screen.getAllByText(text, { exact: false }).length,
+          screen.getAllByText(
+            (_, el) =>
+              el?.textContent?.replace(/\s+/g, " ").includes(text) ?? false,
+          ).length,
           `expected "${text}" in ${type}`,
         ).toBeGreaterThan(0);
       }

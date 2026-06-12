@@ -15,7 +15,7 @@ export function ContactPanel({ section, globals }: Props) {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <Reveal className="grid gap-12 md:grid-cols-2">
+      <Reveal className="grid gap-12 rounded-card bg-slate p-8 md:grid-cols-2 md:p-14">
         <div className="flex flex-col gap-6">
           {section.heading && (
             <h2 className="font-display text-4xl text-bone md:text-5xl">

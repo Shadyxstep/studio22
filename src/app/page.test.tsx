@@ -5,6 +5,13 @@ import { loadPage } from "@/lib/content/load";
 
 vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
 
+/* Copy may span inline elements (e.g. the hero's italic accent), so match
+ * on normalized textContent rather than a single text node. */
+const containsText =
+  (text: string) =>
+  (_: string, el: Element | null): boolean =>
+    el?.textContent?.replace(/\s+/g, " ").includes(text) ?? false;
+
 test("home renders entirely from pages/home.json", () => {
   render(<Home />);
   const page = loadPage("home");
@@ -26,12 +33,12 @@ test("home renders entirely from pages/home.json", () => {
   for (const s of page.sections) {
     if ("heading" in s && s.heading) {
       expect(
-        screen.getAllByText(s.heading, { exact: false }).length,
+        screen.getAllByText(containsText(s.heading)).length,
       ).toBeGreaterThan(0);
     }
     if ("headline" in s && s.headline) {
       expect(
-        screen.getAllByText(s.headline, { exact: false }).length,
+        screen.getAllByText(containsText(s.headline)).length,
       ).toBeGreaterThan(0);
     }
   }

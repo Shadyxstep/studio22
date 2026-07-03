@@ -49,10 +49,18 @@ const ImageRef = z.object({
   alt: z.string(),
 });
 
+/*
+ * Section identity (SPEC §15.2): optional in content files (v1 files carry no
+ * ids; existing tests stay valid), REQUIRED in DB content — the seed assigns
+ * deterministic ids (`page.type.n`) and DbContentSchema enforces presence.
+ */
+const SectionId = z.string().min(1).optional();
+
 /* ---------- section schemas (SPEC §6.2) ---------- */
 
 const HeroSection = z.object({
   type: z.literal("hero"),
+  id: SectionId,
   label: z.string().optional(),
   headline: z.string().min(1),
   sub: z.string().optional(),
@@ -62,6 +70,7 @@ const HeroSection = z.object({
 
 const PillarGridSection = z.object({
   type: z.literal("pillarGrid"),
+  id: SectionId,
   heading: z.string().optional(),
   tagline: z.string().optional(),
   pillars: z.array(z.enum(PILLARS)).min(1),
@@ -69,6 +78,7 @@ const PillarGridSection = z.object({
 
 const EditorialSplitSection = z.object({
   type: z.literal("editorialSplit"),
+  id: SectionId,
   label: z.string().optional(),
   headline: z.string().min(1),
   paragraphs: z.array(z.string()).default([]),
@@ -80,6 +90,7 @@ const EditorialSplitSection = z.object({
 
 const StatBarSection = z.object({
   type: z.literal("statBar"),
+  id: SectionId,
   stats: z
     .array(z.object({ value: z.string().min(1), label: z.string().min(1) }))
     .min(1),
@@ -87,6 +98,7 @@ const StatBarSection = z.object({
 
 const PackageGridSection = z.object({
   type: z.literal("packageGrid"),
+  id: SectionId,
   heading: z.string().optional(),
   /** When true, renders the interactive sign-up flow (SPEC §9) instead of the static grid. */
   selectable: z.boolean().optional(),
@@ -94,6 +106,7 @@ const PackageGridSection = z.object({
 
 const PackageTeaserSection = z.object({
   type: z.literal("packageTeaser"),
+  id: SectionId,
   heading: z.string().optional(),
   tagline: z.string().optional(),
   limit: z.number().int().positive().optional(),
@@ -102,6 +115,7 @@ const PackageTeaserSection = z.object({
 
 const TestimonialsSection = z.object({
   type: z.literal("testimonials"),
+  id: SectionId,
   heading: z.string().optional(),
   sub: z.string().optional(),
   limit: z.number().int().positive().optional(),
@@ -109,17 +123,20 @@ const TestimonialsSection = z.object({
 
 const GallerySection = z.object({
   type: z.literal("gallery"),
+  id: SectionId,
   heading: z.string().optional(),
   images: z.array(ImageRef).min(1),
 });
 
 const FaqAccordionSection = z.object({
   type: z.literal("faqAccordion"),
+  id: SectionId,
   heading: z.string().optional(),
 });
 
 const CtaBannerSection = z.object({
   type: z.literal("ctaBanner"),
+  id: SectionId,
   variant: z.enum(["discovery-call", "enquire", "custom"]),
   headline: z.string().optional(),
   body: z.string().optional(),
@@ -128,6 +145,7 @@ const CtaBannerSection = z.object({
 
 const ContactPanelSection = z.object({
   type: z.literal("contactPanel"),
+  id: SectionId,
   heading: z.string().optional(),
   sub: z.string().optional(),
 });

@@ -69,12 +69,12 @@
 
 ### Milestone v2-0 — Foundations
 
-- [~] **T5.1 Deps + scaffolding.** Add approved deps (SPEC §15.1); `drizzle.config.ts`; `src/lib/env.ts` loader; `.env.example` updated; PGlite smoke test (raw `SELECT 1`) proving zero-service DB tests work. (The typed harness `src/lib/db/{client,test,types}.ts` lands with the schema in T5.2 — it imports it.)
+- [x] **T5.1 Deps + scaffolding.** Add approved deps (SPEC §15.1); `drizzle.config.ts`; `src/lib/env.ts` loader; `.env.example` updated; PGlite smoke test (raw `SELECT 1`) proving zero-service DB tests work. (The typed harness `src/lib/db/{client,test,types}.ts` lands with the schema in T5.2 — it imports it.)
   *Accept:* `pnpm i` clean; PGlite smoke test green with zero services; gates green; empty `.env` still builds.
 
 ### Milestone v2-1 — Versioned content
 
-- [ ] **T5.2 Schema + migration + seed.** `sites`/`versions` tables (SPEC §15.2) + `src/lib/db/{client,test,types}.ts` (PGlite harness applying the generated migrations); migration committed; `Content` type `{site, packages, testimonials, faqs, pages}`; `seedSite(db)` transforms `content/*.json` (deterministic section ids `page.type.n`); idempotent.
+- [x] **T5.2 Schema + migration + seed.** `sites`/`versions` tables (SPEC §15.2) + `src/lib/db/{client,test,types}.ts` (PGlite harness applying the generated migrations); migration committed; `Content` type `{site, packages, testimonials, faqs, pages}`; `seedSite(db)` transforms `content/*.json` (deterministic section ids `page.type.n`); idempotent.
   *Accept:* seed twice → one site, one seed version; content round-trips zod; smoke test on PGlite.
 
 ### Milestone v2-2 — Cached serving

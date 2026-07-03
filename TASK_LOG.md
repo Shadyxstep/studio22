@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.2 — versioned content DB (schema + migration + seed) — APPROVED
+- Plan: sites/versions Drizzle schema per SPEC §15.2, generated migration, typed PGlite harness, DB Content document composed from the file schemas (optional section ids in files, required in DB), idempotent seedSite with deterministic page.type.n ids.
+- Changes: src/lib/db/{schema,types,client,test,versions}.ts, src/lib/content/{content-types,seed}.ts (+ seed.test.ts), src/lib/content/schema.ts (optional `id: SectionId` on all 11 sections), drizzle/0000_v2_sites_versions.sql (+ meta), drizzle.config.ts already present, scripts/db-seed.ts, package.json (db:generate/db:migrate/db:seed).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (86 passing, +3) · build ✓
+- Critic issues found → resolved: (1) `.returning().then()` typed Site|undefined — restructured to a checked destructure; (2) import.meta.url is not a file: URL under jsdom — migrations folder resolved from cwd instead.
+- Follow-ups (not built): commit/applyEdit transaction path (T5.5); getCurrentContent cache (T5.3).
+- Decisions made where SPEC was silent: pages stored as full Page objects (title/description included) so page metadata is versioned and later editable, not bare section arrays.
+
 ## 2026-07-03 · T5.1 — v2 deps + scaffolding — APPROVED
 - Plan: open the v2 platform (SPEC §15 appended, owner-approved 2026-07-02): add approved deps, drizzle config, env loader, .env.example; prove zero-service DB testing with a PGlite smoke.
 - Changes: SPEC.md (§15 v2 appendix), ROADMAP.md (v2 milestones T5.1–T5.11 + out-of-scope note), package.json/pnpm-lock (drizzle-orm, pg, jose, @vercel/blob, marked, @anthropic-ai/sdk; dev: drizzle-kit, @types/pg, @electric-sql/pglite), drizzle.config.ts, src/lib/env.ts (+ env.test.ts), src/lib/db/pglite-smoke.test.ts, .env.example.

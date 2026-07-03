@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { SectionRenderer } from "@/components/sections";
-import { loadGlobals, loadPage, loadSite } from "@/lib/content/load";
+import { getPageContent } from "@/lib/content/serve";
 import { buildLocalBusinessJsonLd } from "@/lib/seo";
 
-const page = loadPage("home");
+export async function generateMetadata(): Promise<Metadata> {
+  const { page, globals } = await getPageContent("home");
+  return {
+    // title.template only applies to child segments; the root page sets it absolutely
+    title: { absolute: `${page.title} — ${globals.site.name}` },
+    description: page.description,
+  };
+}
 
-export const metadata: Metadata = {
-  // title.template only applies to child segments; the root page sets it absolutely
-  title: { absolute: `${page.title} — ${loadSite().name}` },
-  description: page.description,
-};
-
-export default function HomePage() {
-  const globals = loadGlobals();
+export default async function HomePage() {
+  const { page, globals } = await getPageContent("home");
   const jsonLd = buildLocalBusinessJsonLd(globals.site);
   return (
     <main>

@@ -12,8 +12,8 @@ const containsText =
   (_: string, el: Element | null): boolean =>
     el?.textContent?.replace(/\s+/g, " ").includes(text) ?? false;
 
-test("home renders entirely from pages/home.json", () => {
-  render(<Home />);
+test("home renders entirely from pages/home.json", async () => {
+  render(await Home());
   const page = loadPage("home");
 
   expect(
@@ -44,8 +44,8 @@ test("home renders entirely from pages/home.json", () => {
   }
 });
 
-test("the hero image is the priority image", () => {
-  render(<Home />);
+test("the hero image is the priority image", async () => {
+  render(await Home());
   const hero = screen.getByRole("img", {
     name: /founders beneath the backlit/i,
   });

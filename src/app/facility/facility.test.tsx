@@ -5,8 +5,8 @@ import { loadPage } from "@/lib/content/load";
 
 vi.mock("next/navigation", () => ({ usePathname: () => "/facility" }));
 
-test("facility renders an editorial per pillar plus gallery from pages/facility.json", () => {
-  render(<FacilityPage />);
+test("facility renders an editorial per pillar plus gallery from pages/facility.json", async () => {
+  render(await FacilityPage());
   const page = loadPage("facility");
 
   const splits = page.sections.filter((s) => s.type === "editorialSplit");

@@ -9,8 +9,8 @@ vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
 
 const site = loadSite();
 
-test("faqs renders the accordion, or the contact-email empty state while faqs.json is empty", () => {
-  render(<FaqsPage />);
+test("faqs renders the accordion, or the contact-email empty state while faqs.json is empty", async () => {
+  render(await FaqsPage());
   expect(screen.getByRole("heading", { name: "FAQs" })).toBeDefined();
   const faqs = loadFaqs();
   if (faqs.length === 0) {
@@ -23,8 +23,8 @@ test("faqs renders the accordion, or the contact-email empty state while faqs.js
   }
 });
 
-test("contact renders tel, mailto, map address and review CTA from site.json", () => {
-  render(<ContactPage />);
+test("contact renders tel, mailto, map address and review CTA from site.json", async () => {
+  render(await ContactPage());
 
   const tel = screen.getByRole("link", { name: site.contact.phone });
   expect(tel.getAttribute("href")).toBe(`tel:${site.contact.phone}`);

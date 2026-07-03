@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
-import { loadSite } from "@/lib/content/load";
+import { getContent } from "@/lib/content/serve";
 
-const site = loadSite();
+export async function generateMetadata(): Promise<Metadata> {
+  const { site } = await getContent();
+  return { title: site.checkout.cancelled.headline, robots: { index: false } };
+}
 
-export const metadata: Metadata = {
-  title: site.checkout.cancelled.headline,
-  robots: { index: false },
-};
-
-export default function CheckoutCancelledPage() {
+export default async function CheckoutCancelledPage() {
+  const { site } = await getContent();
   return (
     <main className="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center gap-6 px-6 py-24 text-center">
       <h1 className="font-display text-5xl text-bone">

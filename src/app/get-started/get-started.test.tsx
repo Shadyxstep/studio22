@@ -5,8 +5,8 @@ import { loadPage, loadSite } from "@/lib/content/load";
 
 vi.mock("next/navigation", () => ({ usePathname: () => "/get-started" }));
 
-test("get-started renders the three steps with their CTAs", () => {
-  render(<GetStartedPage />);
+test("get-started renders the three steps with their CTAs", async () => {
+  render(await GetStartedPage());
   const site = loadSite();
 
   expect(screen.getByText("Not sure where to start?")).toBeDefined();
@@ -20,8 +20,8 @@ test("get-started renders the three steps with their CTAs", () => {
   expect(whatsapp.getAttribute("href")).toBe(site.links.whatsapp);
 });
 
-test("the five-week timeline renders verbatim phase headlines", () => {
-  render(<GetStartedPage />);
+test("the five-week timeline renders verbatim phase headlines", async () => {
+  render(await GetStartedPage());
   for (const phase of [
     "Week 1 – Foundational Phase",
     "Week 2 – Accumulation Phase",
@@ -33,7 +33,7 @@ test("the five-week timeline renders verbatim phase headlines", () => {
   }
 });
 
-test("the sign-up flow slot (packageGrid) is present for T3.1", () => {
+test("the sign-up flow slot (packageGrid) is present for T3.1", async () => {
   const page = loadPage("get-started");
   expect(page.sections.some((s) => s.type === "packageGrid")).toBe(true);
 });

@@ -9,8 +9,8 @@ vi.mock("next/navigation", () => ({ usePathname: () => "/packages" }));
 
 const globals = loadGlobals();
 
-test("packages page renders all categories, packages and billing formats", () => {
-  render(<PackagesPage />);
+test("packages page renders all categories, packages and billing formats", async () => {
+  render(await PackagesPage());
 
   for (const label of Object.values(globals.site.packageCategories)) {
     expect(screen.getByText(label)).toBeDefined();
@@ -24,14 +24,14 @@ test("packages page renders all categories, packages and billing formats", () =>
   expect(screen.getByText("One Time Payment: €225")).toBeDefined();
 });
 
-test("sauna perk banner renders from site.json", () => {
-  render(<PackagesPage />);
+test("sauna perk banner renders from site.json", async () => {
+  render(await PackagesPage());
   expect(screen.getByText(globals.site.sauna.heading)).toBeDefined();
   expect(screen.getByText(globals.site.sauna.body)).toBeDefined();
 });
 
-test("every package CTA goes through getPackageCta", () => {
-  render(<PackagesPage />);
+test("every package CTA goes through getPackageCta", async () => {
+  render(await PackagesPage());
   const expected = getPackageCta(globals.packages[0]!, globals.site);
   const links = screen.getAllByRole("link", { name: expected.label });
   expect(links.length).toBe(globals.packages.length);

@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
 import { SectionRenderer } from "@/components/sections";
-import { loadGlobals, loadPage } from "@/lib/content/load";
+import { getPageContent } from "@/lib/content/serve";
 
-const page = loadPage("facility");
+export async function generateMetadata(): Promise<Metadata> {
+  const { page } = await getPageContent("facility");
+  return { title: page.title, description: page.description };
+}
 
-export const metadata: Metadata = {
-  title: page.title,
-  description: page.description,
-};
-
-export default function FacilityPage() {
+export default async function FacilityPage() {
+  const { page, globals } = await getPageContent("facility");
   return (
     <main>
-      <SectionRenderer sections={page.sections} globals={loadGlobals()} />
+      <SectionRenderer sections={page.sections} globals={globals} />
     </main>
   );
 }

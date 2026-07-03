@@ -79,7 +79,7 @@
 
 ### Milestone v2-2 — Cached serving
 
-- [ ] **T5.3 getCurrentContent + revalidation.** Tagged-cache content getter with file fallback when `DATABASE_URL` absent; page routes read it instead of file loaders; `revalidateTag("content")` inside the commit path.
+- [x] **T5.3 getCurrentContent + revalidation.** Tagged-cache content getter with file fallback when `DATABASE_URL` absent; page routes read it instead of file loaders; `revalidateTag("content")` inside the commit path.
   *Accept:* pages render from DB content when seeded, from files when no DB; existing 79 tests green; revalidate call covered by a unit test (mocked).
 
 ### Milestone v2-3 — Owner auth

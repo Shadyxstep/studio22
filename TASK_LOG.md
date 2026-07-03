@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.3 — cached content serving + revalidation — APPROVED
+- Plan: one content getter for all pages — DB current version under a tagged unstable_cache, file-seed fallback when DATABASE_URL is absent or the DB read fails; page routes switch from file loaders to it; a shared revalidateContent() the commit path (T5.5) will call.
+- Changes: src/lib/content/serve.ts (+ serve.test.ts); all six page routes + layout.tsx + both checkout pages moved from loadPage/loadGlobals/loadSite to getPageContent/getContent (module-level metadata → generateMetadata, components async); five page tests adapted to `render(await Page())` (assertions unchanged).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (90 passing, +4) · build ✓ (empty .env — all 15 routes still prerender statically)
+- Critic issues found → resolved: vi.mock hoisting broke the revalidateTag spy — moved to vi.hoisted; pg kept out of the file-mode module graph via lazy dynamic imports inside readDbContent.
+- Follow-ups (not built): wire revalidateContent() into commitVersion when it lands (T5.5).
+- Decisions made where SPEC was silent: DB read failures log + fall back to files rather than erroring the page (SPEC §15.1 "site never goes down with the database" read as serving intent).
+
 ## 2026-07-03 · T5.2 — versioned content DB (schema + migration + seed) — APPROVED
 - Plan: sites/versions Drizzle schema per SPEC §15.2, generated migration, typed PGlite harness, DB Content document composed from the file schemas (optional section ids in files, required in DB), idempotent seedSite with deterministic page.type.n ids.
 - Changes: src/lib/db/{schema,types,client,test,versions}.ts, src/lib/content/{content-types,seed}.ts (+ seed.test.ts), src/lib/content/schema.ts (optional `id: SectionId` on all 11 sections), drizzle/0000_v2_sites_versions.sql (+ meta), drizzle.config.ts already present, scripts/db-seed.ts, package.json (db:generate/db:migrate/db:seed).

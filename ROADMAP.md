@@ -84,7 +84,7 @@
 
 ### Milestone v2-3 — Owner auth
 
-- [ ] **T5.4 /admin/login + session + guard.** Port template auth (scrypt + jose per SPEC §15.3); middleware guards `/admin/*` + `/api/admin/*`; login/logout routes; dev fallback password outside production.
+- [x] **T5.4 /admin/login + session + guard.** Port template auth (scrypt + jose per SPEC §15.3); middleware guards `/admin/*` + `/api/admin/*`; login/logout routes; dev fallback password outside production.
   *Accept:* unauth /admin redirects to login; wrong password rejected; session cookie httpOnly+SameSite=Lax; auth decision logic unit-tested.
 
 ### Milestone v2-4 — Multi-page ops (test-first)

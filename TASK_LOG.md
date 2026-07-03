@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.4 — owner auth (/admin) — APPROVED
+- Plan: port the template's single-owner auth (scrypt password + jose HS256 httpOnly cookie + pure protection policy) with the admin surface at /admin; Edge middleware guards /admin/* + /api/admin/*; keyless dev logs in with "owner".
+- Changes: src/lib/auth/{password,session,protect}.ts (+ auth.test.ts), src/middleware.ts (matcher-scoped), src/app/api/auth/{login,logout}/route.ts, src/app/admin/{page,LogoutButton}.tsx, src/app/admin/login/{page,LoginForm}.tsx, scripts/hash-password.ts.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (96 passing, +6) · build ✓ (19 routes, middleware 40.3 kB)
+- Critic issues found → resolved: jose rejects cross-realm Uint8Arrays under jsdom — auth suite pinned to the node test environment (code targets Node/Edge, unaffected).
+- Follow-ups (not built): admin hub links activate as T5.6/T5.8/T5.9 land.
+- Decisions made where SPEC was silent: cookie named studio22_session; login errors are uniform (no user enumeration surface — single owner anyway).
+
 ## 2026-07-03 · T5.3 — cached content serving + revalidation — APPROVED
 - Plan: one content getter for all pages — DB current version under a tagged unstable_cache, file-seed fallback when DATABASE_URL is absent or the DB read fails; page routes switch from file loaders to it; a shared revalidateContent() the commit path (T5.5) will call.
 - Changes: src/lib/content/serve.ts (+ serve.test.ts); all six page routes + layout.tsx + both checkout pages moved from loadPage/loadGlobals/loadSite to getPageContent/getContent (module-level metadata → generateMetadata, components async); five page tests adapted to `render(await Page())` (assertions unchanged).

@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.1 — v2 deps + scaffolding — APPROVED
+- Plan: open the v2 platform (SPEC §15 appended, owner-approved 2026-07-02): add approved deps, drizzle config, env loader, .env.example; prove zero-service DB testing with a PGlite smoke.
+- Changes: SPEC.md (§15 v2 appendix), ROADMAP.md (v2 milestones T5.1–T5.11 + out-of-scope note), package.json/pnpm-lock (drizzle-orm, pg, jose, @vercel/blob, marked, @anthropic-ai/sdk; dev: drizzle-kit, @types/pg, @electric-sql/pglite), drizzle.config.ts, src/lib/env.ts (+ env.test.ts), src/lib/db/pglite-smoke.test.ts, .env.example.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (83 passing, +4) · build ✓ (empty .env)
+- Critic issues found → resolved: T5.1 originally claimed the typed DB harness, but it imports the T5.2 schema — moved harness to T5.2 in ROADMAP before building; smoke test proves the zero-service infra without it.
+- Follow-ups (not built): scripts/hash-password.ts referenced by .env.example lands with auth (T5.4).
+- Decisions made where SPEC was silent: none (SPEC §15 written this task from the approved plan).
+
 ## 2026-06-10 · NOTE (human-directed change) — display font now Oswald + font-chain repair
 Owner switched display font to Oswald (edited layout.tsx directly). Root cause of "fonts not persisting": globals.css still mapped the tokens to the removed --font-bodoni variable — and at some point --font-body was also pointed at it — so every font-family resolved to an undefined var and the browser fell back. Repaired: --font-display→var(--font-oswald), --font-body→var(--font-hanken); killed stale dev/prod servers and wiped .next so no cached bundle can serve old fonts. Chain verified in compiled+served output (font-face Oswald, preloaded woff2, both vars resolving). SPEC §3/§8.2 updated. Gates green (79, build ✓).
 

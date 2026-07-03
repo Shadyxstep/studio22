@@ -280,3 +280,54 @@ pnpm typecheck && pnpm lint && pnpm test
 - Typed error classes (`NotConfiguredError`, `ContentValidationError`); API routes map them to `{ ok: false, error }` envelopes.
 - Keep `.env.example` and the README quickstart updated in the same task that introduces a variable or command.
 - All `HUMAN TODO` placeholders (booking URL, contact details, Stripe keys, exercise.com links) are tracked in a README "Before launch" checklist, updated whenever one is added.
+
+---
+
+## 15. v2 — Owner platform (approved 2026-07-02) `[R2]`
+
+> Owner-approved scope revision. v1 (§1–14) shipped and its constraints stand except where amended here. The approved v2 plan (owner: Leo) adds four features on one platform: an **AI editor** for the gym owner, a **blog**, **training-plan distribution**, and a **/book** page. Reference implementation for the editing engine: `~/Coding/AI-WEBSITE-TEMPLATE` (complete, 136 tests) — port its libs INTO this repo; this repo stays the host app.
+
+### 15.1 Amended stack & dependencies
+
+- §3's "static output (no runtime DB)" is amended: content becomes DB-backed (Neon Postgres via Vercel Marketplace) with **static rendering + on-demand revalidation** (`unstable_cache` tagged `"content"`; `revalidateTag` on every commit). `content/*.json` remains the build-time seed AND the fallback when `DATABASE_URL` is absent — the site must always build with an empty `.env`.
+- **Approved dependency additions:** drizzle-orm, drizzle-kit (dev), pg, @types/pg (dev), @electric-sql/pglite (dev/test), jose, @vercel/blob, marked, @anthropic-ai/sdk. Nothing else without a `DECISION NEEDED` stop.
+- New env vars (all optional; features degrade to fake/fallback without them): `DATABASE_URL`, `OWNER_PASSWORD_HASH`, `SESSION_SECRET`, `ANTHROPIC_API_KEY`, `BLOB_READ_WRITE_TOKEN`.
+- The zero-network-in-tests rule is unchanged: PGlite for all DB tests, deterministic fake planner/drafter when keyless.
+
+### 15.2 Versioned content (ported contract)
+
+- Tables `sites` (customer_key unique, current_version_id) and `versions` (append-only, parent-linked, `content` JSONB) per the template's SPEC §6.2/§7 semantics: **one `applyEdit` mutation primitive**, one atomic commit path (`commitVersion`), undo/redo = revert-to-parent as NEW versions, never destructive.
+- DB `Content` shape (this repo's): `{ site, packages, testimonials, faqs, pages: Record<PageName, Section[]> }` — the schemas in `lib/content/schema.ts` remain the single source of truth for the file loader (seed/fallback), the section registry, and the executor.
+- Sections gain a deterministic `id` (`home.hero.0` pattern) — **required in DB content, optional in file schemas** (existing tests and content files stay valid).
+- Edit ops are multi-page: `setProp`/`insertSection`/`moveSection`/`removeSection` take a `page` scope; a `setGlobal` op addresses `site`/`packages`/`testimonials`/`faqs` paths. Ops re-validate the whole Content after application; any failure = zero writes.
+
+### 15.3 Owner auth & admin surface
+
+- Single owner, no user accounts. scrypt password hash (`OWNER_PASSWORD_HASH`, Node crypto) verified in the login route; jose HS256 httpOnly cookie (`SameSite=Lax`, `Secure` in prod, 7-day expiry) verified in middleware.
+- Admin surface at `/admin` (login, chat editor, posts, plans). Guard `/admin/*` and `/api/admin/*`; public routes never require auth. Dev fallback password `owner` outside production.
+
+### 15.4 The agent
+
+- Planner (Anthropic SDK; default model Sonnet, configurable) emits tool calls (`set_prop`, `set_global`, `insert_section`, `move_section`, `remove_section`); the executor zod-validates every arg and enforces edit scopes **server-side at execution** — the prompt is advisory, the executor is the boundary. Deterministic fake planner when `ANTHROPIC_API_KEY` is absent; tests use the fake only.
+- One applied chat request = exactly one new version; the response links the version id. Undo affordance in the admin UI.
+
+### 15.5 Blog
+
+- `posts` table: unique immutable slug (collision → `-2` suffix), title, body_md, excerpt, cover (Vercel Blob), status draft|published, published_at.
+- Public `/blog` + `/blog/[slug]` (drafts 404) — standalone routes OUTSIDE the §6.2 section registry; registry and `PAGE_NAMES` gain nothing from the blog. `sitemap.ts` appends published slugs. JSON-LD Article + OG metadata per post. Markdown rendered server-side via `marked` with raw HTML disabled; prose styles use the §8 tokens/fonts.
+- Admin CRUD at `/admin/posts` + optional AI draft endpoint `/api/admin/posts/draft` (notes → zod-validated `{title, excerpt, body_md}`; deterministic fake when keyless). `revalidateTag("posts")` on save.
+
+### 15.6 Training plans
+
+- `plans` table: member_email, label, blob_url, unique token (32-byte `crypto.randomBytes` base64url), revoked_at. Owner uploads a PDF to Blob under an unguessable random pathname.
+- `/plans/[token]` **streams** the PDF through a route handler (never redirects to the Blob URL — Blob URLs are unrevocable). Revoked/unknown tokens render the same branded "no longer active" page with identical status (no enumeration signal).
+- Delivery v1 = the existing `lib/mailto.ts` composer (owner sends from his own address) + copy-link. No email provider dependency. Upgrade seam: an `EmailSender` interface.
+
+### 15.7 /book page
+
+- 12th section type `bookingEmbed`: `{ heading, body?, mode: "iframe"|"link", src?, fallback: { label, href } }`. Link-out first; iframe is progressive enhancement with a timeout/error fallback, and the fallback link is ALWAYS rendered. Mobile (<768px) renders the link card directly.
+- New `content/pages/book.json` + `"book"` in `PAGE_NAMES`; nav gains "Book"; existing ctaBanner hrefs repoint to `/book`. Google Calendar appointment embeds are iframe-able; exercise.com embeds must be verified against the owner's plan — default to `mode: "link"` until verified.
+
+### 15.8 v2 out of scope
+
+Member logins/accounts, custom booking engine, email provider integration, payments activation, comments, analytics dashboards, multi-language. The v1 out-of-scope list (§2) otherwise stands.

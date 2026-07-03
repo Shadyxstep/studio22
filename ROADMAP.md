@@ -63,9 +63,65 @@
 
 ---
 
+## v2 — Owner platform (SPEC §15, approved 2026-07-02)
+
+> One commit per task; gates green before approval; `pnpm build` at milestone boundaries. Tests: PGlite only, zero external services, fake planner/drafter keyless.
+
+### Milestone v2-0 — Foundations
+
+- [~] **T5.1 Deps + scaffolding.** Add approved deps (SPEC §15.1); `drizzle.config.ts`; `src/lib/env.ts` loader; `.env.example` updated; PGlite smoke test (raw `SELECT 1`) proving zero-service DB tests work. (The typed harness `src/lib/db/{client,test,types}.ts` lands with the schema in T5.2 — it imports it.)
+  *Accept:* `pnpm i` clean; PGlite smoke test green with zero services; gates green; empty `.env` still builds.
+
+### Milestone v2-1 — Versioned content
+
+- [ ] **T5.2 Schema + migration + seed.** `sites`/`versions` tables (SPEC §15.2) + `src/lib/db/{client,test,types}.ts` (PGlite harness applying the generated migrations); migration committed; `Content` type `{site, packages, testimonials, faqs, pages}`; `seedSite(db)` transforms `content/*.json` (deterministic section ids `page.type.n`); idempotent.
+  *Accept:* seed twice → one site, one seed version; content round-trips zod; smoke test on PGlite.
+
+### Milestone v2-2 — Cached serving
+
+- [ ] **T5.3 getCurrentContent + revalidation.** Tagged-cache content getter with file fallback when `DATABASE_URL` absent; page routes read it instead of file loaders; `revalidateTag("content")` inside the commit path.
+  *Accept:* pages render from DB content when seeded, from files when no DB; existing 79 tests green; revalidate call covered by a unit test (mocked).
+
+### Milestone v2-3 — Owner auth
+
+- [ ] **T5.4 /admin/login + session + guard.** Port template auth (scrypt + jose per SPEC §15.3); middleware guards `/admin/*` + `/api/admin/*`; login/logout routes; dev fallback password outside production.
+  *Accept:* unauth /admin redirects to login; wrong password rejected; session cookie httpOnly+SameSite=Lax; auth decision logic unit-tested.
+
+### Milestone v2-4 — Multi-page ops (test-first)
+
+- [ ] **T5.5 Registry + ops + applyEdit/undo.** Section registry from schema.ts per-section schemas; multi-page `EditOp` set incl. `setGlobal` (SPEC §15.2); port `applyEdit`/`commitVersion`/`revertToParent`; adversarial tests (bad page, bad id, out-of-range, schema-violating value → zero writes).
+  *Accept:* op reducer pure + exact-assertion tests; undo/redo linkage proven on PGlite; whole-Content revalidation on every batch.
+
+### Milestone v2-5 — The agent
+
+- [ ] **T5.6 Planner + executor + chat.** Port tools/executor with studio22 edit scopes; fake planner (deterministic) + real planner (Sonnet default, model behind config); `/api/admin/chat`; minimal chat UI with undo affordance.
+  *Accept:* fake-planner e2e: chat request → one new version → revalidated; out-of-scope op rejected at executor (test); keyless dev fully functional.
+
+### Milestone v2-6 — Blog
+
+- [ ] **T5.7 Posts + public routes + SEO.** `posts` table + slug lib; `marked` renderer (raw HTML off) + prose styles; `/blog` + `/blog/[slug]` (drafts 404); JSON-LD Article; async sitemap appends published slugs; "Blog" nav entry.
+  *Accept:* slug collision → `-2`; draft invisible on listing and 404 on slug; metadata/JSON-LD asserted; sitemap includes published only.
+- [ ] **T5.8 Admin posts + AI draft.** `/admin/posts` CRUD (markdown textarea + preview, Blob cover upload, draft/publish); `/api/admin/posts/draft` (zod-validated, fake keyless); `revalidateTag("posts")` on save.
+  *Accept:* CRUD round-trip on PGlite; fake draft deterministic; malformed AI output rejected by zod (test).
+
+### Milestone v2-7 — Training plans
+
+- [ ] **T5.9 Plans + token route + admin.** `plans` table + 256-bit token lib; `/admin/plans` (upload to Blob random pathname, list, revoke); `/plans/[token]` streaming proxy; identical revoked/unknown page; mailto composer + copy-link.
+  *Accept:* token entropy test; revoked and unknown produce byte-identical status/page; valid token streams `application/pdf` inline; revoke round-trip.
+
+### Milestone v2-8 — /book
+
+- [ ] **T5.10 bookingEmbed + book page.** 12th section type per SPEC §15.7; `BookingEmbed.tsx` (lazy iframe, timeout fallback, mobile link-card, fallback always visible); `content/pages/book.json`; `"book"` in PAGE_NAMES; nav "Book"; ctaBanner repoints.
+  *Accept:* schema accepts/rejects; component renders both modes + always-visible fallback; /book in sitemap; existing page tests green.
+
+### Milestone v2-9 — Ship
+
+- [ ] **T5.11 Provision + deploy (human-assisted).** Neon via Vercel Marketplace; env vars set; migrate + seed prod; preview deploy; full fake-mode e2e per plan; real-mode spot check (one Sonnet edit, one AI draft); TASK_LOG close-out.
+  *Accept:* preview URL renders DB-seeded content; admin flows work live; smoke of /blog, /plans token, /book.
+
 ## Out of scope for v1 (SPEC §2 — do NOT build)
 
-AI editing agent, CMS/admin UI, real payments, auth/accounts/databases, form backends or email services, class scheduling (exercise.com handles it), blog, i18n, light theme.
+AI editing agent, CMS/admin UI, real payments, auth/accounts/databases, form backends or email services, class scheduling (exercise.com handles it), blog, i18n, light theme. *(v2 note, 2026-07-02: the agent, admin UI, database, blog, and a booking page are now IN scope per SPEC §15 / the v2 milestones above. Real payments, member accounts, email services, and a custom scheduling engine remain out.)*
 
 ## Needed from owner (tracked in README "Before launch" from T3.3)
 

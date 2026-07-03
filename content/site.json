@@ -24,7 +24,10 @@
     "label": "Leave Us A Google Review",
     "href": "https://search.google.com/local/writereview?placeid=ChIJV6gbKv0HZ0gRig71rOCeM18"
   },
-  "packageCta": { "label": "Want more info?", "href": "/get-started" },
+  "packageCta": {
+    "label": "Want more info?",
+    "href": "/get-started"
+  },
   "packageCategories": {
     "gym": "Gym Class Packages",
     "pilates": "Pilates Packages",
@@ -53,22 +56,62 @@
     "backLabel": "Home"
   },
   "social": [
-    { "label": "Instagram", "href": "https://www.instagram.com/studio22dublin" },
-    { "label": "TikTok", "href": "https://www.tiktok.com/@studio22dublin" }
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/studio22dublin"
+    },
+    {
+      "label": "TikTok",
+      "href": "https://www.tiktok.com/@studio22dublin"
+    }
   ],
   "nav": [
-    { "label": "Home", "href": "/" },
-    { "label": "Our Facility", "href": "/facility" },
-    { "label": "Our Packages", "href": "/packages" },
-    { "label": "FAQs", "href": "/faqs" },
-    { "label": "Get Started", "href": "/get-started" },
-    { "label": "Contact Us", "href": "/contact" }
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Our Facility",
+      "href": "/facility"
+    },
+    {
+      "label": "Our Packages",
+      "href": "/packages"
+    },
+    {
+      "label": "FAQs",
+      "href": "/faqs"
+    },
+    {
+      "label": "Journal",
+      "href": "/blog"
+    },
+    {
+      "label": "Get Started",
+      "href": "/get-started"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact"
+    }
   ],
   "footerLinks": [
-    { "label": "Home", "href": "/" },
-    { "label": "Get Started", "href": "/get-started" },
-    { "label": "Our Packages", "href": "/packages" },
-    { "label": "FAQs", "href": "/faqs" }
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Get Started",
+      "href": "/get-started"
+    },
+    {
+      "label": "Our Packages",
+      "href": "/packages"
+    },
+    {
+      "label": "FAQs",
+      "href": "/faqs"
+    }
   ],
   "footer": {
     "locationHeading": "Where we're located, give us a visit.",

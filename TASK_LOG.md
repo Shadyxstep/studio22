@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.7 — blog public surface — APPROVED
+- Plan: posts table + pure slug lib; marked renderer with raw HTML escaped; /blog listing + /blog/[slug] article (drafts 404) outside the section registry; Article JSON-LD; async sitemap appends published slugs; "Journal" nav entry; prose styles from the token palette.
+- Changes: src/lib/db/schema.ts (posts) + drizzle/0001_blog_posts.sql, src/lib/blog/{schema,queries,render,serve}.ts (+ blog.test.ts), src/lib/seo.ts (buildArticleJsonLd), src/app/blog/{page.tsx,[slug]/page.tsx}, src/app/sitemap.ts (async), src/app/globals.css (.prose-s22), content/site.json (nav + "Journal" → /blog); seo.test + content.test route-set updated.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (127 passing, +4 files worth) · build ✓ (/blog static, /blog/[slug] dynamic)
+- Critic issues found → resolved: slugify diacritic-strip test expectation corrected (Émile → emiles, the strip is correct); sitemap test updated for the async signature; nav integrity test taught /blog.
+- Follow-ups (not built): admin CRUD + AI draft (T5.8, next).
+- Decisions made where SPEC was silent: public label is "Journal" (site voice) while the route stays /blog for SEO clarity; blog serves empty (not erroring) in file mode.
+
 ## 2026-07-03 · T5.6 — the agent (planner + executor + chat) — APPROVED
 - Plan: port the template's agent to multi-page tools (set_prop/set_global/insert/move/remove, page-scoped), studio22 edit scopes enforced server-side in the executor, deterministic fake planner + Anthropic tool-use-loop real planner (Sonnet default), /api/admin/chat + /api/admin/undo, chat UI on /admin.
 - Changes: src/lib/agent/{tools,scopes,executor,planner,planner.fake,planner.anthropic}.ts (+ agent.test.ts), src/app/api/admin/{chat,undo}/route.ts, src/app/admin/{ChatEditor.tsx,page.tsx}.

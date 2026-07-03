@@ -44,6 +44,28 @@ export const versions = pgTable("versions", {
     .defaultNow(),
 });
 
+// Blog posts (SPEC §15.5). Slug is unique and immutable after first publish;
+// published_at is set on first publish and stable thereafter.
+export const posts = pgTable("posts", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  title: text("title").notNull(),
+  excerpt: text("excerpt").notNull(),
+  bodyMd: text("body_md").notNull(),
+  coverUrl: text("cover_url"),
+  coverAlt: text("cover_alt"),
+  status: text("status").notNull().$type<"draft" | "published">().default("draft"),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 export type Site = typeof sites.$inferSelect;
 export type Version = typeof versions.$inferSelect;
 export type NewVersion = typeof versions.$inferInsert;
+export type Post = typeof posts.$inferSelect;
+export type NewPost = typeof posts.$inferInsert;

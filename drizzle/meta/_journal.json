@@ -8,6 +8,13 @@
       "when": 1783067317114,
       "tag": "0000_v2_sites_versions",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1783068529577,
+      "tag": "0001_blog_posts",
+      "breakpoints": true
     }
   ]
 }

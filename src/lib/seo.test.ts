@@ -18,8 +18,8 @@ test("LocalBusiness JSON-LD carries the business facts from site.json", () => {
   expect(() => JSON.stringify(ld)).not.toThrow();
 });
 
-test("sitemap covers exactly the six routes", () => {
-  const urls = sitemap().map((e) => e.url.replace(SITE_URL, ""));
+test("sitemap covers the six page routes (no blog entries without a DB)", async () => {
+  const urls = (await sitemap()).map((e) => e.url.replace(SITE_URL, ""));
   expect(urls.sort()).toEqual(
     ["/", "/facility", "/packages", "/get-started", "/faqs", "/contact"].sort(),
   );

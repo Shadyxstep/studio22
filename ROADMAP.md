@@ -99,7 +99,7 @@
 
 ### Milestone v2-6 — Blog
 
-- [ ] **T5.7 Posts + public routes + SEO.** `posts` table + slug lib; `marked` renderer (raw HTML off) + prose styles; `/blog` + `/blog/[slug]` (drafts 404); JSON-LD Article; async sitemap appends published slugs; "Blog" nav entry.
+- [x] **T5.7 Posts + public routes + SEO.** `posts` table + slug lib; `marked` renderer (raw HTML off) + prose styles; `/blog` + `/blog/[slug]` (drafts 404); JSON-LD Article; async sitemap appends published slugs; "Blog" nav entry.
   *Accept:* slug collision → `-2`; draft invisible on listing and 404 on slug; metadata/JSON-LD asserted; sitemap includes published only.
 - [ ] **T5.8 Admin posts + AI draft.** `/admin/posts` CRUD (markdown textarea + preview, Blob cover upload, draft/publish); `/api/admin/posts/draft` (zod-validated, fake keyless); `revalidateTag("posts")` on save.
   *Accept:* CRUD round-trip on PGlite; fake draft deterministic; malformed AI output rejected by zod (test).

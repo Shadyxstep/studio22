@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.9 — training-plan distribution — APPROVED
+- Plan: plans table + 256-bit base64url token lib; admin upload (PDF → Blob under a random pathname) with list/revoke/restore; /plans/[token] streams the PDF through the server (never a redirect — Blob URLs are unrevocable); revoked and unknown tokens share one code path and one branded not-active page; delivery = prefilled mailto from the owner's own address + copy-link.
+- Changes: src/lib/db/schema.ts (plans) + drizzle/0002_training_plans.sql, src/lib/plans/queries.ts (+ plans.test.ts), src/app/plans/[token]/route.ts, src/app/api/admin/plans/{route.ts,[id]/route.ts}, src/app/admin/plans/{page,PlansManager}.tsx, admin hub nav.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (135 passing, +4) · build ✓
+- Critic issues found → resolved: unescaped apostrophe in the upload form label (react/no-unescaped-entities).
+- Follow-ups (not built): EmailSender interface upgrade path (Resend) — mailto is the v1 per SPEC §15.6; Blob deletion on revoke (kept for restore/audit; revisit if storage matters).
+- Decisions made where SPEC was silent: plans capped at 20 MB PDF; revoke is reversible (restore) since the row is the audit trail; mailto body never contains the blob URL (tested).
+
 ## 2026-07-03 · T5.8 — admin posts + AI drafting — APPROVED
 - Plan: admin CRUD for articles (list/create/edit/publish-toggle/delete, Blob cover upload behind a clear no-token notice), and the AI draft endpoint: owner notes → zod-validated {title, excerpt, bodyMd} in his voice, one structured completion (not the planner machinery), fake when keyless.
 - Changes: src/lib/blog/draft.ts (+ draft.test.ts), src/app/api/admin/posts/{route.ts,[id]/route.ts,draft/route.ts,cover/route.ts}, src/app/admin/posts/{page,PostsManager,PostEditor}.tsx, admin hub nav.

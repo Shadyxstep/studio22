@@ -106,7 +106,7 @@
 
 ### Milestone v2-7 — Training plans
 
-- [ ] **T5.9 Plans + token route + admin.** `plans` table + 256-bit token lib; `/admin/plans` (upload to Blob random pathname, list, revoke); `/plans/[token]` streaming proxy; identical revoked/unknown page; mailto composer + copy-link.
+- [x] **T5.9 Plans + token route + admin.** `plans` table + 256-bit token lib; `/admin/plans` (upload to Blob random pathname, list, revoke); `/plans/[token]` streaming proxy; identical revoked/unknown page; mailto composer + copy-link.
   *Accept:* token entropy test; revoked and unknown produce byte-identical status/page; valid token streams `application/pdf` inline; revoke round-trip.
 
 ### Milestone v2-8 — /book

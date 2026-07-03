@@ -27,7 +27,9 @@ export default function AdminPage() {
         <Link className="hover:text-bone" href="/admin/posts">
           Articles
         </Link>
-        <span>Training plans (T5.9)</span>
+        <Link className="hover:text-bone" href="/admin/plans">
+          Training plans
+        </Link>
       </nav>
       <ChatEditor />
     </main>

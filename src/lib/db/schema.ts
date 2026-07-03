@@ -64,8 +64,25 @@ export const posts = pgTable("posts", {
     .defaultNow(),
 });
 
+// Training plans (SPEC §15.6): a PDF in Blob (unguessable pathname) assigned to
+// a member's email, reached only via /plans/[token] (256-bit token). Revoking
+// sets revoked_at; the row (and Blob) survive for the audit trail.
+export const plans = pgTable("plans", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  memberEmail: text("member_email").notNull(),
+  label: text("label").notNull(),
+  blobUrl: text("blob_url").notNull(),
+  token: text("token").notNull().unique(),
+  revokedAt: timestamp("revoked_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 export type Site = typeof sites.$inferSelect;
 export type Version = typeof versions.$inferSelect;
 export type NewVersion = typeof versions.$inferInsert;
 export type Post = typeof posts.$inferSelect;
 export type NewPost = typeof posts.$inferInsert;
+export type Plan = typeof plans.$inferSelect;
+export type NewPlan = typeof plans.$inferInsert;

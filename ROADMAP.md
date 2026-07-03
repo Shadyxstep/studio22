@@ -89,7 +89,7 @@
 
 ### Milestone v2-4 — Multi-page ops (test-first)
 
-- [ ] **T5.5 Registry + ops + applyEdit/undo.** Section registry from schema.ts per-section schemas; multi-page `EditOp` set incl. `setGlobal` (SPEC §15.2); port `applyEdit`/`commitVersion`/`revertToParent`; adversarial tests (bad page, bad id, out-of-range, schema-violating value → zero writes).
+- [x] **T5.5 Registry + ops + applyEdit/undo.** Section registry from schema.ts per-section schemas; multi-page `EditOp` set incl. `setGlobal` (SPEC §15.2); port `applyEdit`/`commitVersion`/`revertToParent`; adversarial tests (bad page, bad id, out-of-range, schema-violating value → zero writes).
   *Accept:* op reducer pure + exact-assertion tests; undo/redo linkage proven on PGlite; whole-Content revalidation on every batch.
 
 ### Milestone v2-5 — The agent

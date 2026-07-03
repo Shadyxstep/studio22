@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.5 — multi-page ops + registry + applyEdit/undo — APPROVED
+- Plan: the one real template adaptation — page-scoped edit ops (setProp/insert/move/remove) + setGlobal over the multi-page Content, a closed type→schema registry derived from schema.ts, and the ported atomic write spine (commitVersion → applyEdit; undo/redo = revert-to-parent).
+- Changes: src/lib/content/{registry,ops,commit,applyEdit,undo}.ts (+ ops.test.ts pure/adversarial, applyEdit.test.ts on PGlite).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (111 passing, +15) · build ✓
+- Critic issues found → resolved: revalidateTag throws outside a Next request scope — writes call safeRevalidate() (catch + no-op) so scripts/tests don't fail after a successful commit; a stray conditional-type in sectionsOf simplified to PageName.
+- Follow-ups (not built): setPageMeta op (title/description edits) — content is versioned for it, tool can be added when the agent needs it.
+- Decisions made where SPEC was silent: setGlobal path [] replaces the whole target (the natural "rewrite the FAQ list" operation); whole-document re-validation after every batch (uniqueness of section ids enforced by ContentSchema).
+
 ## 2026-07-03 · T5.4 — owner auth (/admin) — APPROVED
 - Plan: port the template's single-owner auth (scrypt password + jose HS256 httpOnly cookie + pure protection policy) with the admin surface at /admin; Edge middleware guards /admin/* + /api/admin/*; keyless dev logs in with "owner".
 - Changes: src/lib/auth/{password,session,protect}.ts (+ auth.test.ts), src/middleware.ts (matcher-scoped), src/app/api/auth/{login,logout}/route.ts, src/app/admin/{page,LogoutButton}.tsx, src/app/admin/login/{page,LoginForm}.tsx, scripts/hash-password.ts.

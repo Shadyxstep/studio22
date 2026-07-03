@@ -24,7 +24,9 @@ export default function AdminPage() {
         <Link className="text-bone" href="/admin" aria-current="page">
           Site editor
         </Link>
-        <span>Articles (T5.8)</span>
+        <Link className="hover:text-bone" href="/admin/posts">
+          Articles
+        </Link>
         <span>Training plans (T5.9)</span>
       </nav>
       <ChatEditor />

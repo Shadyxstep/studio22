@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.8 — admin posts + AI drafting — APPROVED
+- Plan: admin CRUD for articles (list/create/edit/publish-toggle/delete, Blob cover upload behind a clear no-token notice), and the AI draft endpoint: owner notes → zod-validated {title, excerpt, bodyMd} in his voice, one structured completion (not the planner machinery), fake when keyless.
+- Changes: src/lib/blog/draft.ts (+ draft.test.ts), src/app/api/admin/posts/{route.ts,[id]/route.ts,draft/route.ts,cover/route.ts}, src/app/admin/posts/{page,PostsManager,PostEditor}.tsx, admin hub nav.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (131 passing, +4) · build ✓ (26 routes)
+- Critic issues found → resolved: none new; drafter retry contract tested for both recovery and double-failure.
+- Follow-ups (not built): markdown live preview in the editor (textarea-only v1); training plans next (T5.9).
+- Decisions made where SPEC was silent: covers limited to JPEG/PNG/WebP ≤8MB; draft endpoint never saves — the owner always reviews in the form; AGENT_MODEL env overrides the drafting model like the planner.
+
 ## 2026-07-03 · T5.7 — blog public surface — APPROVED
 - Plan: posts table + pure slug lib; marked renderer with raw HTML escaped; /blog listing + /blog/[slug] article (drafts 404) outside the section registry; Article JSON-LD; async sitemap appends published slugs; "Journal" nav entry; prose styles from the token palette.
 - Changes: src/lib/db/schema.ts (posts) + drizzle/0001_blog_posts.sql, src/lib/blog/{schema,queries,render,serve}.ts (+ blog.test.ts), src/lib/seo.ts (buildArticleJsonLd), src/app/blog/{page.tsx,[slug]/page.tsx}, src/app/sitemap.ts (async), src/app/globals.css (.prose-s22), content/site.json (nav + "Journal" → /blog); seo.test + content.test route-set updated.

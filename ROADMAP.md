@@ -111,7 +111,7 @@
 
 ### Milestone v2-8 — /book
 
-- [ ] **T5.10 bookingEmbed + book page.** 12th section type per SPEC §15.7; `BookingEmbed.tsx` (lazy iframe, timeout fallback, mobile link-card, fallback always visible); `content/pages/book.json`; `"book"` in PAGE_NAMES; nav "Book"; ctaBanner repoints.
+- [x] **T5.10 bookingEmbed + book page.** 12th section type per SPEC §15.7; `BookingEmbed.tsx` (lazy iframe, timeout fallback, mobile link-card, fallback always visible); `content/pages/book.json`; `"book"` in PAGE_NAMES; nav "Book"; ctaBanner repoints.
   *Accept:* schema accepts/rejects; component renders both modes + always-visible fallback; /book in sitemap; existing page tests green.
 
 ### Milestone v2-9 — Ship

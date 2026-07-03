@@ -32,6 +32,7 @@ export const STUDIO22_SCOPES: EditScopes = {
     faqAccordion: ["heading"],
     ctaBanner: ["headline", "body", "cta"],
     contactPanel: ["heading", "sub"],
+    bookingEmbed: ["heading", "body", "fallback"],
   },
   insertableTypes: [
     "editorialSplit",

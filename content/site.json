@@ -79,6 +79,10 @@
       "href": "/packages"
     },
     {
+      "label": "Book",
+      "href": "/book"
+    },
+    {
       "label": "FAQs",
       "href": "/faqs"
     },

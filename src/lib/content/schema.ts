@@ -16,6 +16,7 @@ export const SECTION_TYPES = [
   "faqAccordion",
   "ctaBanner",
   "contactPanel",
+  "bookingEmbed",
 ] as const;
 
 export const PACKAGE_CATEGORIES = ["gym", "pilates", "online-golf"] as const;
@@ -29,6 +30,7 @@ export const PAGE_NAMES = [
   "get-started",
   "faqs",
   "contact",
+  "book",
 ] as const;
 
 export type SectionType = (typeof SECTION_TYPES)[number];
@@ -150,6 +152,25 @@ const ContactPanelSection = z.object({
   sub: z.string().optional(),
 });
 
+/*
+ * SPEC §15.7 — external booking embeds (/book). Link-out first: `fallback` is
+ * ALWAYS rendered; `mode: "iframe"` progressively enhances on desktop when the
+ * provider allows framing (Google Calendar does; exercise.com defaults to link).
+ */
+const BookingEmbedSection = z
+  .object({
+    type: z.literal("bookingEmbed"),
+    id: SectionId,
+    heading: z.string().min(1),
+    body: z.string().optional(),
+    mode: z.enum(["iframe", "link"]),
+    src: z.string().optional(),
+    fallback: Cta,
+  })
+  .refine((s) => s.mode !== "iframe" || Boolean(s.src), {
+    message: 'mode "iframe" requires src',
+  });
+
 export const SectionSchema = z.discriminatedUnion("type", [
   HeroSection,
   PillarGridSection,
@@ -162,6 +183,7 @@ export const SectionSchema = z.discriminatedUnion("type", [
   FaqAccordionSection,
   CtaBannerSection,
   ContactPanelSection,
+  BookingEmbedSection,
 ]);
 
 export const PageSchema = z.object({

@@ -25,7 +25,12 @@
       "type": "pillarGrid",
       "heading": "Our Offering",
       "tagline": "Performance is the greatest motivator",
-      "pillars": ["gym", "golf", "pilates", "recovery"]
+      "pillars": [
+        "gym",
+        "golf",
+        "pilates",
+        "recovery"
+      ]
     },
     {
       "type": "editorialSplit",
@@ -37,13 +42,19 @@
         "src": "/images/coaches-portrait.jpg",
         "alt": "Two Studio 22 coaches with kettlebells in the gym"
       },
-      "cta": { "label": "See How We Help You", "href": "/get-started" }
+      "cta": {
+        "label": "See How We Help You",
+        "href": "/get-started"
+      }
     },
     {
       "type": "packageTeaser",
       "heading": "Our Packages",
       "tagline": "Performance is the greatest motivator",
-      "cta": { "label": "Our Packages", "href": "/packages" }
+      "cta": {
+        "label": "Our Packages",
+        "href": "/packages"
+      }
     },
     {
       "type": "testimonials",
@@ -57,7 +68,7 @@
       "body": "Book in in for a discovery call below and we can go over any more queries you may have.",
       "cta": {
         "label": "Book A Discovery Call",
-        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+        "href": "/book"
       }
     }
   ]

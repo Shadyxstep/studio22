@@ -55,6 +55,13 @@ const fixtures: Record<(typeof SECTION_TYPES)[number], Section> = {
     cta: { label: "A banner cta", href: "https://example.com" },
   },
   contactPanel: { type: "contactPanel", heading: "A contact heading" },
+  bookingEmbed: {
+    type: "bookingEmbed",
+    heading: "A booking heading",
+    body: "A booking body",
+    mode: "link",
+    fallback: { label: "A booking fallback", href: "https://example.com/book" },
+  },
 };
 
 /* What we assert appears for each type. */
@@ -83,6 +90,7 @@ const expectedText: Record<(typeof SECTION_TYPES)[number], string[]> = {
     globals.site.contact.phone,
     globals.site.contact.address,
   ],
+  bookingEmbed: ["A booking heading", "A booking body", "A booking fallback"],
 };
 
 describe("section component library", () => {

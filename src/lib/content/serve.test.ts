@@ -19,7 +19,7 @@ describe("content serving (file-fallback mode — empty env)", () => {
 
   it("serves the seed transform of content/*.json when no DATABASE_URL is set", async () => {
     const content = await getContent();
-    expect(Object.keys(content.pages)).toHaveLength(6);
+    expect(Object.keys(content.pages)).toHaveLength(7);
     // sections carry the deterministic ids the seed assigns
     expect(content.pages.home.sections[0].id).toMatch(/^home\./);
   });

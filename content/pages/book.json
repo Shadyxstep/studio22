@@ -1,0 +1,42 @@
+{
+  "title": "Book",
+  "description": "Book a discovery call or a session at Studio 22 — gym, golf simulator and reformer pilates in Dún Laoghaire.",
+  "sections": [
+    {
+      "type": "hero",
+      "headline": "Book your visit",
+      "sub": "Start with a discovery call, or jump straight into the timetable if you're already a member."
+    },
+    {
+      "type": "bookingEmbed",
+      "heading": "Book a discovery call",
+      "body": "New to Studio 22? Pick a time below and we'll talk through your goals and the right way to start.",
+      "mode": "iframe",
+      "src": "https://calendar.app.google/czDrog5tJp515A1x6",
+      "fallback": {
+        "label": "Open The Calendar",
+        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+      }
+    },
+    {
+      "type": "bookingEmbed",
+      "heading": "Members — book a session",
+      "body": "Class timetable and session booking for current members.",
+      "mode": "link",
+      "fallback": {
+        "label": "Open The Member Timetable",
+        "href": "https://fitness.studio-22.ie/a/assessment/2541068/"
+      }
+    },
+    {
+      "type": "ctaBanner",
+      "variant": "enquire",
+      "headline": "Not sure where to start?",
+      "body": "Send us a message and we'll point you in the right direction.",
+      "cta": {
+        "label": "Contact Us",
+        "href": "/contact"
+      }
+    }
+  ]
+}

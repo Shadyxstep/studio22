@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.10 — /book page (bookingEmbed) — APPROVED
+- Plan: 12th section type bookingEmbed (link-out first, iframe as desktop-only progressive enhancement with an 8s load-timeout fallback, the fallback button always rendered); content/pages/book.json (Google Calendar discovery-call iframe + exercise.com member link + enquire banner); "book" in PAGE_NAMES rides the whole page pipeline; nav gains "Book"; the three discovery-call ctaBanners repoint to /book.
+- Changes: src/lib/content/schema.ts (BookingEmbedSection + PAGE_NAMES), src/components/sections/{BookingEmbed.tsx,index.tsx} (+ booking-embed.test.tsx, sections.test fixture), content/pages/book.json, content/site.json (nav), content/pages/{home,facility,get-started}.json (cta.href → /book), src/app/book/page.tsx, src/lib/agent/scopes.ts (bookingEmbed fields), tests updated for 7 pages / new route.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (140 passing, +5) · build ✓ (/book prerendered)
+- Critic issues found → resolved: the closed-registry typing flagged every site that needed the new type (scopes, section fixtures, schema closed-list) — exactly the designed failure mode; all updated.
+- Follow-ups (not built): verify exercise.com's embeddable widget against the owner's plan — the section ships mode:"link" until confirmed (SPEC §15.7 default); owner to confirm the member-timetable URL (currently the assessment funnel link from site.json).
+- Decisions made where SPEC was silent: /book page copy invented minimally (new page, no v1 inventory source) — flagged for owner review; Google Calendar embed uses the existing booking URL from site.json.
+
 ## 2026-07-03 · T5.9 — training-plan distribution — APPROVED
 - Plan: plans table + 256-bit base64url token lib; admin upload (PDF → Blob under a random pathname) with list/revoke/restore; /plans/[token] streams the PDF through the server (never a redirect — Blob URLs are unrevocable); revoked and unknown tokens share one code path and one branded not-active page; delivery = prefilled mailto from the owner's own address + copy-link.
 - Changes: src/lib/db/schema.ts (plans) + drizzle/0002_training_plans.sql, src/lib/plans/queries.ts (+ plans.test.ts), src/app/plans/[token]/route.ts, src/app/api/admin/plans/{route.ts,[id]/route.ts}, src/app/admin/plans/{page,PlansManager}.tsx, admin hub nav.

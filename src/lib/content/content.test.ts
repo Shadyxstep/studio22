@@ -18,6 +18,7 @@ const ROUTES = new Set([
   "/faqs",
   "/contact",
   "/blog",
+  "/book",
 ]);
 
 function collectFromPage(page: Page) {

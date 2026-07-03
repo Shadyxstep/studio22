@@ -22,8 +22,13 @@
       "type": "editorialSplit",
       "label": "02.",
       "headline": "Ready to go ?",
-      "paragraphs": ["Purchase your Studio 22 Membership below"],
-      "cta": { "label": "Purchase Now", "href": "/packages" },
+      "paragraphs": [
+        "Purchase your Studio 22 Membership below"
+      ],
+      "cta": {
+        "label": "Purchase Now",
+        "href": "/packages"
+      },
       "reverse": true
     },
     {
@@ -38,7 +43,11 @@
         "href": "https://calendar.app.google/czDrog5tJp515A1x6"
       }
     },
-    { "type": "packageGrid", "heading": "Our Packages", "selectable": true },
+    {
+      "type": "packageGrid",
+      "heading": "Our Packages",
+      "selectable": true
+    },
     {
       "type": "editorialSplit",
       "headline": "How Do We Help You Reach Your Goals?",
@@ -120,7 +129,7 @@
       "body": "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are.",
       "cta": {
         "label": "book a discovery call",
-        "href": "https://calendar.app.google/czDrog5tJp515A1x6"
+        "href": "/book"
       }
     }
   ]

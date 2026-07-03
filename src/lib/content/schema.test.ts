@@ -23,6 +23,7 @@ describe("SPEC §6.1 constants", () => {
       "faqAccordion",
       "ctaBanner",
       "contactPanel",
+      "bookingEmbed",
     ]);
   });
 

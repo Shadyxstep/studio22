@@ -5,6 +5,7 @@ import {
   type Section,
   type SectionType,
 } from "@/lib/content/schema";
+import { BookingEmbed } from "./BookingEmbed";
 import { ContactPanel } from "./ContactPanel";
 import { CtaBanner } from "./CtaBanner";
 import { EditorialSplit } from "./EditorialSplit";
@@ -35,6 +36,7 @@ const registry: Record<SectionType, AnySectionComponent> = {
   faqAccordion: FaqAccordion,
   ctaBanner: CtaBanner,
   contactPanel: ContactPanel,
+  bookingEmbed: BookingEmbed,
 };
 
 export const REGISTERED_SECTION_TYPES = Object.keys(registry) as SectionType[];

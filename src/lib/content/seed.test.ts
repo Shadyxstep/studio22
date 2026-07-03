@@ -29,7 +29,7 @@ describe("buildSeedContent", () => {
   it("produces a document that satisfies the DB content schema", () => {
     const content = buildSeedContent();
     expect(() => ContentSchema.parse(content)).not.toThrow();
-    expect(Object.keys(content.pages)).toHaveLength(6);
+    expect(Object.keys(content.pages)).toHaveLength(7);
     expect(content.packages.length).toBeGreaterThan(0);
   });
 });

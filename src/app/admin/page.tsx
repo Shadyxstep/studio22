@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChatEditor } from "./ChatEditor";
 import { LogoutButton } from "./LogoutButton";
 
 export const metadata: Metadata = {
@@ -7,27 +8,26 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-// The admin hub (SPEC §15.3). Editor / posts / plans arrive with their
-// milestones (T5.6, T5.8, T5.9); this page is the authenticated shell.
+// The admin hub (SPEC §15.3): the chat editor lives here; posts (T5.8) and
+// plans (T5.9) get their own subpages.
 export default function AdminPage() {
   return (
-    <main className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center gap-10 px-6 py-24">
-      <div>
-        <p className="text-xs uppercase tracking-[0.2em] text-mid">Studio 22</p>
-        <h1 className="mt-2 font-display text-4xl text-bone">Admin</h1>
+    <main className="mx-auto flex min-h-[70vh] max-w-2xl flex-col gap-10 px-6 py-24">
+      <div className="flex items-baseline justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-[0.2em] text-mid">Studio 22</p>
+          <h1 className="mt-2 font-display text-4xl text-bone">Admin</h1>
+        </div>
+        <LogoutButton />
       </div>
-      <nav className="flex flex-col gap-4 text-bone">
-        <Link className="hover:text-sage" href="/admin">
-          Site editor <span className="text-mid">(coming with T5.6)</span>
+      <nav className="flex gap-6 text-sm text-mid">
+        <Link className="text-bone" href="/admin" aria-current="page">
+          Site editor
         </Link>
-        <Link className="hover:text-sage" href="/admin">
-          Articles <span className="text-mid">(coming with T5.8)</span>
-        </Link>
-        <Link className="hover:text-sage" href="/admin">
-          Training plans <span className="text-mid">(coming with T5.9)</span>
-        </Link>
+        <span>Articles (T5.8)</span>
+        <span>Training plans (T5.9)</span>
       </nav>
-      <LogoutButton />
+      <ChatEditor />
     </main>
   );
 }

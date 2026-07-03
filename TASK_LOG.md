@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-03 · T5.6 — the agent (planner + executor + chat) — APPROVED
+- Plan: port the template's agent to multi-page tools (set_prop/set_global/insert/move/remove, page-scoped), studio22 edit scopes enforced server-side in the executor, deterministic fake planner + Anthropic tool-use-loop real planner (Sonnet default), /api/admin/chat + /api/admin/undo, chat UI on /admin.
+- Changes: src/lib/agent/{tools,scopes,executor,planner,planner.fake,planner.anthropic}.ts (+ agent.test.ts), src/app/api/admin/{chat,undo}/route.ts, src/app/admin/{ChatEditor.tsx,page.tsx}.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (123 passing, +12) · build ✓
+- Critic issues found → resolved: none new — the executor rejects each bad call individually (mixed batches apply the good ops as one version, matching the template's semantics).
+- Follow-ups (not built): chat persistence (conversations/messages tables) — v1 chat is stateless by design; setPageMeta tool.
+- Decisions made where SPEC was silent: scopes allow contact/sauna/signup/reviewCta/packageCta site fields + name/price/features on packages; nav/footer/checkout/Stripe fields locked (build-safety rail); chat requires DB mode and 409s with a plain-language message in file mode.
+
 ## 2026-07-03 · T5.5 — multi-page ops + registry + applyEdit/undo — APPROVED
 - Plan: the one real template adaptation — page-scoped edit ops (setProp/insert/move/remove) + setGlobal over the multi-page Content, a closed type→schema registry derived from schema.ts, and the ported atomic write spine (commitVersion → applyEdit; undo/redo = revert-to-parent).
 - Changes: src/lib/content/{registry,ops,commit,applyEdit,undo}.ts (+ ops.test.ts pure/adversarial, applyEdit.test.ts on PGlite).

@@ -94,7 +94,7 @@
 
 ### Milestone v2-5 — The agent
 
-- [ ] **T5.6 Planner + executor + chat.** Port tools/executor with studio22 edit scopes; fake planner (deterministic) + real planner (Sonnet default, model behind config); `/api/admin/chat`; minimal chat UI with undo affordance.
+- [x] **T5.6 Planner + executor + chat.** Port tools/executor with studio22 edit scopes; fake planner (deterministic) + real planner (Sonnet default, model behind config); `/api/admin/chat`; minimal chat UI with undo affordance.
   *Accept:* fake-planner e2e: chat request → one new version → revalidated; out-of-scope op rejected at executor (test); keyless dev fully functional.
 
 ### Milestone v2-6 — Blog

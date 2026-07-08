@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-08 · OWNER — Google Tag Manager for Google Ads campaigns — APPROVED
+- Plan: env-gated GTM component (bootstrap script + noscript iframe per the Google rep's snippet) wired into the root layout; container ID via NEXT_PUBLIC_GTM_ID so the repo stays identifier-free and empty-.env builds ship no tracking.
+- Changes: src/components/analytics/GoogleTagManager.tsx (+test), src/app/layout.tsx (render at top of body), .env.example (+NEXT_PUBLIC_GTM_ID)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (81 passing) · build ✓
+- Critic issues found → resolved: none (test initially probed noscript children via jsdom DOM, which client renders leave empty — switched to renderToStaticMarkup, matching how the server component actually ships)
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: SPEC has no analytics section (owner-directed, like the wicklow restyle); Script uses strategy="afterInteractive" (Next's recommended placement for tag managers) rather than literal <head> injection; the real container ID lives only in Vercel env, never in the repo per the identifier guardrail.
+
 ## 2026-06-10 · NOTE (human-directed change) — display font now Oswald + font-chain repair
 Owner switched display font to Oswald (edited layout.tsx directly). Root cause of "fonts not persisting": globals.css still mapped the tokens to the removed --font-bodoni variable — and at some point --font-body was also pointed at it — so every font-family resolved to an undefined var and the browser fell back. Repaired: --font-display→var(--font-oswald), --font-body→var(--font-hanken); killed stale dev/prod servers and wiped .next so no cached bundle can serve old fonts. Chain verified in compiled+served output (font-face Oswald, preloaded woff2, both vars resolving). SPEC §3/§8.2 updated. Gates green (79, build ✓).
 

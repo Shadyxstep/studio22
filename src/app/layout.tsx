@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Hanken_Grotesk } from "next/font/google";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { loadSite } from "@/lib/content/load";
@@ -47,6 +48,7 @@ export default function RootLayout({
        (--font-display/--font-body) can resolve them. */
     <html lang="en" className={`${cormorant.variable} ${hanken.variable}`}>
       <body className="bg-ink font-body text-bone antialiased">
+        <GoogleTagManager />
         {/* runs before paint so a stored light preference never flashes dark */}
         <script
           dangerouslySetInnerHTML={{

@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-08 · OWNER — Google Tag Manager for Google Ads campaigns — APPROVED
+- Plan: env-gated GTM component (bootstrap script + noscript iframe per the Google rep's snippet) wired into the root layout; container ID via NEXT_PUBLIC_GTM_ID so the repo stays identifier-free and empty-.env builds ship no tracking.
+- Changes: src/components/analytics/GoogleTagManager.tsx (+test), src/app/layout.tsx (render at top of body), .env.example (+NEXT_PUBLIC_GTM_ID)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (81 passing) · build ✓
+- Critic issues found → resolved: none (test initially probed noscript children via jsdom DOM, which client renders leave empty — switched to renderToStaticMarkup, matching how the server component actually ships)
+- Follow-ups (not built): none
+- Decisions made where SPEC was silent: SPEC has no analytics section (owner-directed, like the wicklow restyle); Script uses strategy="afterInteractive" (Next's recommended placement for tag managers) rather than literal <head> injection; the real container ID lives only in Vercel env, never in the repo per the identifier guardrail.
+
 ## 2026-07-07 · T5.11 (partial) — preview deploy + two bugs found and fixed in testing — APPROVED
 - Plan: deploy feature/v2-platform as a Vercel preview for non-prod testing (production/domain untouched, per Leo); provision the test DB; verify every feature live.
 - Infra: Neon provisioned via `vercel integration add neon` (store neon-citrine-globe) and migrated + seeded; SESSION_SECRET/OWNER_PASSWORD_HASH/NEXT_PUBLIC_SITE_URL added to the Preview env (via the REST API — the CLI loops on its git-branch prompt); Vercel deployment protection (SSO) disabled so the app's own auth is testable/shareable.

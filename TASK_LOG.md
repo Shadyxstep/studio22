@@ -18,6 +18,17 @@
 
 ---
 
+## 2026-07-07 · T5.11 (partial) — preview deploy + two bugs found and fixed in testing — APPROVED
+- Plan: deploy feature/v2-platform as a Vercel preview for non-prod testing (production/domain untouched, per Leo); provision the test DB; verify every feature live.
+- Infra: Neon provisioned via `vercel integration add neon` (store neon-citrine-globe) and migrated + seeded; SESSION_SECRET/OWNER_PASSWORD_HASH/NEXT_PUBLIC_SITE_URL added to the Preview env (via the REST API — the CLI loops on its git-branch prompt); Vercel deployment protection (SSO) disabled so the app's own auth is testable/shareable.
+- **Bug 1 (High): cache revalidation was a silent no-op.** `revalidateContent`/`revalidatePosts` called `revalidateTag` via a dynamic `import("next/cache")`, which resolves to a module copy whose call does nothing in compiled route bundles — owner edits never became visible on the static pages. Even statically imported, tag+path invalidation raced route re-renders (stale HTML re-cached). **Fix: content pages are now `force-dynamic` and read the current version per request** (SPEC §15.1 amended); all unstable_cache/revalidateTag machinery removed from content+blog serving. Verified: edit → visible on the first refresh; undo → same.
+- **Bug 2 (Medium): /blog build crash with real posts.** `unstable_cache` JSON-serializes values, so `Post.publishedAt` came back a string and `toLocaleDateString` crashed the prerender once a published post existed. Moot after Bug 1's fix (no more cache round-trip) but the class is noted for any future cached DTOs.
+- Testing note: a long false trail came from asserting freshness with raw `html.includes(headline)` — the Hero italicizes the last word (`accentLastWord`), splitting the text across elements. Match on tag-stripped text.
+- Changes: src/lib/content/{serve,applyEdit,undo}.ts, src/lib/blog/serve.ts, src/app/api/admin/posts routes (revalidate calls dropped), `force-dynamic` on the 10 content-driven public pages, serve.test.ts rewritten, SPEC §15.1 amendment.
+- Gates: typecheck ✓ · lint ✓ · test ✓ (139 passing) · build ✓ · live preview e2e ✓ (login, agent edit+undo, blog create/publish/read, AI draft fake, plans routes, /book).
+- Follow-ups (not built): full launch remainder unchanged (merge + prod deploy on Leo's word); consider Neon autosuspend cold-start note at launch.
+- Decisions made where SPEC was silent: architecture amendment recorded in SPEC §15.1 (static→dynamic serving) — driven by observed deployment behavior, matching the reference template's proven force-dynamic design.
+
 ## 2026-07-03 · T5.10 — /book page (bookingEmbed) — APPROVED
 - Plan: 12th section type bookingEmbed (link-out first, iframe as desktop-only progressive enhancement with an 8s load-timeout fallback, the fallback button always rendered); content/pages/book.json (Google Calendar discovery-call iframe + exercise.com member link + enquire banner); "book" in PAGE_NAMES rides the whole page pipeline; nav gains "Book"; the three discovery-call ctaBanners repoint to /book.
 - Changes: src/lib/content/schema.ts (BookingEmbedSection + PAGE_NAMES), src/components/sections/{BookingEmbed.tsx,index.tsx} (+ booking-embed.test.tsx, sections.test fixture), content/pages/book.json, content/site.json (nav), content/pages/{home,facility,get-started}.json (cta.href → /book), src/app/book/page.tsx, src/lib/agent/scopes.ts (bookingEmbed fields), tests updated for 7 pages / new route.

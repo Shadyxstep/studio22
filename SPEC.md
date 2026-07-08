@@ -289,7 +289,7 @@ pnpm typecheck && pnpm lint && pnpm test
 
 ### 15.1 Amended stack & dependencies
 
-- §3's "static output (no runtime DB)" is amended: content becomes DB-backed (Neon Postgres via Vercel Marketplace) with **static rendering + on-demand revalidation** (`unstable_cache` tagged `"content"`; `revalidateTag` on every commit). `content/*.json` remains the build-time seed AND the fallback when `DATABASE_URL` is absent — the site must always build with an empty `.env`.
+- §3's "static output (no runtime DB)" is amended: content becomes DB-backed (Neon Postgres via Vercel Marketplace). `[Amended 2026-07-07 in preview testing]` Content pages are **dynamic** (`force-dynamic`) and read the current version per request — the originally-specified static + `revalidateTag` design proved unreliable in deployment (a dynamically-imported `revalidateTag` was a silent no-op, and even statically imported, tag invalidation raced route re-renders). Per-request reads are correct by construction and negligible at this site's traffic. `content/*.json` remains the seed AND the fallback when `DATABASE_URL` is absent — the site must always build with an empty `.env`.
 - **Approved dependency additions:** drizzle-orm, drizzle-kit (dev), pg, @types/pg (dev), @electric-sql/pglite (dev/test), jose, @vercel/blob, marked, @anthropic-ai/sdk. Nothing else without a `DECISION NEEDED` stop.
 - New env vars (all optional; features degrade to fake/fallback without them): `DATABASE_URL`, `OWNER_PASSWORD_HASH`, `SESSION_SECRET`, `ANTHROPIC_API_KEY`, `BLOB_READ_WRITE_TOKEN`.
 - The zero-network-in-tests rule is unchanged: PGlite for all DB tests, deterministic fake planner/drafter when keyless.

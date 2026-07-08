@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+
+// Content is DB-backed and read per request (content/serve.ts, 2026-07-07).
+export const dynamic = "force-dynamic";
 import { Button } from "@/components/ui/Button";
 import { getContent } from "@/lib/content/serve";
 

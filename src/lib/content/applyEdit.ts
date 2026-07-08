@@ -4,7 +4,6 @@ import type { Version } from "@/lib/db/schema";
 import type { Database } from "@/lib/db/types";
 import { commitVersion } from "./commit";
 import { applyOps, editOpsSchema, OpError, type EditOp } from "./ops";
-import { revalidateContent } from "./serve";
 
 // applyEdit is THE single content-mutation primitive (SPEC §15.2). Manual edits
 // and agent edits funnel through it; nothing else writes content. One call =
@@ -30,23 +29,12 @@ export async function applyEdit(
   // Compute the next content purely; throws on any invalid op (0 writes so far).
   const nextContent = applyOps(current.content, parsedOps);
 
-  const version = await commitVersion(db, current.siteId, {
+  // No cache invalidation needed: public pages are dynamic and read the
+  // current version per request (content/serve.ts, 2026-07-07 amendment).
+  return commitVersion(db, current.siteId, {
     parentVersionId: current.id,
     content: nextContent,
     author: options.author,
     opSummary: options.opSummary,
   });
-
-  await safeRevalidate();
-  return version;
-}
-
-/** Invalidate the public-page cache; a no-op outside a Next request context (tests, scripts). */
-export async function safeRevalidate(): Promise<void> {
-  try {
-    await revalidateContent();
-  } catch {
-    // revalidateTag throws outside Next's request scope — the write succeeded;
-    // scripts/tests have no page cache to invalidate.
-  }
 }

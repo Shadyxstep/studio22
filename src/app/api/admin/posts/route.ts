@@ -2,7 +2,6 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { createPost, listAllPosts } from "@/lib/blog/queries";
 import { postInputSchema } from "@/lib/blog/schema";
-import { revalidatePosts } from "@/lib/blog/serve";
 import { getDb } from "@/lib/db/client";
 import { contentMode, loadEnv } from "@/lib/env";
 
@@ -41,6 +40,5 @@ export async function POST(request: NextRequest) {
     );
   }
   const post = await createPost(getDb(), parsed.data);
-  await revalidatePosts();
   return NextResponse.json({ ok: true, data: post }, { status: 201 });
 }

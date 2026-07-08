@@ -7,7 +7,6 @@ import {
   updatePost,
 } from "@/lib/blog/queries";
 import { POST_STATUSES, postInputSchema } from "@/lib/blog/schema";
-import { revalidatePosts } from "@/lib/blog/serve";
 import { getDb } from "@/lib/db/client";
 import { contentMode, loadEnv } from "@/lib/env";
 
@@ -58,7 +57,6 @@ export async function PUT(request: NextRequest, { params }: Params) {
   if (!post) {
     return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
   }
-  await revalidatePosts();
   return NextResponse.json({ ok: true, data: post });
 }
 
@@ -82,7 +80,6 @@ export async function PATCH(request: NextRequest, { params }: Params) {
   if (!post) {
     return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
   }
-  await revalidatePosts();
   return NextResponse.json({ ok: true, data: post });
 }
 
@@ -94,6 +91,5 @@ export async function DELETE(_request: NextRequest, { params }: Params) {
   if (!deleted) {
     return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
   }
-  await revalidatePosts();
   return NextResponse.json({ ok: true });
 }

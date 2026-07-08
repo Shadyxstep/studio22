@@ -1,20 +1,9 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
-
-// next/cache is unavailable outside a Next server context — mock the two APIs
-// serve.ts uses. unstable_cache: identity wrapper (caching is Next's concern,
-// not this unit's); revalidateTag: a spy we assert on.
-const { revalidateTagSpy } = vi.hoisted(() => ({ revalidateTagSpy: vi.fn() }));
-vi.mock("next/cache", () => ({
-  unstable_cache: <T extends (...args: never[]) => unknown>(fn: T) => fn,
-  revalidateTag: revalidateTagSpy,
-}));
-
-import { CONTENT_TAG, getContent, getPageContent, revalidateContent } from "./serve";
+import { beforeEach, describe, expect, it } from "vitest";
+import { getContent, getPageContent } from "./serve";
 
 describe("content serving (file-fallback mode — empty env)", () => {
   beforeEach(() => {
     delete process.env.DATABASE_URL;
-    revalidateTagSpy.mockClear();
   });
 
   it("serves the seed transform of content/*.json when no DATABASE_URL is set", async () => {
@@ -33,11 +22,6 @@ describe("content serving (file-fallback mode — empty env)", () => {
 
   it("rejects unknown pages", async () => {
     // @ts-expect-error — deliberately invalid page name
-    await expect(getPageContent("nope")).rejects.toThrow('unknown page');
-  });
-
-  it("revalidateContent invalidates the content tag", async () => {
-    await revalidateContent();
-    expect(revalidateTagSpy).toHaveBeenCalledWith(CONTENT_TAG);
+    await expect(getPageContent("nope")).rejects.toThrow("unknown page");
   });
 });

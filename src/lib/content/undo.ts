@@ -1,7 +1,6 @@
 import type { Version, VersionAuthor } from "@/lib/db/schema";
 import { getCurrentVersion, getVersionById } from "@/lib/db/versions";
 import type { Database } from "@/lib/db/types";
-import { safeRevalidate } from "./applyEdit";
 import { commitVersion } from "./commit";
 import { OpError } from "./ops";
 
@@ -22,14 +21,12 @@ async function revertToParent(
     throw new OpError(`parent version "${current.parentVersionId}" not found`);
   }
 
-  const version = await commitVersion(db, current.siteId, {
+  return commitVersion(db, current.siteId, {
     parentVersionId: current.id,
     content: parent.content,
     author,
     opSummary: `revert to ${parent.id}`,
   });
-  await safeRevalidate();
-  return version;
 }
 
 export async function canUndo(db: Database): Promise<boolean> {

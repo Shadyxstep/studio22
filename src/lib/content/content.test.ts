@@ -45,7 +45,7 @@ function collectFromSite(site: Site) {
 
 describe("every content file parses against its schema", () => {
   test("site.json", () => expect(loadSite().name).toBe("Studio 22"));
-  test("packages.json", () => expect(loadPackages()).toHaveLength(5));
+  test("packages.json", () => expect(loadPackages()).toHaveLength(7));
   test("testimonials.json", () => expect(loadTestimonials()).toHaveLength(5));
   test("faqs.json (empty pending owner copy)", () =>
     expect(loadFaqs()).toEqual([]));
@@ -59,8 +59,10 @@ describe("package catalog matches SPEC §6.3 exactly (as amended 2026-07-08)", (
   const expected: Array<[string, string, number, string, string]> = [
     ["unlimited-gym", "gym", 55, "weekly", "61447"],
     ["complete-studio", "gym", 75, "weekly", "61488"],
+    ["strength-trial", "gym", 120, "one-time", "75441"],
     ["pilates-membership", "pilates", 50, "weekly", "61486"],
     ["reformer-10", "pilates", 225, "one-time", "65549"],
+    ["reformer-intro-5", "pilates", 120, "one-time", "73866"],
     ["online-coaching", "online-golf", 35, "weekly", "61445"],
   ];
 

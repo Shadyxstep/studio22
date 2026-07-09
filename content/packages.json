@@ -29,6 +29,21 @@
     "purchaseUrl": "https://fitness.studio-22.ie/packages/61488/purchase/"
   },
   {
+    "id": "strength-trial",
+    "category": "gym",
+    "name": "Strength Membership Trial",
+    "price": 120,
+    "billing": "one-time",
+    "features": [
+      "A full two weeks inside Studio 22",
+      "Unlimited sessions — strength, sweat and sauna",
+      "Train our strength programming",
+      "Feel what membership actually feels like"
+    ],
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/75441/purchase/"
+  },
+  {
     "id": "pilates-membership",
     "category": "pilates",
     "name": "Pilates Membership",
@@ -56,6 +71,21 @@
     ],
     "purchasable": false,
     "purchaseUrl": "https://fitness.studio-22.ie/packages/65549/purchase/"
+  },
+  {
+    "id": "reformer-intro-5",
+    "category": "pilates",
+    "name": "Reformer Intro 5-session pack",
+    "price": 120,
+    "billing": "one-time",
+    "features": [
+      "5 reformer sessions",
+      "Reformer Pilates Foundations",
+      "Mixed-Level Reformer Pilates",
+      "Intermediate Reformer Pilates"
+    ],
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/73866/purchase/"
   },
   {
     "id": "online-coaching",

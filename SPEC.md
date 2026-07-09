@@ -171,11 +171,13 @@ Catalog to encode in `content/packages.json` (verified against live site 2026-06
 |---|---|---|---|---|---|
 | unlimited-gym | gym | Unlimited Gym Class Package | 55 | weekly | 61447 |
 | complete-studio | gym | Complete Studio Package | 75 | weekly | 61488 |
+| strength-trial | gym | Strength Membership Trial | 120 | one-time | 75441 |
 | pilates-membership | pilates | Pilates Membership | 50 | weekly | 61486 |
 | reformer-10 | pilates | 10 Reformer Pilates Class Package | 225 | one-time | 65549 |
+| reformer-intro-5 | pilates | Reformer Intro 5-session pack | 120 | one-time | 73866 |
 | online-coaching | online-golf | Online Coaching | 35 | weekly | 61445 |
 
-Owner-supplied but **not yet on the site** (no card, price unknown — pending owner details): Reformer Trial 5 pack (73866), Strength 2 week trial (75441).
+The two trial packages were added 2026-07-09 from owner-supplied exercise.com screenshots (names, prices, inclusions verbatim from his purchase pages).
 
 Global perk, rendered on the packages page and in the sign-up flow: *all memberships include on-site sauna access.* (Lives in `site.json`, not hardcoded.)
 
@@ -242,6 +244,8 @@ Client component on `/get-started`:
 2. Form-styled fields (name, phone — matching the reference's "YOUR NAME / YOUR PHONE" aesthetic), **client-side only**.
 3. Submit composes a `mailto:` URL via `lib/mailto.ts` — `to` = owner email from `site.json`, subject `Enquiry — <Package Name>`, body template containing package name, price, billing, and the entered fields — and opens it. No POST, no backend.
 4. When `purchasable` flips true for a package (future), step 3 is replaced by Stripe Checkout for that package; the selection UI is untouched. Architect step 3 behind a single `getPackageCta(pkg)` switch so the swap is one function.
+
+**Amended 2026-07-09 (owner-directed):** the anticipated swap in step 4 happened via `purchaseUrl` rather than Stripe — selecting a package whose catalog entry carries a `purchaseUrl` skips the name/phone step entirely and the CTA (label `site.purchaseCtaLabel`) links straight to the exercise.com purchase page. The mailto branch (steps 2–3) remains the fallback for any package without a `purchaseUrl`.
 
 `mailto.ts` is a pure function: `(pkg, fields) → string`, fully unit-tested including URL encoding of spaces, newlines, and the euro sign.
 

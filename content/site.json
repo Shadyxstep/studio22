@@ -25,6 +25,7 @@
     "href": "https://search.google.com/local/writereview?placeid=ChIJV6gbKv0HZ0gRig71rOCeM18"
   },
   "packageCta": { "label": "Want more info?", "href": "/get-started" },
+  "purchaseCtaLabel": "Buy Now",
   "packageCategories": {
     "gym": "Gym Class Packages",
     "pilates": "Pilates Packages",

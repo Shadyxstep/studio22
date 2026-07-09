@@ -160,21 +160,22 @@ Rules (these are what make v2 possible — do not bend them):
   features: string[],
   purchasable: boolean,            // false for ALL packages in v1
   stripePriceId?: string           // empty in v1; HUMAN TODO at activation
+  purchaseUrl?: string             // exercise.com purchase page; when present the
+                                   // card CTA is the buy-now link (label: site.purchaseCtaLabel)
 }
 ```
 
-Catalog to encode in `content/packages.json` (verified against live site 2026-06-10):
+Catalog to encode in `content/packages.json` (verified against live site 2026-06-10; **amended 2026-07-08, owner-directed:** performance, reformer-20 and simulator retired from sale and removed; buy-now purchase URLs added for the remaining five — CTA precedence is purchaseUrl → dormant Stripe → enquiry):
 
-| id | category | name | price | billing |
-|---|---|---|---|---|
-| unlimited-gym | gym | Unlimited Gym Class Package | 55 | weekly |
-| performance | gym | Performance Package | 75 | weekly |
-| complete-studio | gym | Complete Studio Package | 75 | weekly |
-| pilates-membership | pilates | Pilates Membership | 50 | weekly |
-| reformer-10 | pilates | 10 Reformer Pilates Class Package | 225 | one-time |
-| reformer-20 | pilates | 20 Reformer Pilates Class Package | 425 | one-time |
-| online-coaching | online-golf | Online Coaching | 35 | weekly |
-| simulator | online-golf | Simulator Package | 60 | weekly |
+| id | category | name | price | billing | purchaseUrl (exercise.com package id) |
+|---|---|---|---|---|---|
+| unlimited-gym | gym | Unlimited Gym Class Package | 55 | weekly | 61447 |
+| complete-studio | gym | Complete Studio Package | 75 | weekly | 61488 |
+| pilates-membership | pilates | Pilates Membership | 50 | weekly | 61486 |
+| reformer-10 | pilates | 10 Reformer Pilates Class Package | 225 | one-time | 65549 |
+| online-coaching | online-golf | Online Coaching | 35 | weekly | 61445 |
+
+Owner-supplied but **not yet on the site** (no card, price unknown — pending owner details): Reformer Trial 5 pack (73866), Strength 2 week trial (75441).
 
 Global perk, rendered on the packages page and in the sign-up flow: *all memberships include on-site sauna access.* (Lives in `site.json`, not hardcoded.)
 

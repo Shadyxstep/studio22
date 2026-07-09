@@ -3,12 +3,14 @@ import type { Package, Site } from "./content/schema";
 type Cta = { label: string; href: string };
 
 /*
- * SPEC §9 — the single switch behind every package CTA. While a package is
- * not purchasable the CTA routes to the enquiry flow (site.packageCta).
- * When payments activate (SPEC §10), the purchasable branch becomes the
- * Stripe Checkout entry point; nothing else in the UI changes.
+ * SPEC §9 — the single switch behind every package CTA, in precedence order:
+ * an exercise.com purchase page (owner-supplied purchaseUrl) wins, then the
+ * dormant Stripe branch (SPEC §10), then the enquiry flow (site.packageCta).
  */
 export function getPackageCta(pkg: Package, site: Site): Cta {
+  if (pkg.purchaseUrl) {
+    return { label: site.purchaseCtaLabel, href: pkg.purchaseUrl };
+  }
   if (pkg.purchasable && pkg.stripePriceId) {
     return { label: site.packageCta.label, href: `/api/checkout?package=${pkg.id}` };
   }

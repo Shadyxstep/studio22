@@ -20,7 +20,7 @@ test("submit is disabled until a package is selected and fields are filled", () 
   expect(submit.getAttribute("href")).toBeNull();
 
   fireEvent.click(
-    screen.getByRole("button", { name: /performance package/i }),
+    screen.getByRole("button", { name: /complete studio package/i }),
   );
   expect(submit.getAttribute("aria-disabled")).toBe("true");
 

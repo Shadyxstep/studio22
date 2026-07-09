@@ -163,6 +163,8 @@ export const PackageSchema = z.object({
   features: z.array(z.string()),
   purchasable: z.boolean(),
   stripePriceId: z.string().optional(),
+  /** exercise.com purchase page — when present the card CTA becomes the buy-now link (SPEC §6.3). */
+  purchaseUrl: z.string().url().optional(),
 });
 
 export const PackagesSchema = z
@@ -201,6 +203,7 @@ export const SiteSchema = z.object({
   social: z.array(Cta).min(1),
   reviewCta: Cta,
   packageCta: Cta,
+  purchaseCtaLabel: z.string().min(1),
   packageCategories: z.record(z.enum(PACKAGE_CATEGORIES), z.string().min(1)),
   sauna: z.object({
     label: z.string().min(1),

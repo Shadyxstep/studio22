@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-08 · OWNER — Buy Now buttons on package cards + catalog retirement — APPROVED
+- Plan: owner supplied exercise.com purchase links; package IDs verified against the T0.2 inventory mapping ("Strength"=unlimited-gym 61447, "Full studio membership"=complete-studio 61488, "Pilates membership"=61486, "Pilates 10 pack"=reformer-10 65549, "Online Training"=online-coaching 61445). Optional `purchaseUrl` on the package schema; getPackageCta precedence purchaseUrl → dormant Stripe → enquiry; label "Buy Now" as content (site.purchaseCtaLabel).
+- Changes: src/lib/content/schema.ts (Package.purchaseUrl, Site.purchaseCtaLabel), src/lib/packages.ts, content/packages.json (5 URLs added; performance/reformer-20/simulator REMOVED — owner retiring them), content/site.json, SPEC.md §6.3 amended (owner-directed, dated), tests: content.test (catalog table+count), format.test (CTA branch), packages.test (per-card hrefs), signup-flow.test + checkout.test (retired fixture ids swapped).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (81 passing) · build ✓ · local serve: /packages shows all 5 purchase hrefs, retired names absent.
+- Critic issues found → resolved: none
+- Follow-ups (not built): owner's two trial packages (Reformer Trial 5 pack 73866 — the old June promo, Strength 2 week trial 75441) have no cards — need price/billing/features from owner before adding; SignUpFlow on /get-started still funnels ALL packages to the enquiry mailto (unchanged on purpose) — owner may want it to link purchase pages instead; consider GTM conversion tags on the new Buy Now clicks.
+- Decisions made where SPEC was silent: "Buy Now" label is the owner's wording (his request verbatim); buy links open in the same tab like every other external link; retired packages fully removed rather than hidden (catalog is data, git preserves them); Stripe scaffolding left dormant untouched.
+
 ## 2026-07-08 · OWNER — Google Tag Manager for Google Ads campaigns — APPROVED
 - Plan: env-gated GTM component (bootstrap script + noscript iframe per the Google rep's snippet) wired into the root layout; container ID via NEXT_PUBLIC_GTM_ID so the repo stays identifier-free and empty-.env builds ship no tracking.
 - Changes: src/components/analytics/GoogleTagManager.tsx (+test), src/app/layout.tsx (render at top of body), .env.example (+NEXT_PUBLIC_GTM_ID)

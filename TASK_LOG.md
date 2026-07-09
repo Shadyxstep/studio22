@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-07-09 · OWNER — image crop controls (coaches-portrait beheading fix) — APPROVED
+- Plan: the tall coaches-portrait.jpg was center-cropped by object-cover, cutting off the standing coach's head (Leo reported with screenshot). Two content-as-data controls added: (1) optional `focus: top|center|bottom` on ImageRef → object-position class, honoured by all four cropping components; (2) optional `imageAspect: landscape|portrait|square` on editorialSplit → frame shape class. Home's coaches editorialSplit uses imageAspect:"portrait" (taller frame, centered crop — Leo iterated from focus:top to this); facility gallery's coaches tile keeps focus:"top".
+- Changes: src/lib/content/schema.ts (ImageRef.focus, EditorialSplit.imageAspect, imageFocusClass + imageAspectClass, +5 tests), src/components/sections/{EditorialSplit,Gallery,Hero,PillarGrid}.tsx, content/pages/home.json (imageAspect portrait) + facility.json (focus top).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (87 passing) · build ✓ · headless-Chrome screenshots of / and /facility confirm both coaches fully in frame.
+- Critic issues found → resolved: first / screenshot captured unstyled HTML — a zombie `next start` (survived pkill by name; killed by PID) was serving a stale build whose CSS hash 400'd. Check `lsof -i :PORT` before trusting local serve checks.
+- Follow-ups (not built): owner may want focus/aspect tuned on other portraits (one-line content edits now).
+- Decisions made where SPEC was silent: enum vocabularies (not free-form percentages/ratios) keep the content model closed for the v2 agent; mapper functions return literal Tailwind class names so the scanner sees them; defaults (center, landscape 4:3) leave every other image pixel-identical.
+
 ## 2026-07-09 · OWNER — Trial packages + sign-up flow repointed to purchase pages — APPROVED
 - Plan: add the two trial packages from owner's exercise.com screenshots (names/prices/inclusions verbatim; strength trial price €120 confirmed by Leo — cut off in screenshot) and repoint the /get-started sign-up flow per Leo: selecting a package with a purchaseUrl skips name/phone and the CTA links straight to the purchase page (the exact getPackageCta swap SPEC §9 step 4 anticipated).
 - Changes: content/packages.json (+strength-trial 75441 €120 one-time gym, +reformer-intro-5 73866 €120 one-time pilates → 7 packages), src/components/sections/SignUpFlow.tsx (direct-purchase branch; mailto + name/phone kept as fallback for packages without purchaseUrl), SPEC.md §6.3 rows + §9 dated amendment, content.test catalog table, signup-flow.test rewritten (purchase branch, no-fields assertion, enquiry fallback via stripped-purchaseUrl fixture).

@@ -47,7 +47,17 @@ const Cta = z.object({
 const ImageRef = z.object({
   src: z.string().min(1),
   alt: z.string(),
+  /** Crop anchor when the frame's aspect ratio crops the photo (default: center). */
+  focus: z.enum(["top", "center", "bottom"]).optional(),
 });
+export type ImageRefType = z.infer<typeof ImageRef>;
+
+/** object-cover crop anchor → Tailwind class (literal names so Tailwind sees them). */
+export function imageFocusClass(focus?: "top" | "center" | "bottom"): string {
+  if (focus === "top") return "object-top";
+  if (focus === "bottom") return "object-bottom";
+  return "object-center";
+}
 
 /* ---------- section schemas (SPEC §6.2) ---------- */
 
@@ -74,9 +84,20 @@ const EditorialSplitSection = z.object({
   paragraphs: z.array(z.string()).default([]),
   bullets: z.array(z.string()).optional(),
   image: ImageRef.optional(),
+  /** Frame shape for the image (default: landscape 4:3). */
+  imageAspect: z.enum(["landscape", "portrait", "square"]).optional(),
   cta: Cta.optional(),
   reverse: z.boolean().optional(),
 });
+
+/** editorialSplit frame shape → Tailwind class (literal names so Tailwind sees them). */
+export function imageAspectClass(
+  aspect?: "landscape" | "portrait" | "square",
+): string {
+  if (aspect === "portrait") return "aspect-[3/4]";
+  if (aspect === "square") return "aspect-square";
+  return "aspect-[4/3]";
+}
 
 const StatBarSection = z.object({
   type: z.literal("statBar"),

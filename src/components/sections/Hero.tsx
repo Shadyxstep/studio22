@@ -4,7 +4,7 @@ import { HeroFade, Reveal } from "@/components/motion";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Globals } from "@/lib/content/load";
-import type { Section } from "@/lib/content/schema";
+import { imageFocusClass, type Section } from "@/lib/content/schema";
 
 type Props = { section: Extract<Section, { type: "hero" }>; globals: Globals };
 
@@ -60,7 +60,7 @@ export function Hero({ section }: Props) {
               fill
               priority
               sizes="(max-width: 768px) 100vw, 55vw"
-              className="object-cover"
+              className={`object-cover ${imageFocusClass(section.image.focus)}`}
             />
           </HeroFade>
         )}

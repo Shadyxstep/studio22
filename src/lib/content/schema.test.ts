@@ -1,6 +1,8 @@
 import { describe, expect, test } from "vitest";
 import {
   BILLING,
+  imageAspectClass,
+  imageFocusClass,
   PACKAGE_CATEGORIES,
   PageSchema,
   PackagesSchema,
@@ -108,6 +110,76 @@ describe("package catalog schema", () => {
   test("a non-numeric price is rejected", () => {
     expect(() =>
       parseContent(PackagesSchema, [{ ...pkg, price: "75" }], "packages.json"),
+    ).toThrow(ContentValidationError);
+  });
+});
+
+describe("image crop focus", () => {
+  const heroWith = (image: object) => [
+    { type: "hero", headline: "H", image },
+  ];
+
+  test("focus accepts the three anchors and stays optional", () => {
+    for (const focus of ["top", "center", "bottom", undefined]) {
+      const page = parseContent(
+        PageSchema,
+        {
+          title: "T",
+          description: "D",
+          sections: heroWith({ src: "/images/x.jpg", alt: "", focus }),
+        },
+        "test.json",
+      );
+      expect(page.sections).toHaveLength(1);
+    }
+  });
+
+  test("an unknown focus value is a build failure", () => {
+    expect(() =>
+      parseContent(
+        PageSchema,
+        {
+          title: "T",
+          description: "D",
+          sections: heroWith({ src: "/images/x.jpg", alt: "", focus: "left" }),
+        },
+        "test.json",
+      ),
+    ).toThrow(ContentValidationError);
+  });
+
+  test("imageFocusClass maps anchors to literal Tailwind classes", () => {
+    expect(imageFocusClass("top")).toBe("object-top");
+    expect(imageFocusClass("bottom")).toBe("object-bottom");
+    expect(imageFocusClass("center")).toBe("object-center");
+    expect(imageFocusClass(undefined)).toBe("object-center");
+  });
+
+  test("imageAspectClass maps frame shapes to literal Tailwind classes", () => {
+    expect(imageAspectClass("portrait")).toBe("aspect-[3/4]");
+    expect(imageAspectClass("square")).toBe("aspect-square");
+    expect(imageAspectClass("landscape")).toBe("aspect-[4/3]");
+    expect(imageAspectClass(undefined)).toBe("aspect-[4/3]");
+  });
+
+  test("an unknown editorialSplit imageAspect is a build failure", () => {
+    expect(() =>
+      parseContent(
+        PageSchema,
+        {
+          title: "T",
+          description: "D",
+          sections: [
+            {
+              type: "editorialSplit",
+              headline: "H",
+              image: { src: "/images/x.jpg", alt: "" },
+              imageAspect: "wide",
+            },
+          ],
+        },
+        "test.json",
+      ),
     ).toThrow(ContentValidationError);
   });
 });

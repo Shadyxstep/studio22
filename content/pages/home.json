@@ -37,6 +37,7 @@
         "src": "/images/coaches-portrait.jpg",
         "alt": "Two Studio 22 coaches with kettlebells in the gym"
       },
+      "imageAspect": "portrait",
       "cta": { "label": "See How We Help You", "href": "/get-started" }
     },
     {

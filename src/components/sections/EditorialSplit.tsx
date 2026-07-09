@@ -3,7 +3,11 @@ import { Reveal } from "@/components/motion";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Globals } from "@/lib/content/load";
-import type { Section } from "@/lib/content/schema";
+import {
+  imageAspectClass,
+  imageFocusClass,
+  type Section,
+} from "@/lib/content/schema";
 
 type Props = {
   section: Extract<Section, { type: "editorialSplit" }>;
@@ -51,13 +55,15 @@ export function EditorialSplit({ section }: Props) {
               section.reverse ? "md:[&>*:first-child]:order-2" : ""
             }`}
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-card">
+            <div
+              className={`relative ${imageAspectClass(section.imageAspect)} overflow-hidden rounded-card`}
+            >
               <Image
                 src={section.image.src}
                 alt={section.image.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className={`object-cover ${imageFocusClass(section.image.focus)}`}
               />
             </div>
             {text}

@@ -95,7 +95,8 @@
         },
         {
           "src": "/images/coaches-portrait.jpg",
-          "alt": "Two Studio 22 coaches with kettlebells in the gym"
+          "alt": "Two Studio 22 coaches with kettlebells in the gym",
+          "focus": "top"
         },
         {
           "src": "/images/signage-founders.jpg",

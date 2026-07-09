@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { RevealItem, RevealStagger } from "@/components/motion";
 import type { Globals } from "@/lib/content/load";
-import type { Section } from "@/lib/content/schema";
+import { imageFocusClass, type Section } from "@/lib/content/schema";
 
 type Props = {
   section: Extract<Section, { type: "gallery" }>;
@@ -31,7 +31,7 @@ export function Gallery({ section }: Props) {
                 alt={img.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.045]"
+                className={`object-cover ${imageFocusClass(img.focus)} transition-transform duration-700 group-hover:scale-[1.045]`}
               />
             </div>
           </RevealItem>

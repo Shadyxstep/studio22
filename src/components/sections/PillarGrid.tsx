@@ -2,7 +2,7 @@ import Image from "next/image";
 import { RevealItem, RevealStagger } from "@/components/motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Globals } from "@/lib/content/load";
-import type { Section } from "@/lib/content/schema";
+import { imageFocusClass, type Section } from "@/lib/content/schema";
 
 type Props = {
   section: Extract<Section, { type: "pillarGrid" }>;
@@ -34,7 +34,7 @@ export function PillarGrid({ section, globals }: Props) {
                   alt={pillar.image.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={`object-cover ${imageFocusClass(pillar.image.focus)} transition-transform duration-700 group-hover:scale-105`}
                 />
               </div>
               <p className="mt-5 font-display text-base italic text-sage">

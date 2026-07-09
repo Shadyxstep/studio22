@@ -30,12 +30,14 @@ test("sauna perk banner renders from site.json", async () => {
   expect(screen.getByText(globals.site.sauna.body)).toBeDefined();
 });
 
-test("every package CTA goes through getPackageCta", async () => {
+test("every package CTA goes through getPackageCta (one buy-now link per card)", async () => {
   render(await PackagesPage());
-  const expected = getPackageCta(globals.packages[0]!, globals.site);
-  const links = screen.getAllByRole("link", { name: expected.label });
+  const links = screen.getAllByRole("link", {
+    name: new RegExp(globals.site.purchaseCtaLabel),
+  });
   expect(links.length).toBe(globals.packages.length);
-  for (const link of links) {
-    expect(link.getAttribute("href")).toBe(expected.href);
+  const hrefs = links.map((l) => l.getAttribute("href"));
+  for (const pkg of globals.packages) {
+    expect(hrefs).toContain(getPackageCta(pkg, globals.site).href);
   }
 });

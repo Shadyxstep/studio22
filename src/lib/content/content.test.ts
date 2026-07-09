@@ -47,7 +47,7 @@ function collectFromSite(site: Site) {
 
 describe("every content file parses against its schema", () => {
   test("site.json", () => expect(loadSite().name).toBe("Studio 22"));
-  test("packages.json", () => expect(loadPackages()).toHaveLength(8));
+  test("packages.json", () => expect(loadPackages()).toHaveLength(7));
   test("testimonials.json", () => expect(loadTestimonials()).toHaveLength(5));
   test("faqs.json (empty pending owner copy)", () =>
     expect(loadFaqs()).toEqual([]));
@@ -57,26 +57,33 @@ describe("every content file parses against its schema", () => {
   }
 });
 
-describe("package catalog matches SPEC §6.3 exactly", () => {
-  const expected: Array<[string, string, number, string]> = [
-    ["unlimited-gym", "gym", 55, "weekly"],
-    ["performance", "gym", 75, "weekly"],
-    ["complete-studio", "gym", 75, "weekly"],
-    ["pilates-membership", "pilates", 50, "weekly"],
-    ["reformer-10", "pilates", 225, "one-time"],
-    ["reformer-20", "pilates", 425, "one-time"],
-    ["online-coaching", "online-golf", 35, "weekly"],
-    ["simulator", "online-golf", 60, "weekly"],
+describe("package catalog matches SPEC §6.3 exactly (as amended 2026-07-08)", () => {
+  const expected: Array<[string, string, number, string, string]> = [
+    ["unlimited-gym", "gym", 55, "weekly", "61447"],
+    ["complete-studio", "gym", 75, "weekly", "61488"],
+    ["strength-trial", "gym", 120, "one-time", "75441"],
+    ["pilates-membership", "pilates", 50, "weekly", "61486"],
+    ["reformer-10", "pilates", 225, "one-time", "65549"],
+    ["reformer-intro-5", "pilates", 120, "one-time", "73866"],
+    ["online-coaching", "online-golf", 35, "weekly", "61445"],
   ];
 
-  test("ids, categories, prices, billing", () => {
+  test("ids, categories, prices, billing, purchase URLs", () => {
     const got = loadPackages().map(
-      (p) => [p.id, p.category, p.price, p.billing] as const,
+      (p) => [p.id, p.category, p.price, p.billing, p.purchaseUrl] as const,
     );
-    expect(got).toEqual(expected);
+    expect(got).toEqual(
+      expected.map(([id, cat, price, billing, exid]) => [
+        id,
+        cat,
+        price,
+        billing,
+        `https://fitness.studio-22.ie/packages/${exid}/purchase/`,
+      ]),
+    );
   });
 
-  test("nothing is purchasable in v1 and no Stripe ids exist", () => {
+  test("Stripe stays dormant: nothing purchasable, no Stripe ids", () => {
     for (const p of loadPackages()) {
       expect(p.purchasable).toBe(false);
       expect(p.stripePriceId).toBeUndefined();

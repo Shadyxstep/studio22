@@ -10,21 +10,8 @@
       "Proper technique and coaching",
       "Balanced training for muscle, joints, and mobility"
     ],
-    "purchasable": false
-  },
-  {
-    "id": "performance",
-    "category": "gym",
-    "name": "Performance Package",
-    "price": 75,
-    "billing": "weekly",
-    "features": [
-      "Strength training & conditioning",
-      "Progressive overload programming",
-      "Technique coaching for all levels",
-      "Improve power and confidence"
-    ],
-    "purchasable": false
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/61447/purchase/"
   },
   {
     "id": "complete-studio",
@@ -38,7 +25,23 @@
       "Core strength and stability",
       "Improve posture and mobility"
     ],
-    "purchasable": false
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/61488/purchase/"
+  },
+  {
+    "id": "strength-trial",
+    "category": "gym",
+    "name": "Strength Membership Trial",
+    "price": 120,
+    "billing": "one-time",
+    "features": [
+      "A full two weeks inside Studio 22",
+      "Unlimited sessions — strength, sweat and sauna",
+      "Train our strength programming",
+      "Feel what membership actually feels like"
+    ],
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/75441/purchase/"
   },
   {
     "id": "pilates-membership",
@@ -52,7 +55,8 @@
       "Joint-friendly strength and mobility work",
       "Personalized coaching and progressions"
     ],
-    "purchasable": false
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/61486/purchase/"
   },
   {
     "id": "reformer-10",
@@ -65,20 +69,23 @@
       "Core stability and posture improvement",
       "Joint-friendly strength and mobility work"
     ],
-    "purchasable": false
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/65549/purchase/"
   },
   {
-    "id": "reformer-20",
+    "id": "reformer-intro-5",
     "category": "pilates",
-    "name": "20 Reformer Pilates Class Package",
-    "price": 425,
+    "name": "Reformer Intro 5-session pack",
+    "price": 120,
     "billing": "one-time",
     "features": [
-      "Controlled reformer-based movements",
-      "Core stability and posture improvement",
-      "Joint-friendly strength and mobility work"
+      "5 reformer sessions",
+      "Reformer Pilates Foundations",
+      "Mixed-Level Reformer Pilates",
+      "Intermediate Reformer Pilates"
     ],
-    "purchasable": false
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/73866/purchase/"
   },
   {
     "id": "online-coaching",
@@ -92,20 +99,7 @@
       "Progress tracking and adjustments",
       "Direct communication with your coach"
     ],
-    "purchasable": false
-  },
-  {
-    "id": "simulator",
-    "category": "online-golf",
-    "name": "Simulator Package",
-    "price": 60,
-    "billing": "weekly",
-    "features": [
-      "TrackMan swing and ball-flight analysis",
-      "Accurate distance and dispersion tracking",
-      "Realistic virtual course play",
-      "Practice plans focused on improvement"
-    ],
-    "purchasable": false
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/packages/61445/purchase/"
   }
 ]

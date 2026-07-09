@@ -28,6 +28,7 @@
     "label": "Want more info?",
     "href": "/get-started"
   },
+  "purchaseCtaLabel": "Buy Now",
   "packageCategories": {
     "gym": "Gym Class Packages",
     "pilates": "Pilates Packages",

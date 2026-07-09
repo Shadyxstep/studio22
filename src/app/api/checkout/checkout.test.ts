@@ -43,7 +43,7 @@ describe("dormant checkout (no env configured — SPEC: empty .env suffices)", (
   });
 
   test("valid request while unconfigured → 501 envelope (the dormancy gate)", async () => {
-    const res = await checkout(post({ packageId: "performance" }));
+    const res = await checkout(post({ packageId: "unlimited-gym" }));
     expect(res.status).toBe(501);
     expect(await res.json()).toEqual({
       ok: false,

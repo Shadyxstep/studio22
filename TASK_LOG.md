@@ -18,6 +18,22 @@
 
 ---
 
+## 2026-07-09 · OWNER — Trial packages + sign-up flow repointed to purchase pages — APPROVED
+- Plan: add the two trial packages from owner's exercise.com screenshots (names/prices/inclusions verbatim; strength trial price €120 confirmed by Leo — cut off in screenshot) and repoint the /get-started sign-up flow per Leo: selecting a package with a purchaseUrl skips name/phone and the CTA links straight to the purchase page (the exact getPackageCta swap SPEC §9 step 4 anticipated).
+- Changes: content/packages.json (+strength-trial 75441 €120 one-time gym, +reformer-intro-5 73866 €120 one-time pilates → 7 packages), src/components/sections/SignUpFlow.tsx (direct-purchase branch; mailto + name/phone kept as fallback for packages without purchaseUrl), SPEC.md §6.3 rows + §9 dated amendment, content.test catalog table, signup-flow.test rewritten (purchase branch, no-fields assertion, enquiry fallback via stripped-purchaseUrl fixture).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (82 passing) · build ✓ · local serve: /packages lists all 7 purchase hrefs, /get-started shows both trials (first check hit a stale next-start on port 3123 — kill old servers before curl-verifying).
+- Critic issues found → resolved: none
+- Follow-ups (not built): GTM conversion tags for Buy Now clicks (owner/rep, in GTM dashboard); owner may want the June-promo trial-pack highlight copy on /get-started refreshed to reference the new permanent trial cards.
+- Decisions made where SPEC was silent: trial feature bullets condensed from the screenshots' package descriptions/inclusions (logged invention); trials placed last within their category groups; CTA label flips "Sign Up"→"Buy Now" on selecting a direct-purchase package (site.purchaseCtaLabel, content-as-data).
+
+## 2026-07-08 · OWNER — Buy Now buttons on package cards + catalog retirement — APPROVED
+- Plan: owner supplied exercise.com purchase links; package IDs verified against the T0.2 inventory mapping ("Strength"=unlimited-gym 61447, "Full studio membership"=complete-studio 61488, "Pilates membership"=61486, "Pilates 10 pack"=reformer-10 65549, "Online Training"=online-coaching 61445). Optional `purchaseUrl` on the package schema; getPackageCta precedence purchaseUrl → dormant Stripe → enquiry; label "Buy Now" as content (site.purchaseCtaLabel).
+- Changes: src/lib/content/schema.ts (Package.purchaseUrl, Site.purchaseCtaLabel), src/lib/packages.ts, content/packages.json (5 URLs added; performance/reformer-20/simulator REMOVED — owner retiring them), content/site.json, SPEC.md §6.3 amended (owner-directed, dated), tests: content.test (catalog table+count), format.test (CTA branch), packages.test (per-card hrefs), signup-flow.test + checkout.test (retired fixture ids swapped).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (81 passing) · build ✓ · local serve: /packages shows all 5 purchase hrefs, retired names absent.
+- Critic issues found → resolved: none
+- Follow-ups (not built): owner's two trial packages (Reformer Trial 5 pack 73866 — the old June promo, Strength 2 week trial 75441) have no cards — need price/billing/features from owner before adding; SignUpFlow on /get-started still funnels ALL packages to the enquiry mailto (unchanged on purpose) — owner may want it to link purchase pages instead; consider GTM conversion tags on the new Buy Now clicks.
+- Decisions made where SPEC was silent: "Buy Now" label is the owner's wording (his request verbatim); buy links open in the same tab like every other external link; retired packages fully removed rather than hidden (catalog is data, git preserves them); Stripe scaffolding left dormant untouched.
+
 ## 2026-07-08 · OWNER — Google Tag Manager for Google Ads campaigns — APPROVED
 - Plan: env-gated GTM component (bootstrap script + noscript iframe per the Google rep's snippet) wired into the root layout; container ID via NEXT_PUBLIC_GTM_ID so the repo stays identifier-free and empty-.env builds ship no tracking.
 - Changes: src/components/analytics/GoogleTagManager.tsx (+test), src/app/layout.tsx (render at top of body), .env.example (+NEXT_PUBLIC_GTM_ID)

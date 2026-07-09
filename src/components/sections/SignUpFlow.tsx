@@ -5,11 +5,13 @@ import type { Globals } from "@/lib/content/load";
 import { PACKAGE_CATEGORIES } from "@/lib/content/schema";
 import { formatPrice } from "@/lib/format";
 import { buildEnquiryMailto } from "@/lib/mailto";
+import { getPackageCta } from "@/lib/packages";
 
 /*
- * SPEC §9 sign-up flow: choose a package → enter name/phone → the submit
- * anchor opens a pre-filled mailto. Client-side only; no POST exists.
- * When payments activate, only the final CTA branch changes (getPackageCta).
+ * SPEC §9 sign-up flow: choose a package → the CTA resolves via the single
+ * getPackageCta switch. Packages with a purchaseUrl go straight to their
+ * exercise.com purchase page (no name/phone step); any package without one
+ * falls back to the original enquiry mailto with name/phone fields.
  */
 export function SignUpFlow({ globals }: { globals: Globals }) {
   const { site, packages } = globals;
@@ -18,15 +20,21 @@ export function SignUpFlow({ globals }: { globals: Globals }) {
   const [phone, setPhone] = useState("");
 
   const selected = packages.find((p) => p.id === selectedId) ?? null;
-  const ready = selected !== null && name.trim() !== "" && phone.trim() !== "";
-  const href = selected
-    ? buildEnquiryMailto({
-        to: site.contact.email,
-        pkg: selected,
-        name: name.trim(),
-        phone: phone.trim(),
-      })
-    : undefined;
+  const direct = selected !== null && Boolean(selected.purchaseUrl);
+  const ready =
+    selected !== null &&
+    (direct || (name.trim() !== "" && phone.trim() !== ""));
+  const href = !selected
+    ? undefined
+    : direct
+      ? getPackageCta(selected, site).href
+      : buildEnquiryMailto({
+          to: site.contact.email,
+          pkg: selected,
+          name: name.trim(),
+          phone: phone.trim(),
+        });
+  const ctaLabel = direct ? site.purchaseCtaLabel : site.signup.submitLabel;
 
   const inputCls =
     "w-full rounded-[10px] border border-line bg-slate px-4 py-3.5 text-base text-bone outline-none transition-colors duration-300 placeholder:text-mid focus:border-sage";
@@ -84,35 +92,40 @@ export function SignUpFlow({ globals }: { globals: Globals }) {
         className="grid max-w-2xl gap-10 md:grid-cols-2"
         onSubmit={(e) => e.preventDefault()}
       >
-        <div className="flex flex-col gap-2">
-          <label htmlFor="signup-name" className={labelCls}>
-            {site.signup.nameLabel}
-          </label>
-          <input
-            id="signup-name"
-            name="name"
-            autoComplete="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className={inputCls}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="signup-phone" className={labelCls}>
-            {site.signup.phoneLabel}
-          </label>
-          <input
-            id="signup-phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className={inputCls}
-          />
-        </div>
+        {selected !== null && !direct && (
+          <>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="signup-name" className={labelCls}>
+                {site.signup.nameLabel}
+              </label>
+              <input
+                id="signup-name"
+                name="name"
+                autoComplete="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={inputCls}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="signup-phone" className={labelCls}>
+                {site.signup.phoneLabel}
+              </label>
+              <input
+                id="signup-phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className={inputCls}
+              />
+            </div>
+          </>
+        )}
         <a
           href={ready ? href : undefined}
+          rel={direct ? "noopener" : undefined}
           aria-disabled={!ready}
           tabIndex={ready ? 0 : -1}
           className={`inline-flex items-center justify-center rounded-full border px-7 py-3.5 text-sm tracking-[0.04em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:col-span-2 md:justify-self-start ${
@@ -121,7 +134,7 @@ export function SignUpFlow({ globals }: { globals: Globals }) {
               : "pointer-events-none border-line text-mid"
           }`}
         >
-          {site.signup.submitLabel}
+          {ctaLabel}
         </a>
       </form>
     </div>

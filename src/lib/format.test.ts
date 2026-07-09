@@ -13,9 +13,15 @@ test("one-time prices render as One Time Payment: €N", () => {
   );
 });
 
-test("every v1 package CTA routes to the enquiry flow (nothing purchasable)", () => {
+test("packages with a purchaseUrl get the buy-now CTA; without one they fall back to enquiry", () => {
   const site = loadSite();
   for (const pkg of loadPackages()) {
-    expect(getPackageCta(pkg, site)).toEqual(site.packageCta);
+    expect(getPackageCta(pkg, site)).toEqual({
+      label: site.purchaseCtaLabel,
+      href: pkg.purchaseUrl,
+    });
+    expect(getPackageCta({ ...pkg, purchaseUrl: undefined }, site)).toEqual(
+      site.packageCta,
+    );
   }
 });

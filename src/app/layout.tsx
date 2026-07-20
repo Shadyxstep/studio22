@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Hanken_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
@@ -58,6 +59,7 @@ export default function RootLayout({
         <Nav site={site} />
         {children}
         <Footer site={site} />
+        <Analytics />
       </body>
     </html>
   );

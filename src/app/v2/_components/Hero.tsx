@@ -16,6 +16,7 @@ export function Hero({ site }: { site: Site }) {
         alt="The Studio 22 founders beneath the backlit Studio 22 sign"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="v2-hero__media"
       />

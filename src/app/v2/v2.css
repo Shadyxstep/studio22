@@ -804,3 +804,22 @@ html.lenis body {
   margin: 0;
   padding: 0;
 }
+
+/* tap targets: short inline links get a 44px minimum width */
+.v2-footer__links a,
+.v2-visit__group a {
+  min-width: 44px;
+}
+/* phones: review cards live in a sideways swipe row — skip the rise there so
+   off-to-the-side cards are never left hidden */
+@media (max-width: 760px) {
+  .v2-reviews__row [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* hero: keep the backlit sign in frame on tall/narrow crops */
+.v2-hero__media {
+  object-position: center 30%;
+}

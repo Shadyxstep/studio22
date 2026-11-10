@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { loadSite } from "@/lib/content/load";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -56,9 +57,13 @@ export default function RootLayout({
             __html: `try{if(localStorage.getItem("studio22-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`,
           }}
         />
-        <Nav site={site} />
+        <SiteChrome>
+          <Nav site={site} />
+        </SiteChrome>
         {children}
-        <Footer site={site} />
+        <SiteChrome>
+          <Footer site={site} />
+        </SiteChrome>
         <Analytics />
       </body>
     </html>

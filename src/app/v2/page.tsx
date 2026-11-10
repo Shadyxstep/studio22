@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { loadGlobals } from "@/lib/content/load";
 import { buildLocalBusinessJsonLd } from "@/lib/seo";
 import { Hero } from "./_components/Hero";
+import { Chapter } from "./_components/Chapter";
 import { Offering } from "./_components/Offering";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function V2HomePage() {
       />
       <Hero site={globals.site} />
       <Offering />
+      <Chapter />
     </main>
   );
 }

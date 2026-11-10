@@ -22,3 +22,8 @@ export function priceParts(pkg: Pick<Package, "price" | "billing">) {
 export function ctaIdFor(pkg: Pick<Package, "id">): string {
   return `buy_now_${pkg.id.replace(/-/g, "_")}`;
 }
+
+/** Pick testimonials by reviewer name, in order; missing names are skipped. */
+export function pickReviews<T extends { name: string }>(all: T[], names: readonly string[]): T[] {
+  return names.flatMap((n) => all.filter((t) => t.name === n));
+}

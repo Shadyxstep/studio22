@@ -6,6 +6,7 @@ import { Chapter } from "./_components/Chapter";
 import { Offering } from "./_components/Offering";
 import { Packages } from "./_components/Packages";
 import { Reviews } from "./_components/Reviews";
+import { Visit } from "./_components/Visit";
 import { V2_CONFIG } from "./_lib/config";
 import { pickPackages, pickReviews } from "./_lib/packages";
 
@@ -30,6 +31,7 @@ export default function V2HomePage() {
       <Chapter />
       <Packages packages={packages} site={globals.site} />
       <Reviews reviews={reviews} site={globals.site} />
+      <Visit site={globals.site} />
     </main>
   );
 }

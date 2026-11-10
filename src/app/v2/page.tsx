@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { loadGlobals } from "@/lib/content/load";
 import { buildLocalBusinessJsonLd } from "@/lib/seo";
+import { Hero } from "./_components/Hero";
 
 export const metadata: Metadata = {
   title: { absolute: "Studio 22 — The Future of Wellness (V2 preview)" },
@@ -16,6 +17,7 @@ export default function V2HomePage() {
           __html: JSON.stringify(buildLocalBusinessJsonLd(globals.site)),
         }}
       />
+      <Hero site={globals.site} />
     </main>
   );
 }

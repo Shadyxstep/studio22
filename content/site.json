@@ -74,7 +74,11 @@
   "footer": {
     "locationHeading": "Where we're located, give us a visit.",
     "socialHeading": "We're pretty active on social, check us out.",
-    "exploreHeading": "Or keep exploring our site to learn more."
+    "exploreHeading": "Or keep exploring our site to learn more.",
+    "credit": {
+      "label": "Website by AEGIS Software Studio",
+      "href": "https://aegis-software.studio"
+    }
   },
   "pillars": {
     "gym": {

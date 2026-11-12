@@ -224,3 +224,11 @@ Repo initialised with SPEC.md, ROADMAP.md, CLAUDE.md, TASK_LOG.md. No code exist
 - Critic issues found → resolved: BUG (pre-existing) — next/font variables were on <body>, so the :root-level --font-display/--font-body aliases referenced undefined vars and computed invalid; webfonts were not rendering. Fixed by attaching font variable classes to <html>. Verified via headless-browser computed-style probe + screenshots (dark & light themes).
 - Follow-ups (not built): consider a wicklow-style drag carousel for Gallery; scrim utilities in globals.css now unused by Hero/PillarGrid (kept as sanctioned gradients).
 - Decisions made where SPEC was silent: hero headline's final word renders in italic sage (style-only, copy verbatim); nav/buttons drop the uppercase transform per the new design language.
+
+## 2026-11-12 · Owner-directed — Footer credit for AEGIS Software Studio — APPROVED
+- Plan: add an optional `footer.credit` {label, href} to the site content and render it opposite the copyright in the footer's bottom bar.
+- Changes: content/site.json, src/lib/content/schema.ts, src/components/layout/Footer.tsx, src/components/layout/layout.test.tsx
+- Gates: typecheck ✓ · lint ✓ · test ✓ (87 passing) · build ✓
+- Critic issues found → resolved: stale .next types from the v2-homepage branch failed typecheck until a fresh build regenerated them (not a code issue)
+- Follow-ups (not built): carry the same credit into `v2-homepage` / `feature/v2-platform` before either launches
+- Decisions made where SPEC was silent: credit copy "Website by AEGIS Software Studio" linking to https://aegis-software.studio, requested by Leo; field is optional so existing DB content versions still validate

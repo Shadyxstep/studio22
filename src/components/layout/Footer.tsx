@@ -74,9 +74,21 @@ export function Footer({ site }: { site: Site }) {
       </div>
 
       <div className="border-t border-line">
-        <p className="mx-auto max-w-6xl px-6 py-6 text-xs text-mid">
-          {site.copyright}
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-mid sm:flex-row sm:justify-between">
+          <p>{site.copyright}</p>
+          {site.footer.credit && (
+            <p>
+              <a
+                href={site.footer.credit.href}
+                target="_blank"
+                rel="noopener"
+                className="transition-colors duration-300 hover:text-bone"
+              >
+                {site.footer.credit.label}
+              </a>
+            </p>
+          )}
+        </div>
       </div>
     </footer>
   );

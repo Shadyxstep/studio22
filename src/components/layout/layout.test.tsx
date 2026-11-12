@@ -26,6 +26,10 @@ test("Footer renders contact details, social and footer links from site.json", (
   expect(screen.getByText(site.contact.phone)).toBeDefined();
   expect(screen.getByText(site.contact.email)).toBeDefined();
   expect(screen.getByText(site.copyright)).toBeDefined();
+  if (site.footer.credit) {
+    const credit = screen.getByRole("link", { name: site.footer.credit.label });
+    expect(credit.getAttribute("href")).toBe(site.footer.credit.href);
+  }
   for (const s of site.social) {
     expect(screen.getByRole("link", { name: s.label })).toBeDefined();
   }

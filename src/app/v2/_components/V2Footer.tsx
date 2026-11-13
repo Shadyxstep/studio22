@@ -1,23 +1,35 @@
-const LINKS = [
-  { label: "Our Facility", href: "/facility" },
-  { label: "Packages", href: "/packages" },
-  { label: "FAQs", href: "/faqs" },
-  { label: "Contact", href: "/contact" },
-];
+import type { V2Home } from "@/lib/content/schema";
 
-export function V2Footer({ name }: { name: string }) {
+/** Footer links, minus FAQs while content/faqs.json has no entries. */
+export function footerLinks(links: V2Home["footer"]["links"], faqCount: number) {
+  return faqCount > 0 ? links : links.filter((l) => l.href !== "/faqs");
+}
+
+export function V2Footer({
+  name,
+  footer,
+  faqCount,
+}: {
+  name: string;
+  footer: V2Home["footer"];
+  faqCount: number;
+}) {
   return (
     <footer className="v2-footer" data-v2-footer>
       <div className="v2-container v2-footer__row">
-        <div className="v2-footer__mark">{name.toUpperCase()}</div>
-        <ul className="v2-footer__links">
-          {LINKS.map((l) => (
-            <li key={l.href}>
-              <a href={l.href}>{l.label}</a>
-            </li>
-          ))}
-        </ul>
-        <div>© 2026 {name}</div>
+        <a href="#top" className="v2-footer__mark">
+          {name.toUpperCase()}
+        </a>
+        <nav aria-label={footer.linksLabel}>
+          <ul className="v2-footer__links">
+            {footerLinks(footer.links, faqCount).map((l) => (
+              <li key={l.href}>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="v2-footer__copy">{footer.copyright}</p>
       </div>
     </footer>
   );

@@ -2,18 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import type { V2Home } from "@/lib/content/schema";
 import { cta } from "../_lib/track";
 
-/* Link targets reuse the current routes; Reviews has no V1 route, so it
-   jumps to the reviews section on this page. */
-const LINKS = [
-  { label: "Our Facility", href: "/facility" },
-  { label: "Packages", href: "/packages" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "/contact" },
-];
-
-export function V2Nav({ name }: { name: string }) {
+/* Link targets reuse the current routes; Reviews jumps to the reviews
+   section on this page. The menu toggle only shows once JS is running. */
+export function V2Nav({ name, nav }: { name: string; nav: V2Home["nav"] }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -30,7 +24,7 @@ export function V2Nav({ name }: { name: string }) {
           {name.toUpperCase()}
         </Link>
         <ul className="v2-nav__links">
-          {LINKS.map((l) => (
+          {nav.links.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="v2-nav__link">
                 {l.label}
@@ -45,18 +39,14 @@ export function V2Nav({ name }: { name: string }) {
           aria-controls="v2-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "Close" : "Menu"}
+          {open ? nav.closeLabel : nav.menuLabel}
         </button>
-        <Link
-          href="/packages"
-          className="v2-btn v2-btn--accent v2-nav__join"
-          {...cta("join_now", "nav")}
-        >
-          Join now
+        <Link href={nav.join.href} className="v2-btn v2-btn--accent v2-nav__join" {...cta("join_now", "nav")}>
+          {nav.join.label}
         </Link>
         {open && (
           <ul id="v2-menu" className="v2-nav__menu">
-            {LINKS.map((l) => (
+            {nav.links.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="v2-nav__link" onClick={() => setOpen(false)}>
                   {l.label}

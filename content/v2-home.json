@@ -1,0 +1,235 @@
+{
+  "skipLink": "Skip to content",
+  "nav": {
+    "links": [
+      { "label": "Our Facility", "href": "/facility" },
+      { "label": "Packages", "href": "/packages" },
+      { "label": "Reviews", "href": "#reviews" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "join": { "label": "Join now", "href": "/packages" },
+    "menuLabel": "Menu",
+    "closeLabel": "Close"
+  },
+  "hero": {
+    "eyebrow": "Movement. Strength. Recovery. Community.",
+    "title": "The Future",
+    "titleAccent": "of Wellness.",
+    "lead": "Strength, golf, reformer Pilates and recovery under one roof in Dun Laoghaire.",
+    "primary": { "label": "Join now", "href": "/packages" },
+    "secondaryLabel": "Want more info?",
+    "image": {
+      "src": "/images/signage-founders.jpg",
+      "alt": "The Studio 22 founders beneath the backlit Studio 22 sign",
+      "position": "50% 50%",
+      "positionWide": "50% 0%"
+    }
+  },
+  "offering": {
+    "label": "Our Offering",
+    "heading": "Four ways to train and recover.",
+    "note": "Performance is the greatest motivator.",
+    "cards": [
+      {
+        "tag": "Gym",
+        "title": "Strength",
+        "description": "Build real strength. Move with confidence. Feel powerful.",
+        "image": {
+          "src": "/images/strength-squat.jpg",
+          "alt": "An athlete performing a barbell back squat in the Studio 22 gym",
+          "position": "50% 36%"
+        },
+        "href": "/packages",
+        "linkLabel": "View packages",
+        "widget": {
+          "kind": "programme",
+          "title": "Five-week programme",
+          "badge": "Progressive",
+          "weeks": ["Wk 1", "Wk 2", "Wk 3", "Wk 4", "Wk 5"],
+          "phases": ["Foundational", "Accumulation", "Intensification 1", "Intensification 2", "Realisation"],
+          "footnote": "Structured to help you improve week after week."
+        }
+      },
+      {
+        "tag": "TrackMan",
+        "title": "Golf",
+        "description": "Train smarter. Hit farther. Play better golf.",
+        "image": {
+          "src": "/images/golf-simulator.jpg",
+          "alt": "A golfer addressing the ball in the Studio 22 golf simulator",
+          "position": "47% 50%"
+        },
+        "href": "/facility",
+        "linkLabel": "See the facility",
+        "widget": {
+          "kind": "golf",
+          "title": "TrackMan",
+          "badge": "Ball flight",
+          "chips": ["Distance", "Dispersion"],
+          "footnote": "Realistic virtual course play"
+        }
+      },
+      {
+        "tag": "Reformer",
+        "title": "Reformer Pilates",
+        "description": "No experience needed. We coach you through every movement, step by step.",
+        "image": {
+          "src": "/images/pilates-studio.jpg",
+          "alt": "A member seated on a mat beneath the backlit Pilates at Studio 22 sign",
+          "position": "50% 50%"
+        },
+        "href": "/packages",
+        "linkLabel": "View packages",
+        "widget": {
+          "kind": "classes",
+          "title": "Reformer classes",
+          "badge": "Coached",
+          "classes": ["Reformer Pilates Foundations", "Mixed-Level Reformer Pilates", "Intermediate Reformer Pilates"],
+          "footnote": "Core stability and posture improvement"
+        }
+      },
+      {
+        "tag": "Sauna",
+        "title": "Recovery & Relaxation",
+        "description": "All memberships include access to our on-site sauna to help recovery, reduce soreness, and improve overall wellbeing.",
+        "image": {
+          "src": "/images/sauna.jpg",
+          "alt": "The warm, wood-panelled sauna at Studio 22",
+          "position": "17% 50%"
+        },
+        "href": "/facility",
+        "linkLabel": "See the facility",
+        "widget": {
+          "kind": "checks",
+          "title": "Sauna",
+          "badge": "Included with all memberships",
+          "items": ["Help recovery", "Reduce soreness", "Improve overall wellbeing"]
+        }
+      }
+    ]
+  },
+  "facility": {
+    "label": "Our Facility",
+    "heading": "You deserve to feel confident and strong in your body.",
+    "body": [
+      "At Studio 22 we focus on real, long-term results.",
+      "For us, fitness is about community and the commitment to working hard for permanent changes that you can be proud of. Our coaches go through rigorous training to help every member improve their quality of life no matter when they decide to start."
+    ],
+    "link": { "label": "See the facility", "href": "/facility" },
+    "tiles": [
+      {
+        "tag": "Golf",
+        "caption": "Data-driven training that actually works",
+        "image": {
+          "src": "/images/golf-simulator-swing.jpg",
+          "alt": "A golfer mid-swing in the Studio 22 simulator with TrackMan data on screen",
+          "position": "50% 48%"
+        }
+      },
+      {
+        "tag": "Strength",
+        "caption": "Training that actually works",
+        "image": {
+          "src": "/images/strength-back-bw.jpg",
+          "alt": "An athlete under a barbell, photographed in black and white",
+          "position": "51% 50%"
+        }
+      },
+      {
+        "tag": "Conditioning",
+        "caption": "The ski erg in the conditioning area",
+        "image": {
+          "src": "/images/conditioning-ski-erg.jpg",
+          "alt": "A member training on the ski erg in the conditioning area",
+          "position": "50% 50%"
+        }
+      },
+      {
+        "tag": "Coaching",
+        "caption": "Proper technique and coaching",
+        "image": {
+          "src": "/images/strength-dumbbells.jpg",
+          "alt": "A coach setting up the dumbbell rack",
+          "position": "50% 36%"
+        }
+      },
+      {
+        "tag": "Every session",
+        "caption": "Structured to help you improve week after week",
+        "image": {
+          "src": "/images/strength-squat-wide.jpg",
+          "alt": "An athlete performing a barbell back squat at Studio 22",
+          "position": "50% 40%"
+        }
+      }
+    ]
+  },
+  "gettingStarted": {
+    "label": "Getting started",
+    "heading": "Start today, feel better tomorrow.",
+    "body": "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are.",
+    "note": "Most clients begin with an assessment.",
+    "cta": { "label": "See how we help you", "href": "/get-started" },
+    "image": {
+      "src": "/images/coaches-portrait.jpg",
+      "alt": "Two Studio 22 coaches with kettlebells in the gym",
+      "position": "50% 18%"
+    },
+    "timeline": {
+      "heading": "Your first five weeks",
+      "steps": [
+        {
+          "when": "Week 1",
+          "title": "Lay the foundations",
+          "body": "Week one is all about laying the foundations. The focus is on quality reps, controlled tempo, and developing confidence in each exercise."
+        },
+        {
+          "when": "Weeks 2 to 4",
+          "title": "Build volume, then strength",
+          "body": "Week two focuses on building volume and confidence in the movements. Week three marks the shift from building volume to building strength."
+        },
+        {
+          "when": "Week 5",
+          "title": "Realise your strength",
+          "body": "The Realisation Phase is where all the work comes together. You finish the programme feeling strong, capable and resilient."
+        }
+      ]
+    }
+  },
+  "packages": {
+    "label": "Our Packages",
+    "heading": "Pick how you train",
+    "link": { "label": "Our Packages", "href": "/packages" },
+    "moreCategories": ["pilates", "online-golf"]
+  },
+  "reviews": {
+    "label": "Reviews",
+    "heading": "Trusted by our community",
+    "body": "Google reviews from clients who’ve experienced Studio 22 firsthand.",
+    "linkLabel": "Leave us a Google review",
+    "listLabel": "Google reviews"
+  },
+  "visit": {
+    "label": "Need more information?",
+    "heading": "Book a discovery call and we’ll answer everything.",
+    "ctaLabel": "Book a discovery call",
+    "visitHeading": "Visit",
+    "contactHeading": "Call, email or message",
+    "whatsappLabel": "WhatsApp",
+    "followHeading": "Follow"
+  },
+  "footer": {
+    "links": [
+      { "label": "Our Facility", "href": "/facility" },
+      { "label": "Packages", "href": "/packages" },
+      { "label": "FAQs", "href": "/faqs" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "linksLabel": "Footer",
+    "copyright": "© 2026 Studio 22"
+  },
+  "stickyPill": {
+    "label": "Two-week trial, {price}",
+    "button": "Book a trial"
+  }
+}

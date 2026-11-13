@@ -7,6 +7,7 @@ import {
   loadPage,
   loadSite,
   loadTestimonials,
+  loadV2Home,
 } from "./load";
 import { PAGE_NAMES, type Page, type Site } from "./schema";
 
@@ -126,5 +127,48 @@ describe("referential integrity", () => {
         true,
       );
     }
+  });
+});
+
+describe("v2-home.json (V2 homepage content)", () => {
+  const v2 = loadV2Home();
+  const images = [
+    v2.hero.image,
+    v2.gettingStarted.image,
+    ...v2.offering.cards.map((c) => c.image),
+    ...v2.facility.tiles.map((t) => t.image),
+  ].map((i) => i.src);
+  const hrefs = [
+    ...v2.nav.links,
+    v2.nav.join,
+    v2.hero.primary,
+    v2.facility.link,
+    v2.gettingStarted.cta,
+    v2.packages.link,
+    ...v2.footer.links,
+    ...v2.offering.cards,
+  ].map((l) => l.href);
+
+  test("every referenced image exists in public/", () => {
+    for (const src of images) {
+      expect(fs.existsSync(path.join(process.cwd(), "public", src)), `missing image: ${src}`).toBe(true);
+    }
+  });
+
+  test("every internal href resolves to a real route or an on-page anchor", () => {
+    for (const href of hrefs) {
+      if (href.startsWith("#")) continue;
+      expect(ROUTES.has(href), `unknown route: ${href}`).toBe(true);
+    }
+  });
+
+  test("offering has four cards: golf merged, recovery restored", () => {
+    expect(v2.offering.cards.map((c) => c.title)).toEqual([
+      "Strength",
+      "Golf",
+      "Reformer Pilates",
+      "Recovery & Relaxation",
+    ]);
+    expect(v2.offering.cards[3].image.src).toBe("/images/sauna.jpg");
   });
 });

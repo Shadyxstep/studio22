@@ -280,7 +280,149 @@ export const FaqsFileSchema = z.array(
   }),
 );
 
+/* ---------- V2 homepage (content/v2-home.json) ---------- */
+
+/** CSS object-position as "x% y%" — a crop anchor, nothing free-form. */
+const ObjectPosition = z
+  .string()
+  .regex(/^\d{1,3}% \d{1,3}%$/, 'object position must look like "50% 36%"');
+
+const V2Image = z.object({
+  src: z.string().min(1),
+  alt: z.string().min(1),
+  position: ObjectPosition.optional(),
+  /** Crop anchor from the desktop breakpoint up (hero only). */
+  positionWide: ObjectPosition.optional(),
+});
+
+const Text = z.string().min(1);
+
+/** The small illustrative panel inside each offering card. */
+const V2Widget = z.discriminatedUnion("kind", [
+  z.object({
+    kind: z.literal("programme"),
+    title: Text,
+    badge: Text,
+    weeks: z.array(Text).min(1),
+    phases: z.array(Text).min(1),
+    footnote: Text,
+  }),
+  z.object({
+    kind: z.literal("golf"),
+    title: Text,
+    badge: Text,
+    chips: z.array(Text).min(1),
+    footnote: Text,
+  }),
+  z.object({
+    kind: z.literal("classes"),
+    title: Text,
+    badge: Text,
+    classes: z.array(Text).min(1),
+    footnote: Text,
+  }),
+  z.object({
+    kind: z.literal("checks"),
+    title: Text,
+    badge: Text,
+    items: z.array(Text).min(1),
+  }),
+]);
+
+export const V2HomeSchema = z.object({
+  skipLink: Text,
+  nav: z.object({
+    links: z.array(Cta).min(1),
+    join: Cta,
+    menuLabel: Text,
+    closeLabel: Text,
+  }),
+  hero: z.object({
+    eyebrow: Text,
+    title: Text,
+    titleAccent: Text,
+    lead: Text,
+    primary: Cta,
+    secondaryLabel: Text,
+    image: V2Image,
+  }),
+  offering: z.object({
+    label: Text,
+    heading: Text,
+    note: Text,
+    cards: z
+      .array(
+        z.object({
+          tag: Text,
+          title: Text,
+          description: Text,
+          image: V2Image,
+          href: Text,
+          linkLabel: Text,
+          widget: V2Widget,
+        }),
+      )
+      .min(1),
+  }),
+  facility: z.object({
+    label: Text,
+    heading: Text,
+    body: z.array(Text).min(1),
+    link: Cta,
+    tiles: z.array(z.object({ tag: Text, caption: Text, image: V2Image })).length(5),
+  }),
+  gettingStarted: z.object({
+    label: Text,
+    heading: Text,
+    body: Text,
+    note: Text,
+    cta: Cta,
+    image: V2Image,
+    timeline: z.object({
+      heading: Text,
+      steps: z.array(z.object({ when: Text, title: Text, body: Text })).length(3),
+    }),
+  }),
+  packages: z.object({
+    label: Text,
+    heading: Text,
+    link: Cta,
+    /** Categories listed compactly under the main cards, in order. */
+    moreCategories: z.array(z.enum(PACKAGE_CATEGORIES)),
+  }),
+  reviews: z.object({
+    label: Text,
+    heading: Text,
+    body: Text,
+    linkLabel: Text,
+    listLabel: Text,
+  }),
+  visit: z.object({
+    label: Text,
+    heading: Text,
+    ctaLabel: Text,
+    visitHeading: Text,
+    contactHeading: Text,
+    whatsappLabel: Text,
+    followHeading: Text,
+  }),
+  footer: z.object({
+    links: z.array(Cta),
+    linksLabel: Text,
+    copyright: Text,
+  }),
+  stickyPill: z.object({
+    /** "{price}" is replaced with the promoted package's price. */
+    label: Text.refine((s) => s.includes("{price}"), "label must contain {price}"),
+    button: Text,
+  }),
+});
+
 /* ---------- inferred types ---------- */
+
+export type V2Home = z.infer<typeof V2HomeSchema>;
+export type V2ImageType = z.infer<typeof V2Image>;
+export type V2WidgetType = z.infer<typeof V2Widget>;
 
 export type Section = z.infer<typeof SectionSchema>;
 export type Page = z.infer<typeof PageSchema>;

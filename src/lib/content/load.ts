@@ -7,12 +7,14 @@ import {
   PageSchema,
   SiteSchema,
   TestimonialsFileSchema,
+  V2HomeSchema,
   type Faq,
   type Package,
   type Page,
   type PageName,
   type Site,
   type Testimonial,
+  type V2Home,
 } from "./schema";
 
 export class ContentValidationError extends Error {
@@ -86,6 +88,11 @@ export function loadTestimonials(): Testimonial[] {
 
 export function loadFaqs(): Faq[] {
   return parseContent(FaqsFileSchema, readJson("faqs.json"), "faqs.json");
+}
+
+/** V2 homepage copy and image choices (content/v2-home.json). */
+export function loadV2Home(): V2Home {
+  return parseContent(V2HomeSchema, readJson("v2-home.json"), "v2-home.json");
 }
 
 export function loadPage(name: PageName): Page {

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { heroFade, resolveVariants, reveal, revealStagger } from "./motion";
+import { heroFade, resolveVariants, reveal, revealStagger, v2Motion, v2MotionVars } from "./motion";
 
 describe("SPEC §8.4 motion presets", () => {
   test("reveal is a 0.6s fade + 24px rise", () => {
@@ -36,5 +36,20 @@ describe("SPEC §8.4 motion presets", () => {
 
   test("without reduced motion the preset passes through unchanged", () => {
     expect(resolveVariants(reveal, false)).toBe(reveal);
+  });
+});
+
+describe("V2 ambient presets", () => {
+  test("exposed as CSS custom properties with units", () => {
+    const vars = v2MotionVars();
+    expect(vars["--v2-reveal"]).toBe("750ms");
+    expect(vars["--v2-stagger"]).toBe("80ms");
+    expect(vars["--v2-edge-lap"]).toBe(`${v2Motion.edgeLapS}s`);
+    for (const v of Object.values(vars)) expect(v).toMatch(/^\d+(ms|s)$/);
+  });
+
+  test("ambient loops are slow (none faster than 9s)", () => {
+    const loops = [v2Motion.edgeLapS, ...v2Motion.driftS, v2Motion.glowS, v2Motion.breatheS, v2Motion.timelineS];
+    for (const s of loops) expect(s).toBeGreaterThanOrEqual(9);
   });
 });

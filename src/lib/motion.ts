@@ -49,3 +49,44 @@ export function resolveVariants(variants: Variants, reduced: boolean): Variants 
 
 /** Shared whileInView viewport config: animate once, slightly before entry. */
 export const viewportOnce = { once: true, margin: "-64px" } as const;
+
+/*
+ * V2 homepage ambient presets (owner-directed 2026-11-13, see TASK_LOG).
+ * V2 animates in CSS (src/app/v2/v2.css) to keep its JS small, so these are
+ * timings, not Framer variants: the V2 layout exposes them as CSS custom
+ * properties and the keyframes read them. SPEC §8.4's "no looping" rule is
+ * waived for /v2 only; every loop here is slow, low-contrast, paused when
+ * off screen and switched off under prefers-reduced-motion (in v2.css).
+ */
+export const v2Motion = {
+  /** Scroll reveal: fade + 24px rise, once. */
+  revealMs: 750,
+  /** Delay between cards in a group. */
+  staggerMs: 80,
+  /** One lap of the light travelling round a card border. */
+  edgeLapS: 14,
+  /** Background colour fields drifting behind the page (three layers). */
+  driftS: [48, 60, 76],
+  /** Hero glow swell. */
+  glowS: 9,
+  /** Hairline that "breathes" along a section's top edge. */
+  breatheS: 10,
+  /** One full pass of the getting-started timeline. */
+  timelineS: 9,
+} as const;
+
+/** v2Motion as CSS custom properties for the V2 root element. */
+export function v2MotionVars(): Record<`--${string}`, string> {
+  const m = v2Motion;
+  return {
+    "--v2-reveal": `${m.revealMs}ms`,
+    "--v2-stagger": `${m.staggerMs}ms`,
+    "--v2-edge-lap": `${m.edgeLapS}s`,
+    "--v2-drift-1": `${m.driftS[0]}s`,
+    "--v2-drift-2": `${m.driftS[1]}s`,
+    "--v2-drift-3": `${m.driftS[2]}s`,
+    "--v2-glow": `${m.glowS}s`,
+    "--v2-breathe": `${m.breatheS}s`,
+    "--v2-timeline": `${m.timelineS}s`,
+  };
+}

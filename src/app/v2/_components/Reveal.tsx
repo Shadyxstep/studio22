@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
 /*
  * Rise-and-fade on first view. Content is visible by default: the hidden
@@ -15,7 +15,7 @@ export function Reveal({
 }: {
   children: ReactNode;
   className?: string;
-  /** Position in a card group; staggers by 0.15s per item. */
+  /** Position in a card group; staggers by v2Motion.staggerMs per item. */
   index?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ export function Reveal({
     <div
       ref={ref}
       className={className}
-      style={index ? { transitionDelay: `${index * 0.15}s` } : undefined}
+      style={index ? ({ "--i": index } as CSSProperties) : undefined}
     >
       {children}
     </div>

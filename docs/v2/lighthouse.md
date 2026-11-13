@@ -1,37 +1,60 @@
-# V2 homepage — Lighthouse comparison
+# V2 homepage — Lighthouse
 
 Lighthouse 12.6.1, mobile preset (simulated throttling), Chrome headless, against
-a local production build (`pnpm build && pnpm start`) on 2026-11-10. Two runs
-each; numbers were identical or within 0.1s.
+local production builds (`pnpm build && pnpm start`).
+
+## 2026-11-13 — design rework vs previous V2
+
+Both builds measured on the same machine, same session, runs interleaved
+(previous V2 = commit `a4cd12c`, built in a temporary worktree).
+
+| Build | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT | Speed Index |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Previous V2 (`a4cd12c`) | 89 / 93 / 93 | 100 | 96 | 66\* | 3.3–3.7 s | 0 | 0–10 ms | 0.9 s |
+| Reworked V2 | 90 / 91 / 91 | 100 | 96 | 66\* | 3.5–3.6 s | 0 | 0 ms | 1.1–1.8 s |
+| Reworked V2, V1 fonts not preloaded (experiment, not committed) | 95 / 96 / 96 | 100 | 96 | 66\* | 2.8–2.9 s | 0 | 0 ms | 1.1 s |
+
+\* SEO 66 is expected: `/v2` is deliberately `noindex, nofollow`.
+
+### Why the rework is ~2 points lower
+
+The reworked page carries more content (five photo tiles, the timeline, five
+reviews, the compact package list, the offering-card widgets), so on
+Lighthouse's simulated slow-4G:
+
+- the HTML document grew from 10.6 kB to 18.5 kB (transfer), which pushes the
+  hero image's simulated load delay from ~0 to ~0.5–0.7 s;
+- the render-blocking V2 stylesheet grew from 4.2 kB to 8.9 kB.
+
+The ambient loops (border light, hero glow and dust, background drift) start
+only after the page has loaded and gone idle (`data-v2-ready`), so they don't
+compete with first paint; TBT stays 0 ms and CLS 0.
+
+### The fix (needs a decision — it touches V1's root layout)
+
+As noted in the previous run, the root layout preloads V1's Cormorant and
+Hanken Grotesk fonts (~115 kB) on every route, including `/v2`, which never
+uses them. Setting `preload: false` on those two fonts in `src/app/layout.tsx`
+takes `/v2` to **Performance 95–96, LCP 2.8–2.9 s** (measured above, reverted).
+V1 pages would show a brief font swap. At V2 cutover, V2's font replaces V1's
+in the root layout and this goes away on its own.
+
+## 2026-11-10 — previous V2 vs V1
 
 | Route | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `/` (V1, current) | 90 | 100 | 96 | 100 | 3.6 s | 0 | 0 ms |
 | `/v2` | 93–94 | 100 | 96 | 66\* | 3.1–3.3 s | 0 | 0 ms |
 
-\* SEO 66 is expected: `/v2` is deliberately `noindex, nofollow`.
-
-## LCP is above the 2.5 s target — why
-
-- The LCP element is the hero image (`next/image`, `priority`,
-  `fetchPriority="high"`). **Observed** LCP in the unthrottled trace is 44 ms;
-  the 3.1–3.3 s is Lighthouse's simulated slow-4G model, where everything
-  requested before the LCP shares bandwidth.
-- The biggest item in that budget is fonts: the root layout preloads V1's
-  Cormorant (2 files) and Hanken Grotesk on every route, ~115 kB that V2
-  never uses, ahead of the hero image.
-- Experiment (not committed): with `preload: false` on the two V1 fonts in
-  `src/app/layout.tsx`, `/v2` scored **Performance 96, LCP 2.7 s**.
-- The remainder is local-server TTFB (~450 ms simulated) and React/Next
-  runtime JS (~125 kB), shared with V1.
-
-**Resolution options** (needs a decision — it touches V1's root layout):
-1. At cutover, V2's fonts replace V1's in the root layout — fixes it for free.
-2. Before cutover, set `preload: false` on the V1 fonts (small V1 change; V1
-   would show a brief font swap).
-3. Re-measure on the Vercel preview URL (CDN TTFB) before deciding.
-
 ## Screenshots
+
+Reworked V2 (2026-11-13, reduced motion so every section is captured at rest):
+
+- [375px](./v2-rework-375.jpg)
+- [768px](./v2-rework-768.jpg)
+- [1440px](./v2-rework-1440.jpg)
+
+Previous V2 (2026-11-10):
 
 - [375px](./v2-375.jpg)
 - [1440px](./v2-1440.jpg)

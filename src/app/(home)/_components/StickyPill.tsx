@@ -10,7 +10,7 @@ const PHONE = "(max-width: 759px)";
 
 /*
  * Fixed booking pill. Shown only once the hero has scrolled away, and hidden
- * again while the packages section, the light Visit section or the footer is
+ * again while the timetable, packages, the light Visit section or the footer is
  * on screen. On phones it is also hidden whenever a link or button on the
  * page passes underneath it, so it never covers something tappable.
  * Hidden = inert.
@@ -21,7 +21,7 @@ export function StickyPill({ href, label, button }: { href: string; label: strin
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    const targets = ["[data-v2-hero]", "#packages", "[data-v2-visit]", "[data-v2-footer]"]
+    const targets = ["[data-v2-hero]", "#timetable", "#packages", "[data-v2-visit]", "[data-v2-footer]"]
       .map((s) => document.querySelector(s))
       .filter((el): el is Element => el !== null);
     const onScreen = new Set<Element>();

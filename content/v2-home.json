@@ -2,12 +2,31 @@
   "skipLink": "Skip to content",
   "nav": {
     "links": [
-      { "label": "Our Facility", "href": "/facility" },
-      { "label": "Packages", "href": "/packages" },
-      { "label": "Reviews", "href": "#reviews" },
-      { "label": "Contact", "href": "/contact" }
+      {
+        "label": "Our Facility",
+        "href": "/facility"
+      },
+      {
+        "label": "Packages",
+        "href": "/packages"
+      },
+      {
+        "label": "Timetable",
+        "href": "#timetable"
+      },
+      {
+        "label": "Reviews",
+        "href": "#reviews"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
     ],
-    "join": { "label": "Join now", "href": "/packages" },
+    "join": {
+      "label": "Join now",
+      "href": "/packages"
+    },
     "menuLabel": "Menu",
     "closeLabel": "Close"
   },
@@ -16,7 +35,10 @@
     "title": "The Future",
     "titleAccent": "of Wellness.",
     "lead": "Strength, golf, reformer Pilates and recovery under one roof in Dun Laoghaire.",
-    "primary": { "label": "Join now", "href": "/packages" },
+    "primary": {
+      "label": "Join now",
+      "href": "/packages"
+    },
     "secondaryLabel": "Want more info?",
     "image": {
       "src": "/images/signage-founders.jpg",
@@ -45,8 +67,20 @@
           "kind": "programme",
           "title": "Five-week programme",
           "badge": "Progressive",
-          "weeks": ["Wk 1", "Wk 2", "Wk 3", "Wk 4", "Wk 5"],
-          "phases": ["Foundational", "Accumulation", "Intensification 1", "Intensification 2", "Realisation"],
+          "weeks": [
+            "Wk 1",
+            "Wk 2",
+            "Wk 3",
+            "Wk 4",
+            "Wk 5"
+          ],
+          "phases": [
+            "Foundational",
+            "Accumulation",
+            "Intensification 1",
+            "Intensification 2",
+            "Realisation"
+          ],
           "footnote": "Structured to help you improve week after week."
         }
       },
@@ -65,7 +99,10 @@
           "kind": "golf",
           "title": "TrackMan",
           "badge": "Ball flight",
-          "chips": ["Distance", "Dispersion"],
+          "chips": [
+            "Distance",
+            "Dispersion"
+          ],
           "footnote": "Realistic virtual course play"
         }
       },
@@ -84,7 +121,11 @@
           "kind": "classes",
           "title": "Reformer classes",
           "badge": "Coached",
-          "classes": ["Reformer Pilates Foundations", "Mixed-Level Reformer Pilates", "Intermediate Reformer Pilates"],
+          "classes": [
+            "Reformer Pilates Foundations",
+            "Mixed-Level Reformer Pilates",
+            "Intermediate Reformer Pilates"
+          ],
           "footnote": "Core stability and posture improvement"
         }
       },
@@ -103,7 +144,11 @@
           "kind": "checks",
           "title": "Sauna",
           "badge": "Included with all memberships",
-          "items": ["Help recovery", "Reduce soreness", "Improve overall wellbeing"]
+          "items": [
+            "Help recovery",
+            "Reduce soreness",
+            "Improve overall wellbeing"
+          ]
         }
       }
     ]
@@ -115,7 +160,10 @@
       "At Studio 22 we focus on real, long-term results.",
       "For us, fitness is about community and the commitment to working hard for permanent changes that you can be proud of. Our coaches go through rigorous training to help every member improve their quality of life no matter when they decide to start."
     ],
-    "link": { "label": "See the facility", "href": "/facility" },
+    "link": {
+      "label": "See the facility",
+      "href": "/facility"
+    },
     "tiles": [
       {
         "tag": "Golf",
@@ -169,7 +217,10 @@
     "heading": "Start today, feel better tomorrow.",
     "body": "We know walking through the door is the hardest part. You take the first step and we’ll meet you where you are.",
     "note": "Most clients begin with an assessment.",
-    "cta": { "label": "See how we help you", "href": "/get-started" },
+    "cta": {
+      "label": "See how we help you",
+      "href": "/get-started"
+    },
     "image": {
       "src": "/images/coaches-portrait.jpg",
       "alt": "Two Studio 22 coaches with kettlebells in the gym",
@@ -196,11 +247,270 @@
       ]
     }
   },
+  "timetable": {
+    "label": "Timetable",
+    "heading": "This week's classes.",
+    "body": "Strength & Sweat and Reformer Pilates run Monday to Saturday. Reserve your spot online.",
+    "book": {
+      "label": "Book a class",
+      "href": "https://fitness.studio-22.ie/"
+    },
+    "days": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "dayNames": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "tabsLabel": "Choose a timetable",
+    "emptyLabel": "No class",
+    "schedules": [
+      {
+        "id": "strength",
+        "tab": "Strength & Sweat",
+        "title": "Strength",
+        "titleAccent": "& Sweat",
+        "classes": [
+          {
+            "key": "strength",
+            "name": "Strength",
+            "detail": "45 minutes",
+            "style": "solid",
+            "legend": "Strength"
+          },
+          {
+            "key": "sweat",
+            "name": "Sweat",
+            "detail": "45 minutes",
+            "style": "outline",
+            "legend": "Sweat"
+          }
+        ],
+        "rows": [
+          {
+            "time": "6:15 AM",
+            "slots": [
+              "strength",
+              "sweat",
+              "strength",
+              "sweat",
+              "strength",
+              null
+            ]
+          },
+          {
+            "time": "7:15 AM",
+            "slots": [
+              "sweat",
+              "strength",
+              "sweat",
+              "strength",
+              "sweat",
+              null
+            ]
+          },
+          {
+            "time": "8:15 AM",
+            "slots": [
+              "strength",
+              "sweat",
+              "strength",
+              "sweat",
+              "strength",
+              null
+            ]
+          },
+          {
+            "time": "10:00 AM",
+            "slots": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              "strength"
+            ]
+          },
+          {
+            "time": "1:00 PM",
+            "slots": [
+              "strength",
+              "strength",
+              "strength",
+              "strength",
+              "strength",
+              null
+            ]
+          },
+          {
+            "time": "5:15 PM",
+            "slots": [
+              "strength",
+              null,
+              "strength",
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "time": "6:15 PM",
+            "slots": [
+              null,
+              "strength",
+              null,
+              "strength",
+              null,
+              null
+            ]
+          },
+          {
+            "time": "7:15 PM",
+            "slots": [
+              "strength",
+              null,
+              "strength",
+              null,
+              null,
+              null
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reformer",
+        "tab": "Reformer Pilates",
+        "title": "Reformer",
+        "titleAccent": "Pilates",
+        "classes": [
+          {
+            "key": "reformer",
+            "name": "Reformer",
+            "detail": "50 minutes",
+            "style": "solid",
+            "legend": "Reformer Pilates"
+          },
+          {
+            "key": "foundations",
+            "name": "Foundations",
+            "detail": "50 min · new to Reformer",
+            "style": "outline",
+            "legend": "Foundations"
+          }
+        ],
+        "rows": [
+          {
+            "time": "6:10 AM",
+            "slots": [
+              null,
+              "foundations",
+              "reformer",
+              "foundations",
+              null,
+              null
+            ]
+          },
+          {
+            "time": "7:10 AM",
+            "slots": [
+              "reformer",
+              null,
+              "reformer",
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "time": "8:10 AM",
+            "slots": [
+              null,
+              "reformer",
+              null,
+              "reformer",
+              "reformer",
+              null
+            ]
+          },
+          {
+            "time": "9:00 AM",
+            "slots": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              "reformer"
+            ]
+          },
+          {
+            "time": "9:30 AM",
+            "slots": [
+              "foundations",
+              "reformer",
+              "foundations",
+              "reformer",
+              "foundations",
+              null
+            ]
+          },
+          {
+            "time": "10:00 AM",
+            "slots": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              "reformer"
+            ]
+          },
+          {
+            "time": "6:10 PM",
+            "slots": [
+              "foundations",
+              null,
+              "foundations",
+              "foundations",
+              null,
+              null
+            ]
+          },
+          {
+            "time": "7:10 PM",
+            "slots": [
+              "reformer",
+              null,
+              "reformer",
+              "reformer",
+              null,
+              null
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "packages": {
     "label": "Our Packages",
     "heading": "Pick how you train",
-    "link": { "label": "Our Packages", "href": "/packages" },
-    "moreCategories": ["pilates", "online-golf"]
+    "link": {
+      "label": "Our Packages",
+      "href": "/packages"
+    },
+    "moreCategories": [
+      "pilates",
+      "online-golf"
+    ]
   },
   "reviews": {
     "label": "Reviews",
@@ -220,10 +530,22 @@
   },
   "footer": {
     "links": [
-      { "label": "Our Facility", "href": "/facility" },
-      { "label": "Packages", "href": "/packages" },
-      { "label": "FAQs", "href": "/faqs" },
-      { "label": "Contact", "href": "/contact" }
+      {
+        "label": "Our Facility",
+        "href": "/facility"
+      },
+      {
+        "label": "Packages",
+        "href": "/packages"
+      },
+      {
+        "label": "FAQs",
+        "href": "/faqs"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
     ],
     "linksLabel": "Footer",
     "copyright": "© 2026 Studio 22"

@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-11-16 · OWNER — Class timetables on the homepage — APPROVED
+- Plan: transcribe the owner's two timetable posters (Strength & Sweat, Reformer Pilates) into validated content and render them as a new "04 Timetable" chapter on the v3 homepage, with tabs, a week grid on tablet/desktop and a per-day list on phones.
+- Changes: content/v2-home.json (timetable block; nav "Timetable" → #timetable), src/lib/content/schema.ts (timetable schema; refine checks one slot per day and known class keys), src/app/(home)/_components/{Timetable,TimetableTabs}.tsx (new), page.tsx (chapter numbers 04–07 shift by one), StickyPill.tsx (pill also hides over #timetable), v2.css (timetable styles), v2.test.tsx (poster-transcription test, tab switching, JS-off renders both panels, nav link, section order).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (111 passing) · build ✓ · headless screenshots at 1440/390 for both tabs ✓ · no horizontal scroll ✓
+- Critic issues found → resolved: the sticky trial pill covered grid cells on desktop → hidden over the timetable like packages; `.v2 ul` reset outranked legend/day-list spacing → selectors scoped under `.v2`.
+- Follow-ups (not built): the timetable is weekly data — update content/v2-home.json when the owner sends a new poster; no V1-page nav link to /#timetable.
+- Decisions made where SPEC was silent / owner-directed: copy invented and logged: heading "This week's classes.", body line, "Book a class" → https://fitness.studio-22.ie/ (member booking), tab labels, "No class" (screen-reader text). Class names, durations and every slot are taken verbatim from the posters. Tabs show every panel until hydration, so no-JS visitors see both timetables.
+
 ## 2026-11-13 · OWNER — V2 homepage rework to the approved design concept — APPROVED
 - Plan: rebuild /v2 to `studio22-v2-rework.html` (nav, hero, 01 Offering, 02 Facility, 03 Getting started, 04 Packages, 05 Reviews, 06 Visit, footer, sticky pill) on the v2-homepage branch; all copy, labels and image crops moved to validated content; motion within the repo rules plus an owner-approved looping exception.
 - Changes: content/v2-home.json (new) + V2HomeSchema/loadV2Home in lib/content/{schema,load}.ts; lib/motion.ts (v2Motion presets + v2MotionVars); src/app/v2/** (v2.css rewritten; Hero, Offering + Widget, Facility, GettingStarted, Packages, Reviews, Visit, V2Nav, V2Footer, StickyPill, Ambient, Label, V2Img; Chapter removed; page/layout/config/_lib/packages); tests in v2.test.tsx, content.test.ts, motion.test.ts; docs/v2 screenshots + lighthouse.md.

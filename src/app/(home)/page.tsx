@@ -8,6 +8,7 @@ import { Hero } from "./_components/Hero";
 import { Offering } from "./_components/Offering";
 import { Packages } from "./_components/Packages";
 import { Reviews } from "./_components/Reviews";
+import { Timetable } from "./_components/Timetable";
 import { StickyPill } from "./_components/StickyPill";
 import { Visit } from "./_components/Visit";
 import { V2_CONFIG } from "./_lib/config";
@@ -46,9 +47,10 @@ export default function V2HomePage() {
       <Offering n={1} offering={v2.offering} />
       <Facility n={2} facility={v2.facility} />
       <GettingStarted n={3} content={v2.gettingStarted} />
-      <Packages n={4} content={v2.packages} packages={packages} more={more} site={site} />
-      <Reviews n={5} content={v2.reviews} reviews={reviews} site={site} />
-      <Visit n={6} content={v2.visit} site={site} />
+      <Timetable n={4} content={v2.timetable} />
+      <Packages n={5} content={v2.packages} packages={packages} more={more} site={site} />
+      <Reviews n={6} content={v2.reviews} reviews={reviews} site={site} />
+      <Visit n={7} content={v2.visit} site={site} />
       {V2_CONFIG.stickyPill.enabled && (
         <StickyPill
           href={getPackageCta(trial, site).href}

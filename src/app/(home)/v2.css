@@ -1707,6 +1707,197 @@ html.lenis body {
   column-gap: 24px;
 }
 
+/* ---------- timetable ---------- */
+.v2-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.v2-tt__tablist {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line-strong);
+  margin-top: 40px;
+  border-radius: 999px;
+}
+.v2-tt__tab {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--text-2);
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+.v2-tt__tab:hover {
+  color: var(--text);
+}
+.v2-tt__tab[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+.v2-tt__tab:focus-visible {
+  outline: 2px solid var(--accent-hi);
+  outline-offset: 2px;
+}
+.v2-tt__panel {
+  padding-top: 40px;
+}
+.v2-tt__title {
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.v2-tt__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.v2-tt__gridwrap {
+  display: none;
+}
+.v2-tt__grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px 0;
+  margin: 24px -10px 0;
+  width: calc(100% + 20px);
+  table-layout: fixed;
+}
+.v2-tt__grid thead th {
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.v2-tt__grid thead td {
+  width: 120px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.v2-tt__grid tbody th,
+.v2-tt__grid tbody td {
+  height: 64px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  vertical-align: middle;
+}
+.v2-tt__grid tbody th {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.v2-tt__grid small,
+.v2-tt__time small {
+  font-size: 0.6em;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+}
+.v2-tt__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-hi);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.v2-tt__grid .v2-tt__pill {
+  width: 100%;
+}
+.v2-tt__pill--solid {
+  background: var(--accent-hi);
+  color: var(--bg);
+}
+.v2-tt__pill--outline {
+  background: transparent;
+  color: var(--text);
+}
+.v2-tt__dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+.v2 .v2-tt__days {
+  display: grid;
+  gap: 12px;
+  padding-top: 28px;
+}
+.v2-tt__day {
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+}
+.v2-tt__day h4 {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.v2 .v2-tt__day ul {
+  display: grid;
+  gap: 8px;
+  padding-top: 12px;
+}
+.v2-tt__day li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.v2-tt__time {
+  font-size: 17px;
+  font-weight: 500;
+}
+.v2 .v2-tt__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+  padding-top: 40px;
+}
+.v2-tt__legend li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.v2-tt__legend b {
+  display: block;
+  font-weight: 500;
+  color: var(--text);
+}
+.v2-tt__swatch {
+  width: 44px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-hi);
+}
+@media (min-width: 900px) {
+  .v2-tt__gridwrap {
+    display: block;
+  }
+  .v2 .v2-tt__days {
+    display: none;
+  }
+}
+
 /* ---------- footer ---------- */
 .v2-footer {
   position: relative;

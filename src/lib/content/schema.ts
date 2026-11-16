@@ -386,6 +386,56 @@ export const V2HomeSchema = z.object({
       steps: z.array(z.object({ when: Text, title: Text, body: Text })).length(3),
     }),
   }),
+  timetable: z
+    .object({
+      label: Text,
+      heading: Text,
+      body: Text,
+      book: Cta,
+      /** Column headers, and the full day names read to screen readers. */
+      days: z.array(Text).min(1),
+      dayNames: z.array(Text).min(1),
+      tabsLabel: Text,
+      emptyLabel: Text,
+      schedules: z
+        .array(
+          z.object({
+            id: z.string().regex(/^[a-z0-9-]+$/),
+            tab: Text,
+            title: Text,
+            titleAccent: Text,
+            classes: z
+              .array(
+                z.object({
+                  key: z.string().min(1),
+                  /** Pill text in the grid; `legend` is the fuller name in the key. */
+                  name: Text,
+                  legend: Text,
+                  detail: Text,
+                  style: z.enum(["solid", "outline"]),
+                }),
+              )
+              .min(1),
+            /** One row per start time; a slot is a class key or null (no class). */
+            rows: z.array(z.object({ time: Text, slots: z.array(z.string().nullable()) })).min(1),
+          }),
+        )
+        .min(1),
+    })
+    .superRefine((tt, ctx) => {
+      if (tt.dayNames.length !== tt.days.length)
+        ctx.addIssue({ code: "custom", message: "dayNames must match days" });
+      for (const s of tt.schedules) {
+        const keys = new Set(s.classes.map((c) => c.key));
+        for (const r of s.rows) {
+          if (r.slots.length !== tt.days.length)
+            ctx.addIssue({ code: "custom", message: `${s.id} ${r.time}: one slot per day` });
+          for (const k of r.slots)
+            if (k !== null && !keys.has(k))
+              ctx.addIssue({ code: "custom", message: `${s.id} ${r.time}: unknown class "${k}"` });
+        }
+      }
+    }),
   packages: z.object({
     label: Text,
     heading: Text,

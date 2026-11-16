@@ -1,5 +1,5 @@
 import { expect, test, vi } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { loadFaqs, loadPackages, loadSite, loadTestimonials, loadV2Home } from "@/lib/content/load";
 import V2HomePage from "./page";
@@ -19,9 +19,9 @@ test("page renders one h1 and the design's section order", () => {
   const { container } = render(<V2HomePage />);
   expect(container.querySelectorAll("h1")).toHaveLength(1);
   const ids = [...container.querySelectorAll("main > section")].map((s) => s.id);
-  expect(ids).toEqual(["top", "offering", "facility", "getting-started", "packages", "reviews", "visit"]);
+  expect(ids).toEqual(["top", "offering", "facility", "getting-started", "timetable", "packages", "reviews", "visit"]);
   const labels = [...container.querySelectorAll(".v2-label b")].map((b) => b.textContent);
-  expect(labels).toEqual(["01", "02", "03", "04", "05", "06"]);
+  expect(labels).toEqual(["01", "02", "03", "04", "05", "06", "07"]);
 });
 
 test("every visible string comes from content (spot checks per section)", () => {
@@ -172,4 +172,65 @@ test("CTA clicks push cta_click with id and location to dataLayer", () => {
   pushCta("book_trial", "sticky_pill");
   const dl = (window as unknown as { dataLayer: unknown[] }).dataLayer;
   expect(dl.at(-1)).toEqual({ event: "cta_click", cta_id: "book_trial", cta_location: "sticky_pill" });
+});
+
+/* Timetables: transcribed from the owner's two posters (Nov 2026). Each
+   string is one time row, Mon→Sat: S strength, W sweat, R reformer,
+   F foundations, . no class. */
+const POSTERS: Record<string, Record<string, string>> = {
+  strength: {
+    "6:15 AM": "SWSWS.",
+    "7:15 AM": "WSWSW.",
+    "8:15 AM": "SWSWS.",
+    "10:00 AM": ".....S",
+    "1:00 PM": "SSSSS.",
+    "5:15 PM": "S.S...",
+    "6:15 PM": ".S.S..",
+    "7:15 PM": "S.S...",
+  },
+  reformer: {
+    "6:10 AM": ".FRF..",
+    "7:10 AM": "R.R...",
+    "8:10 AM": ".R.RR.",
+    "9:00 AM": ".....R",
+    "9:30 AM": "FRFRF.",
+    "10:00 AM": ".....R",
+    "6:10 PM": "F.FF..",
+    "7:10 PM": "R.RR..",
+  },
+};
+const CODE: Record<string, string> = { strength: "S", sweat: "W", reformer: "R", foundations: "F" };
+
+test("timetable content matches the posters", () => {
+  for (const s of v2.timetable.schedules) {
+    const rows = Object.fromEntries(s.rows.map((r) => [r.time, r.slots.map((k) => (k ? CODE[k] : ".")).join("")]));
+    expect(rows).toEqual(POSTERS[s.id]);
+  }
+});
+
+test("timetable grid renders every class pill, with tabs switching schedules", () => {
+  const { container } = render(<V2HomePage />);
+  const section = container.querySelector("#timetable")!;
+  const tabs = within(section as HTMLElement).getAllByRole("tab");
+  expect(tabs.map((t) => t.textContent)).toEqual(["Strength & Sweat", "Reformer Pilates"]);
+  const [strength, reformer] = section.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+  expect(strength.hidden).toBe(false);
+  expect(reformer.hidden).toBe(true);
+  // 27 strength/sweat classes a week on the poster
+  expect(strength.querySelectorAll(".v2-tt__grid .v2-tt__pill")).toHaveLength(27);
+  fireEvent.click(tabs[1]);
+  expect(strength.hidden).toBe(true);
+  expect(reformer.hidden).toBe(false);
+  expect(tabs[1].getAttribute("aria-selected")).toBe("true");
+});
+
+test("with JS off, both timetables are in the HTML", () => {
+  const html = renderToStaticMarkup(<V2HomePage />);
+  expect(html).toContain('id="tt-panel-strength"');
+  expect(html).toContain('id="tt-panel-reformer"');
+  expect(html).not.toMatch(/id="tt-panel-[a-z]+"[^>]*hidden/);
+});
+
+test("nav links to the timetable", () => {
+  expect(v2.nav.links.some((l) => l.href === "#timetable")).toBe(true);
 });

@@ -1749,6 +1749,26 @@ html.lenis body {
   font-size: 14px;
   color: var(--text-3);
 }
+.v2-footer__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.v2-footer__credit {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: none;
+}
+.v2-footer__credit:hover {
+  color: var(--text);
+}
+@media (min-width: 760px) {
+  .v2-footer__meta {
+    align-items: flex-end;
+  }
+}
 @media (min-width: 760px) {
   .v2-footer__row {
     flex-direction: row;

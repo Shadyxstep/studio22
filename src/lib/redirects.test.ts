@@ -25,6 +25,7 @@ test("every legacy WordPress path from the content inventory has a redirect", ()
       "/golf",
       "/golf-performance-program",
       "/we-are-open",
+      "/v2",
     ].sort(),
   );
 });

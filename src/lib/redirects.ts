@@ -17,4 +17,6 @@ export const LEGACY_REDIRECTS: Array<{ source: string; destination: string }> =
     // promo/funnel pages without a v1 equivalent route to the enquiry flow
     { source: "/golf-performance-program", destination: "/get-started" },
     { source: "/we-are-open", destination: "/get-started" },
+    // the v3 homepage was previewed at /v2 before it replaced /
+    { source: "/v2", destination: "/" },
   ];

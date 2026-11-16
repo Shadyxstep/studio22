@@ -9,10 +9,12 @@ export function V2Footer({
   name,
   footer,
   faqCount,
+  credit,
 }: {
   name: string;
   footer: V2Home["footer"];
   faqCount: number;
+  credit?: { label: string; href: string };
 }) {
   return (
     <footer className="v2-footer" data-v2-footer>
@@ -29,7 +31,16 @@ export function V2Footer({
             ))}
           </ul>
         </nav>
-        <p className="v2-footer__copy">{footer.copyright}</p>
+        <div className="v2-footer__meta">
+          <p className="v2-footer__copy">{footer.copyright}</p>
+          {credit && (
+            <p className="v2-footer__copy">
+              <a href={credit.href} target="_blank" rel="noopener" className="v2-footer__credit">
+                {credit.label}
+              </a>
+            </p>
+          )}
+        </div>
       </div>
     </footer>
   );

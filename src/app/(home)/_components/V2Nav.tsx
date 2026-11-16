@@ -20,7 +20,7 @@ export function V2Nav({ name, nav }: { name: string; nav: V2Home["nav"] }) {
   return (
     <header className="v2-nav">
       <nav aria-label="Main" className="v2-nav__bar">
-        <Link href="/v2" className="v2-nav__mark" onClick={() => setOpen(false)}>
+        <Link href="/" className="v2-nav__mark" onClick={() => setOpen(false)}>
           {name.toUpperCase()}
         </Link>
         <ul className="v2-nav__links">

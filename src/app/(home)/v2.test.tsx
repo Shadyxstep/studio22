@@ -10,7 +10,7 @@ import { formatPhone } from "./_lib/contact";
 import { ctaIdFor, fillPrice, morePackages, pickPackages, priceParts } from "./_lib/packages";
 import { pushCta } from "./_lib/track";
 
-vi.mock("next/navigation", () => ({ usePathname: () => "/v2" }));
+vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
 
 const v2 = loadV2Home();
 const site = loadSite();
@@ -123,6 +123,16 @@ test("footer drops FAQs while faqs.json is empty", () => {
   expect(container.querySelector('a[href="/faqs"]')).toBeNull();
   expect(footerLinks(v2.footer.links, 3).some((l) => l.href === "/faqs")).toBe(true);
   expect(container.textContent).not.toContain("AEGIS");
+});
+
+test("footer carries the site credit when site.json has one", () => {
+  const credit = { label: "Website by AEGIS Software Studio", href: "https://aegis-software.studio" };
+  const { container } = render(
+    <V2Footer name={site.name} footer={v2.footer} faqCount={0} credit={credit} />,
+  );
+  const a = container.querySelector(`a[href="${credit.href}"]`);
+  expect(a?.textContent).toBe(credit.label);
+  expect(a?.getAttribute("target")).toBe("_blank");
 });
 
 test("sticky pill promotes the configured package at its content price", () => {

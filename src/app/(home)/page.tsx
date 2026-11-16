@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { loadGlobals, loadV2Home } from "@/lib/content/load";
+import { loadGlobals, loadPage, loadSite, loadV2Home } from "@/lib/content/load";
 import { getPackageCta } from "@/lib/packages";
 import { buildLocalBusinessJsonLd } from "@/lib/seo";
 import { Facility } from "./_components/Facility";
@@ -13,8 +13,12 @@ import { Visit } from "./_components/Visit";
 import { V2_CONFIG } from "./_lib/config";
 import { fillPrice, morePackages, pickPackages, pickReviews } from "./_lib/packages";
 
+const home = loadPage("home");
+
 export const metadata: Metadata = {
-  title: { absolute: "Studio 22 — The Future of Wellness (V2 preview)" },
+  // title.template only applies to child segments; the root page sets it absolutely
+  title: { absolute: `${home.title} — ${loadSite().name}` },
+  description: home.description,
 };
 
 export default function V2HomePage() {

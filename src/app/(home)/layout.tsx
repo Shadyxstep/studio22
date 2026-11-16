@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import type { CSSProperties, ReactNode } from "react";
 import { loadFaqs, loadSite, loadV2Home } from "@/lib/content/load";
 import { v2MotionVars } from "@/lib/motion";
@@ -10,12 +9,7 @@ import { V2Nav } from "./_components/V2Nav";
 import { v2Font } from "./_lib/font";
 import "./v2.css";
 
-/* Preview route: never indexed, not in the sitemap (sitemap.ts lists only
-   PAGE_NAMES). GTM + Vercel Analytics come from the root layout. */
-export const metadata: Metadata = {
-  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
-};
-
+/* The homepage's own chrome. GTM + Vercel Analytics come from the root layout. */
 export default function V2Layout({ children }: { children: ReactNode }) {
   const site = loadSite();
   const v2 = loadV2Home();
@@ -29,7 +23,7 @@ export default function V2Layout({ children }: { children: ReactNode }) {
       <Ambient />
       <V2Nav name={site.name} nav={v2.nav} />
       {children}
-      <V2Footer name={site.name} footer={v2.footer} faqCount={loadFaqs().length} />
+      <V2Footer name={site.name} footer={v2.footer} faqCount={loadFaqs().length} credit={site.footer.credit} />
     </div>
   );
 }

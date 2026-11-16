@@ -1,8 +1,11 @@
 {
-  "title": "Our Packages",
-  "description": "Gym Class Packages, Pilates Packages, Online Coaching and Golf at Studio 22, Dun Laoghaire. All memberships include sauna access.",
+  "title": "Membership Packages & Prices",
+  "description": "Studio 22 memberships and prices: gym, reformer Pilates, full-studio and online coaching packages, plus €120 trials. All memberships include sauna access.",
   "sections": [
-    { "type": "packageGrid", "heading": "Our Packages" },
+    {
+      "type": "packageGrid",
+      "heading": "Our Packages"
+    },
     {
       "type": "ctaBanner",
       "variant": "enquire",

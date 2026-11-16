@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { loadGlobals, loadPage, loadSite, loadV2Home } from "@/lib/content/load";
+import { loadGlobals, loadV2Home } from "@/lib/content/load";
 import { getPackageCta } from "@/lib/packages";
-import { buildLocalBusinessJsonLd } from "@/lib/seo";
+import { buildLocalBusinessJsonLd, buildWebSiteJsonLd, pageMetadata } from "@/lib/seo";
 import { Facility } from "./_components/Facility";
 import { GettingStarted } from "./_components/GettingStarted";
 import { Hero } from "./_components/Hero";
@@ -14,13 +14,7 @@ import { Visit } from "./_components/Visit";
 import { V2_CONFIG } from "./_lib/config";
 import { fillPrice, morePackages, pickPackages, pickReviews } from "./_lib/packages";
 
-const home = loadPage("home");
-
-export const metadata: Metadata = {
-  // title.template only applies to child segments; the root page sets it absolutely
-  title: { absolute: `${home.title} — ${loadSite().name}` },
-  description: home.description,
-};
+export const metadata: Metadata = pageMetadata("home");
 
 export default function V2HomePage() {
   const globals = loadGlobals();
@@ -36,7 +30,9 @@ export default function V2HomePage() {
     <main id="v2-main" className="v2-page">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLocalBusinessJsonLd(site)) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([buildLocalBusinessJsonLd(site), buildWebSiteJsonLd(site)]),
+        }}
       />
       <div className="v2-fields" aria-hidden data-v2-loop>
         <div className="v2-field v2-field--1" />

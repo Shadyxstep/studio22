@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
-import { PAGE_NAMES } from "@/lib/content/schema";
-import { SITE_URL } from "@/lib/seo";
+import { indexablePages, pagePath, SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PAGE_NAMES.map((name) => ({
-    url: name === "home" ? `${SITE_URL}/` : `${SITE_URL}/${name}`,
-    changeFrequency: "monthly",
+  return indexablePages().map((name) => ({
+    url: `${SITE_URL}${pagePath(name)}`,
+    changeFrequency: name === "home" ? "weekly" : "monthly",
     priority: name === "home" ? 1 : 0.7,
   }));
 }

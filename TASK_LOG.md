@@ -18,6 +18,14 @@
 
 ---
 
+## 2026-11-16 · OWNER — SEO, AI-search (AIO) and favicon — APPROVED
+- Plan: brand favicon set, per-page canonical/OG/Twitter metadata, keyword-led titles and descriptions, richer HealthClub + WebSite JSON-LD, /llms.txt from content, robots naming AI crawlers, thin /faqs kept out of the index while empty.
+- Changes: src/app/{favicon.ico,icon.svg,apple-icon.png,manifest.ts,robots.ts,sitemap.ts,layout.tsx}, src/app/llms.txt/route.ts, src/lib/{seo.ts,llms.ts,seo.test.ts}, public/icon-{192,512,maskable-512}.png, the five content page.tsx files (pageMetadata), content/pages/{home,facility,packages,contact}.json (title/description).
+- Gates: typecheck ✓ · lint ✓ · test ✓ (115 passing) · build ✓ · local serve: every page has a unique title, canonical, og:image, twitter summary_large_image; favicon/icon/apple-icon/manifest/llms.txt/robots/sitemap all 200; /faqs noindex.
+- Critic issues found → resolved: page-level openGraph/twitter replaced the root layout's (lost og:image, card fell back to "summary") → shared OG_SHARED spread into every page.
+- Follow-ups (not built): verify the domain in Google Search Console and submit the sitemap; claim/complete the Google Business Profile (hours, photos, category "Gym"); add opening hours + geo coordinates to JSON-LD once the owner confirms them; fill faqs.json (FAQ content is the biggest AIO lever) — /faqs re-enters the sitemap and index automatically.
+- Decisions made where SPEC was silent / owner-directed: favicon is the "22" mark traced to vector from the owner's timetable poster (cream on the site's dark background); SEO titles/descriptions written for search (logged invention, facts only from content); priceRange "€€" is an estimate from package prices.
+
 ## 2026-11-16 · OWNER — Class timetables on the homepage — APPROVED
 - Plan: transcribe the owner's two timetable posters (Strength & Sweat, Reformer Pilates) into validated content and render them as a new "04 Timetable" chapter on the v3 homepage, with tabs, a week grid on tablet/desktop and a per-day list on phones.
 - Changes: content/v2-home.json (timetable block; nav "Timetable" → #timetable), src/lib/content/schema.ts (timetable schema; refine checks one slot per day and known class keys), src/app/(home)/_components/{Timetable,TimetableTabs}.tsx (new), page.tsx (chapter numbers 04–07 shift by one), StickyPill.tsx (pill also hides over #timetable), v2.css (timetable styles), v2.test.tsx (poster-transcription test, tab switching, JS-off renders both panels, nav link, section order).

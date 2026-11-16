@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Hanken_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { loadSite } from "@/lib/content/load";
-import { SITE_URL } from "@/lib/seo";
+import { OG_SHARED, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -32,12 +32,13 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: "Movement. Strength. Recovery. Community",
-  openGraph: {
-    siteName: site.name,
-    type: "website",
-    locale: "en_IE",
-    images: ["/images/signage-founders.jpg"],
-  },
+  applicationName: site.name,
+  twitter: { card: "summary_large_image" },
+  openGraph: { ...OG_SHARED, siteName: site.name },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1a1816",
 };
 
 export default function RootLayout({

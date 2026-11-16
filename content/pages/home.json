@@ -1,6 +1,6 @@
 {
-  "title": "Home",
-  "description": "The Future of Wellness. Movement. Strength. Recovery. Community — Studio 22, Dun Laoghaire.",
+  "title": "Gym, Reformer Pilates & Golf Simulator in Dún Laoghaire",
+  "description": "Studio 22 is a premium gym in Dún Laoghaire, Dublin: coached strength classes, reformer Pilates, a Trackman golf simulator and a sauna. Two-week trial €120.",
   "sections": [
     {
       "type": "hero",
@@ -25,7 +25,12 @@
       "type": "pillarGrid",
       "heading": "Our Offering",
       "tagline": "Performance is the greatest motivator",
-      "pillars": ["gym", "golf", "pilates", "recovery"]
+      "pillars": [
+        "gym",
+        "golf",
+        "pilates",
+        "recovery"
+      ]
     },
     {
       "type": "editorialSplit",
@@ -38,13 +43,19 @@
         "alt": "Two Studio 22 coaches with kettlebells in the gym"
       },
       "imageAspect": "portrait",
-      "cta": { "label": "See How We Help You", "href": "/get-started" }
+      "cta": {
+        "label": "See How We Help You",
+        "href": "/get-started"
+      }
     },
     {
       "type": "packageTeaser",
       "heading": "Our Packages",
       "tagline": "Performance is the greatest motivator",
-      "cta": { "label": "Our Packages", "href": "/packages" }
+      "cta": {
+        "label": "Our Packages",
+        "href": "/packages"
+      }
     },
     {
       "type": "testimonials",

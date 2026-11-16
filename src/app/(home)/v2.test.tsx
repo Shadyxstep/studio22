@@ -174,7 +174,7 @@ test("CTA clicks push cta_click with id and location to dataLayer", () => {
   expect(dl.at(-1)).toEqual({ event: "cta_click", cta_id: "book_trial", cta_location: "sticky_pill" });
 });
 
-/* Timetables: transcribed from the owner's two posters (Nov 2026). Each
+/* Timetables: transcribed from the owner's posters (Nov 2026; Reformer updated 16 Nov). Each
    string is one time row, Mon→Sat: S strength, W sweat, R reformer,
    F foundations, . no class. */
 const POSTERS: Record<string, Record<string, string>> = {
@@ -189,7 +189,7 @@ const POSTERS: Record<string, Record<string, string>> = {
     "7:15 PM": "S.S...",
   },
   reformer: {
-    "6:10 AM": ".FRF..",
+    "6:10 AM": "RFRF..",
     "7:10 AM": "R.R...",
     "8:10 AM": ".R.RR.",
     "9:00 AM": ".....R",

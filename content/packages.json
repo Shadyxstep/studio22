@@ -80,9 +80,7 @@
     "billing": "one-time",
     "features": [
       "5 reformer sessions",
-      "Reformer Pilates Foundations",
-      "Mixed-Level Reformer Pilates",
-      "Intermediate Reformer Pilates"
+      "Reformer Pilates Foundations"
     ],
     "purchasable": false,
     "purchaseUrl": "https://fitness.studio-22.ie/packages/73866/purchase/"

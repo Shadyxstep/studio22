@@ -254,6 +254,9 @@ export const SiteSchema = z.object({
     locationHeading: z.string().min(1),
     socialHeading: z.string().min(1),
     exploreHeading: z.string().min(1),
+    credit: z
+      .object({ label: z.string().min(1), href: z.string().url() })
+      .optional(),
   }),
   pillars: z.record(
     z.enum(PILLARS),

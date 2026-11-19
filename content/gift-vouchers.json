@@ -47,9 +47,9 @@
           "price": 425,
           "purchaseUrl": "https://fitness.studio-22.ie/products/23350/purchase",
           "image": {
-            "src": "/images/pilates-studio.jpg",
-            "alt": "The backlit Pilates at Studio 22 sign in the Reformer studio",
-            "position": "50% 20%"
+            "src": "/images/pilates-reformer.jpg",
+            "alt": "A member stretching on a reformer beneath the backlit Pilates at Studio 22 sign",
+            "position": "50% 50%"
           }
         }
       ]
@@ -95,9 +95,9 @@
           "price": 600,
           "purchaseUrl": "https://fitness.studio-22.ie/products/23352/purchase",
           "image": {
-            "src": "/images/strength-squat-wide.jpg",
-            "alt": "An athlete performing a barbell back squat at Studio 22",
-            "position": "50% 40%"
+            "src": "/images/gym-floor.jpg",
+            "alt": "The Studio 22 gym floor with dumbbell racks, squat racks and a sled track",
+            "position": "50% 50%"
           }
         }
       ]

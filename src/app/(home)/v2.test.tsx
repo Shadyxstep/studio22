@@ -89,7 +89,7 @@ test("packages: compact list carries every other Pilates and online package, dri
   const groups = morePackages(all, v2.packages.moreCategories, V2_CONFIG.packageIds);
   expect(groups.map((g) => g.packages.map((p) => p.id))).toEqual([
     ["pilates-membership", "reformer-10", "reformer-intro-5"],
-    ["online-coaching"],
+    ["online-coaching", "trackman-strength", "trackman-unlimited"],
   ]);
   const { container } = render(<V2HomePage />);
   const more = container.querySelector(".v2-more") as HTMLElement;

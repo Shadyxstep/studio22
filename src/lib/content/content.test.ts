@@ -47,7 +47,7 @@ function collectFromSite(site: Site) {
 
 describe("every content file parses against its schema", () => {
   test("site.json", () => expect(loadSite().name).toBe("Studio 22"));
-  test("packages.json", () => expect(loadPackages()).toHaveLength(7));
+  test("packages.json", () => expect(loadPackages()).toHaveLength(9));
   test("testimonials.json", () => expect(loadTestimonials()).toHaveLength(5));
   test("faqs.json (empty pending owner copy)", () =>
     expect(loadFaqs()).toEqual([]));
@@ -66,6 +66,9 @@ describe("package catalog matches SPEC §6.3 exactly (as amended 2026-07-08)", (
     ["reformer-10", "pilates", 225, "one-time", "65549"],
     ["reformer-intro-5", "pilates", 120, "one-time", "73866"],
     ["online-coaching", "online-golf", 35, "weekly", "61445"],
+    // owner-supplied checkout links (Nov 2026), not /packages/<id>/purchase/ pages
+    ["trackman-strength", "online-golf", 85, "weekly", "checkout:75275"],
+    ["trackman-unlimited", "online-golf", 60, "weekly", "checkout:66303"],
   ];
 
   test("ids, categories, prices, billing, purchase URLs", () => {
@@ -78,7 +81,9 @@ describe("package catalog matches SPEC §6.3 exactly (as amended 2026-07-08)", (
         cat,
         price,
         billing,
-        `https://fitness.studio-22.ie/packages/${exid}/purchase/`,
+        exid.startsWith("checkout:")
+          ? `https://fitness.studio-22.ie/a/checkout/?coupon=&id=${exid.slice(9)}&referer=false&rfsn=&type=Fbm%3A%3APackage&utm_campaign=`
+          : `https://fitness.studio-22.ie/packages/${exid}/purchase/`,
       ]),
     );
   });

@@ -99,5 +99,36 @@
     ],
     "purchasable": false,
     "purchaseUrl": "https://fitness.studio-22.ie/packages/61445/purchase/"
+  },
+  {
+    "id": "trackman-strength",
+    "category": "online-golf",
+    "name": "Trackman & Strength Package",
+    "price": 85,
+    "billing": "weekly",
+    "features": [
+      "Unlimited TrackMan simulator sessions",
+      "Unlimited strength and sweat sessions",
+      "Golf performance sessions",
+      "Sauna access",
+      "Limited spaces left"
+    ],
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/a/checkout/?coupon=&id=75275&referer=false&rfsn=&type=Fbm%3A%3APackage&utm_campaign="
+  },
+  {
+    "id": "trackman-unlimited",
+    "category": "online-golf",
+    "name": "Trackman Unlimited Membership",
+    "price": 60,
+    "billing": "weekly",
+    "features": [
+      "Unlimited access to the TrackMan simulator",
+      "Book up to 2 sessions a day",
+      "Sauna access",
+      "Limited spaces left"
+    ],
+    "purchasable": false,
+    "purchaseUrl": "https://fitness.studio-22.ie/a/checkout/?coupon=&id=66303&referer=false&rfsn=&type=Fbm%3A%3APackage&utm_campaign="
   }
 ]

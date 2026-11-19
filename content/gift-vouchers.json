@@ -1,0 +1,134 @@
+{
+  "title": "Gift Vouchers",
+  "description": "Studio 22 gift vouchers for Reformer Pilates, TrackMan golf and full studio membership in Dún Laoghaire. Buy online in a couple of minutes and pass the code on.",
+  "hero": {
+    "eyebrow": "Gift Vouchers",
+    "heading": "Give someone a reason",
+    "headingAccent": "to train.",
+    "lead": "Reformer Pilates, TrackMan golf and full studio membership at Studio 22, Dún Laoghaire. Buy online in a couple of minutes and pass the code on."
+  },
+  "stepsLabel": "How it works",
+  "steps": [
+    {
+      "title": "Choose a voucher",
+      "body": "Pick one below and pay securely online."
+    },
+    {
+      "title": "Get your gift code",
+      "body": "A unique code comes through once you’ve paid."
+    },
+    {
+      "title": "Pass it on",
+      "body": "They enter the code at checkout when they buy that package."
+    }
+  ],
+  "buyLabel": "Buy voucher",
+  "groups": [
+    {
+      "id": "reformer-pilates",
+      "label": "Reformer Pilates",
+      "vouchers": [
+        {
+          "id": "reformer-10",
+          "name": "10 Reformer Pilates classes",
+          "description": "A 10-class pack in our Reformer studio.",
+          "price": 225,
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23349/purchase",
+          "image": {
+            "src": "/images/pilates-studio.jpg",
+            "alt": "A member seated on a mat beneath the backlit Pilates at Studio 22 sign",
+            "position": "50% 50%"
+          }
+        },
+        {
+          "id": "reformer-20",
+          "name": "20 Reformer Pilates classes",
+          "description": "A 20-class pack in our Reformer studio.",
+          "price": 425,
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23350/purchase",
+          "image": {
+            "src": "/images/pilates-studio.jpg",
+            "alt": "The backlit Pilates at Studio 22 sign in the Reformer studio",
+            "position": "50% 20%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "trackman-golf",
+      "label": "TrackMan Golf",
+      "vouchers": [
+        {
+          "id": "trackman-5",
+          "name": "5 hours on the TrackMan simulator",
+          "description": "5 one-hour sessions in our TrackMan bay. Play a round or work on your swing.",
+          "price": 225,
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23910/purchase",
+          "image": {
+            "src": "/images/golf-simulator.jpg",
+            "alt": "A golfer addressing the ball in the Studio 22 golf simulator",
+            "position": "50% 50%"
+          }
+        },
+        {
+          "id": "trackman-10",
+          "name": "10 hours on the TrackMan simulator",
+          "description": "10 one-hour sessions in our TrackMan bay. Play a round or work on your swing.",
+          "price": 450,
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23351/purchase",
+          "image": {
+            "src": "/images/golf-simulator-swing.jpg",
+            "alt": "A golfer mid-swing in the Studio 22 simulator with TrackMan data on screen",
+            "position": "50% 50%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "membership",
+      "label": "Membership",
+      "vouchers": [
+        {
+          "id": "membership-2-months",
+          "name": "2 months Full Studio membership",
+          "description": "Two months of full access to Studio 22.",
+          "price": 600,
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23352/purchase",
+          "image": {
+            "src": "/images/strength-squat-wide.jpg",
+            "alt": "An athlete performing a barbell back squat at Studio 22",
+            "position": "50% 40%"
+          }
+        }
+      ]
+    }
+  ],
+  "notes": {
+    "expiry": {
+      "heading": "No expiry",
+      "body": "Vouchers don’t expire. Each code covers the package it was bought for."
+    },
+    "find": {
+      "heading": "Find us",
+      "lines": ["Studio 22", "77 Georges Street Upper", "Dún Laoghaire, Co. Dublin"]
+    },
+    "questions": {
+      "heading": "Questions",
+      "body": "Email us at"
+    }
+  },
+  "home": {
+    "label": "Gift Vouchers",
+    "heading": "Give someone a reason to train.",
+    "body": "Reformer Pilates, TrackMan golf and full studio membership. Buy online in a couple of minutes and pass the code on.",
+    "cta": {
+      "label": "See gift vouchers",
+      "href": "/gift-vouchers"
+    },
+    "from": "From {price}"
+  },
+  "pill": {
+    "label": "Gift vouchers from {price}",
+    "button": "View vouchers"
+  }
+}

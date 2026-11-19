@@ -3,12 +3,14 @@ import path from "path";
 import { z } from "zod";
 import {
   FaqsFileSchema,
+  GiftVouchersSchema,
   PackagesSchema,
   PageSchema,
   SiteSchema,
   TestimonialsFileSchema,
   V2HomeSchema,
   type Faq,
+  type GiftVouchers,
   type Package,
   type Page,
   type PageName,
@@ -93,6 +95,11 @@ export function loadFaqs(): Faq[] {
 /** V2 homepage copy and image choices (content/v2-home.json). */
 export function loadV2Home(): V2Home {
   return parseContent(V2HomeSchema, readJson("v2-home.json"), "v2-home.json");
+}
+
+/** Gift vouchers: the /gift-vouchers page, the homepage section and the pill. */
+export function loadGiftVouchers(): GiftVouchers {
+  return parseContent(GiftVouchersSchema, readJson("gift-vouchers.json"), "gift-vouchers.json");
 }
 
 export function loadPage(name: PageName): Page {

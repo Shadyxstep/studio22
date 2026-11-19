@@ -18,6 +18,7 @@ const ROUTES = new Set([
   "/get-started",
   "/faqs",
   "/contact",
+  "/gift-vouchers",
 ]);
 
 function collectFromPage(page: Page) {

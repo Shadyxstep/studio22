@@ -473,6 +473,7 @@ html.lenis body {
   font-weight: 400;
   color: var(--text-2);
   text-decoration: none;
+  white-space: nowrap;
   border-radius: 999px;
   transition: color 0.25s var(--ease);
 }
@@ -500,7 +501,8 @@ html.lenis body {
 .v2-nav__menu {
   display: none;
 }
-@media (max-width: 759px) {
+/* six links need the room: below 960px the links fold into the menu */
+@media (max-width: 959px) {
   .v2-nav {
     top: 10px;
   }
@@ -1898,6 +1900,337 @@ html.lenis body {
   }
 }
 
+/* ---------- gift vouchers: homepage section ---------- */
+.v2-gv {
+  display: grid;
+  gap: 40px;
+}
+.v2-gv__aside .v2-body {
+  margin-top: 20px;
+  max-width: 26em;
+  font-size: 15px;
+  color: var(--text-3);
+}
+.v2-gv__aside .v2-btn {
+  margin-top: 28px;
+}
+@media (min-width: 1280px) {
+  .v2-gv {
+    grid-template-columns: 3fr 9fr;
+    gap: 48px;
+  }
+}
+.v2-gv__cats {
+  display: grid;
+  gap: 12px;
+}
+.v2-gcat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  padding: 10px 18px 10px 10px;
+  border-radius: var(--r-card);
+  background: var(--card);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition:
+    transform 0.45s var(--ease),
+    background-color 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+.v2-gcat:hover {
+  background: var(--surface-2);
+  box-shadow: 0 0 44px -20px rgba(178, 172, 136, 0.35);
+}
+.v2-gcat__media {
+  flex: none;
+  width: 104px;
+  aspect-ratio: 4 / 3;
+}
+.v2-gcat__body {
+  flex: 1;
+  min-width: 0;
+}
+.v2-gcat h3 {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.v2-gcat p {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-3);
+}
+.v2-gcat__arrow {
+  color: var(--accent);
+  transition: transform 0.3s var(--ease);
+}
+.v2-gcat:hover .v2-gcat__arrow {
+  transform: translateX(3px);
+}
+@media (min-width: 760px) {
+  .v2-gv__cats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .v2-gcat {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 0;
+    padding: 0;
+  }
+  .v2-gcat:hover {
+    transform: scale(1.015);
+  }
+  .v2-gcat__media {
+    grid-column: 1 / -1;
+    align-self: stretch;
+    width: 100%;
+    /* the photo takes whatever height the row gives the tile */
+    aspect-ratio: auto;
+    min-height: clamp(180px, 19vw, 260px);
+    border-radius: calc(var(--r-card) - 1px) calc(var(--r-card) - 1px) 0 0;
+  }
+  .v2-gcat .v2-media img {
+    transition: transform 0.9s var(--ease);
+  }
+  .v2-gcat:hover .v2-media img {
+    transform: scale(1.04);
+  }
+  .v2-gcat__body {
+    padding: 20px 0 22px 24px;
+  }
+  .v2-gcat__arrow {
+    padding: 0 24px 22px 12px;
+  }
+}
+
+/* ---------- gift vouchers: /gift-vouchers page ---------- */
+.v2-gvp__hero {
+  padding: clamp(120px, 15vw, 184px) var(--gutter) clamp(40px, 5vw, 64px);
+}
+.v2-gvp__intro {
+  display: grid;
+  gap: 40px;
+}
+.v2-gvp__hero h1 {
+  margin-top: 18px;
+  font-size: clamp(44px, 6.4vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.v2-gvp__hero h1 span {
+  display: block;
+}
+.v2-gvp__hero .v2-lead {
+  margin-top: 24px;
+  text-wrap: pretty;
+}
+.v2-gvp__steps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.v2-gvp__steps li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.v2-gvp__steps b {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+.v2 .v2-gvp__steps h2 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.v2-gvp__steps p {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+@media (min-width: 1024px) {
+  .v2-gvp__intro {
+    grid-template-columns: 7fr 5fr;
+    gap: 72px;
+    align-items: end;
+  }
+}
+.v2-gvp__group {
+  padding: clamp(28px, 4vw, 48px) var(--gutter);
+}
+.v2 .v2-gvp__group[id] {
+  scroll-margin-top: 84px;
+}
+.v2 .v2-gvp__gtitle {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.v2-gvp__cards {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px !important;
+}
+@media (min-width: 640px) {
+  .v2-gvp__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* a group with one voucher: a single wide card, photo beside the text */
+  .v2-gvp__cards li:only-child {
+    grid-column: 1 / -1;
+  }
+  .v2-gvp__cards li:only-child .v2-gcard {
+    flex-direction: row;
+  }
+  .v2-gvp__cards li:only-child .v2-gcard__media {
+    flex: 0 0 calc(50% - 8px);
+    aspect-ratio: auto;
+    min-height: 260px;
+    border-radius: calc(var(--r-card) - 1px) 0 0 calc(var(--r-card) - 1px);
+  }
+  .v2-gvp__cards li:only-child .v2-gcard__body {
+    justify-content: center;
+    padding: 32px;
+  }
+  .v2-gvp__cards li:only-child .v2-gcard__foot {
+    margin-top: 0;
+    padding-top: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .v2-gvp__row {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .v2 .v2-gvp__gtitle {
+    position: sticky;
+    top: 104px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-transform: none;
+    color: var(--text);
+  }
+  .v2-gvp__cards {
+    margin-top: 0 !important;
+  }
+}
+.v2-gcard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--r-card);
+  background: var(--card);
+  border: 1px solid var(--line);
+  transition:
+    background-color 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+.v2-gcard:hover {
+  background: var(--surface-2);
+  box-shadow: 0 0 44px -20px rgba(178, 172, 136, 0.35);
+}
+.v2-gcard__media {
+  aspect-ratio: 3 / 2;
+  border-radius: calc(var(--r-card) - 1px) calc(var(--r-card) - 1px) 0 0;
+}
+.v2-gcard__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px;
+}
+.v2-gcard h3 {
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+.v2-gcard p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+.v2-gcard__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.v2-gcard__foot strong {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.v2-gcard__foot .v2-btn {
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 20px;
+  font-size: 14px;
+}
+.v2-gvp__notes {
+  padding: clamp(28px, 4vw, 48px) var(--gutter) var(--section-y);
+}
+.v2-gvp__notegrid {
+  display: grid;
+  gap: 28px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+@media (min-width: 760px) {
+  .v2-gvp__notegrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+  }
+}
+.v2 .v2-gvp__notes h2 {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.v2-gvp__notes p {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.v2-gvp__notes p span {
+  display: block;
+}
+.v2-gvp__notes a {
+  display: inline-block;
+  padding: 12px 0;
+  margin: -12px 0;
+  text-underline-offset: 3px;
+}
+
 /* ---------- footer ---------- */
 .v2-footer {
   position: relative;
@@ -2016,6 +2349,16 @@ html.lenis body {
 }
 .v2-pill:hover .v2-pill__btn {
   background: #c6c1a0;
+}
+@media (max-width: 359px) {
+  .v2-pill {
+    gap: 8px;
+    padding-left: 14px;
+    font-size: 13px;
+  }
+  .v2-pill__btn {
+    padding: 0 12px;
+  }
 }
 
 /* ---------- reduced motion: everything static and visible ---------- */

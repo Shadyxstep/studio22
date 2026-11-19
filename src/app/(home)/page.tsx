@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { loadGlobals, loadV2Home } from "@/lib/content/load";
+import { loadGiftVouchers, loadGlobals, loadV2Home } from "@/lib/content/load";
 import { getPackageCta } from "@/lib/packages";
 import { buildLocalBusinessJsonLd, buildWebSiteJsonLd, pageMetadata } from "@/lib/seo";
 import { Facility } from "./_components/Facility";
 import { GettingStarted } from "./_components/GettingStarted";
+import { GiftVouchers } from "./_components/GiftVouchers";
 import { Hero } from "./_components/Hero";
 import { Offering } from "./_components/Offering";
 import { Packages } from "./_components/Packages";
@@ -13,6 +14,7 @@ import { StickyPill } from "./_components/StickyPill";
 import { Visit } from "./_components/Visit";
 import { V2_CONFIG } from "./_lib/config";
 import { fillPrice, morePackages, pickPackages, pickReviews } from "./_lib/packages";
+import { GIFT_VOUCHERS_PATH, lowestPrice } from "./_lib/vouchers";
 
 export const metadata: Metadata = pageMetadata("home");
 
@@ -25,7 +27,22 @@ export default function V2HomePage() {
     (g) => ({ heading: site.packageCategories[g.category], packages: g.packages }),
   );
   const reviews = pickReviews(globals.testimonials, V2_CONFIG.reviewNames);
+  const gift = loadGiftVouchers();
   const [trial] = pickPackages(globals.packages, [V2_CONFIG.stickyPill.packageId]);
+  const pill =
+    V2_CONFIG.stickyPill.promo === "gift-vouchers"
+      ? {
+          href: GIFT_VOUCHERS_PATH,
+          label: fillPrice(gift.pill.label, { price: lowestPrice(gift.groups) }),
+          button: gift.pill.button,
+          ctaId: "gift_vouchers",
+        }
+      : {
+          href: getPackageCta(trial, site).href,
+          label: fillPrice(v2.stickyPill.label, trial),
+          button: v2.stickyPill.button,
+          ctaId: "book_trial",
+        };
   return (
     <main id="v2-main" className="v2-page">
       <script
@@ -45,15 +62,10 @@ export default function V2HomePage() {
       <GettingStarted n={3} content={v2.gettingStarted} />
       <Timetable n={4} content={v2.timetable} />
       <Packages n={5} content={v2.packages} packages={packages} more={more} site={site} />
-      <Reviews n={6} content={v2.reviews} reviews={reviews} site={site} />
-      <Visit n={7} content={v2.visit} site={site} />
-      {V2_CONFIG.stickyPill.enabled && (
-        <StickyPill
-          href={getPackageCta(trial, site).href}
-          label={fillPrice(v2.stickyPill.label, trial)}
-          button={v2.stickyPill.button}
-        />
-      )}
+      <GiftVouchers n={6} content={gift} />
+      <Reviews n={7} content={v2.reviews} reviews={reviews} site={site} />
+      <Visit n={8} content={v2.visit} site={site} />
+      {V2_CONFIG.stickyPill.enabled && <StickyPill {...pill} />}
     </main>
   );
 }

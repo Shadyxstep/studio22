@@ -11,6 +11,10 @@
         "href": "/packages"
       },
       {
+        "label": "Gift Vouchers",
+        "href": "/gift-vouchers"
+      },
+      {
         "label": "Timetable",
         "href": "#timetable"
       },
@@ -536,6 +540,10 @@
       {
         "label": "Packages",
         "href": "/packages"
+      },
+      {
+        "label": "Gift Vouchers",
+        "href": "/gift-vouchers"
       },
       {
         "label": "FAQs",

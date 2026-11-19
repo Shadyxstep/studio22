@@ -15,9 +15,11 @@ export const V2_CONFIG = {
   /** Reviews shown, by reviewer name (from content/testimonials.json): all five. */
   reviewNames: ["Sophia Simmonds", "Matias Giannetti", "Lauren Airey", "Shananne Smith", "Richie Power"],
 
-  /** Sticky booking pill. TODO(owner): confirm which offer it promotes. */
+  /** Sticky pill. `promo` picks what it promotes: the gift vouchers page
+   *  (owner request, Nov 2026) or the trial package in `packageId`. */
   stickyPill: {
     enabled: true,
+    promo: "gift-vouchers" as "gift-vouchers" | "trial",
     packageId: "strength-trial",
   },
 } as const;

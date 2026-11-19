@@ -1,14 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { V2Home } from "@/lib/content/schema";
 import { cta } from "../_lib/track";
 
-/* Link targets reuse the current routes; Reviews jumps to the reviews
-   section on this page. The menu toggle only shows once JS is running. */
+/* Link targets reuse the current routes; Timetable and Reviews jump to
+   sections of the homepage, so away from it they get the "/" prefix. The
+   menu toggle only shows once JS is running. */
 export function V2Nav({ name, nav }: { name: string; nav: V2Home["nav"] }) {
   const [open, setOpen] = useState(false);
+  const home = usePathname() === "/";
+  const to = (href: string) => (href.startsWith("#") && !home ? `/${href}` : href);
 
   useEffect(() => {
     if (!open) return;
@@ -26,7 +30,7 @@ export function V2Nav({ name, nav }: { name: string; nav: V2Home["nav"] }) {
         <ul className="v2-nav__links">
           {nav.links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="v2-nav__link">
+              <a href={to(l.href)} className="v2-nav__link">
                 {l.label}
               </a>
             </li>
@@ -48,7 +52,7 @@ export function V2Nav({ name, nav }: { name: string; nav: V2Home["nav"] }) {
           <ul id="v2-menu" className="v2-nav__menu">
             {nav.links.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="v2-nav__link" onClick={() => setOpen(false)}>
+                <a href={to(l.href)} className="v2-nav__link" onClick={() => setOpen(false)}>
                   {l.label}
                 </a>
               </li>

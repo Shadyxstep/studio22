@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { loadFaqs, loadPackages, loadSite, loadTestimonials, loadV2Home } from "@/lib/content/load";
+import { loadFaqs, loadGiftVouchers, loadPackages, loadSite, loadTestimonials, loadV2Home } from "@/lib/content/load";
 import V2HomePage from "./page";
 import { Reveal } from "./_components/Reveal";
 import { V2Footer, footerLinks } from "./_components/V2Footer";
@@ -19,9 +19,9 @@ test("page renders one h1 and the design's section order", () => {
   const { container } = render(<V2HomePage />);
   expect(container.querySelectorAll("h1")).toHaveLength(1);
   const ids = [...container.querySelectorAll("main > section")].map((s) => s.id);
-  expect(ids).toEqual(["top", "offering", "facility", "getting-started", "timetable", "packages", "reviews", "visit"]);
+  expect(ids).toEqual(["top", "offering", "facility", "getting-started", "timetable", "packages", "gift-vouchers", "reviews", "visit"]);
   const labels = [...container.querySelectorAll(".v2-label b")].map((b) => b.textContent);
-  expect(labels).toEqual(["01", "02", "03", "04", "05", "06", "07"]);
+  expect(labels).toEqual(["01", "02", "03", "04", "05", "06", "07", "08"]);
 });
 
 test("every visible string comes from content (spot checks per section)", () => {
@@ -135,14 +135,30 @@ test("footer carries the site credit when site.json has one", () => {
   expect(a?.getAttribute("target")).toBe("_blank");
 });
 
-test("sticky pill promotes the configured package at its content price", () => {
+test("sticky pill promotes gift vouchers from the cheapest voucher's price", () => {
+  expect(V2_CONFIG.stickyPill.promo).toBe("gift-vouchers");
   const { container } = render(<V2HomePage />);
   const pill = container.querySelector(".v2-pill");
-  const [trial] = pickPackages(loadPackages(), [V2_CONFIG.stickyPill.packageId]);
-  expect(pill?.getAttribute("href")).toBe(trial.purchaseUrl);
-  expect(pill?.textContent).toContain(fillPrice(v2.stickyPill.label, trial));
+  const gift = loadGiftVouchers();
+  expect(pill?.getAttribute("href")).toBe("/gift-vouchers");
+  expect(pill?.getAttribute("data-cta-id")).toBe("gift_vouchers");
+  expect(pill?.textContent).toContain(fillPrice(gift.pill.label, { price: 225 }));
+  expect(pill?.textContent).toContain(gift.pill.button);
+  // the trial package the pill can switch back to still exists
+  expect(pickPackages(loadPackages(), [V2_CONFIG.stickyPill.packageId])).toHaveLength(1);
   // starts hidden (hero on screen) and inert
   expect(pill?.getAttribute("data-hidden")).toBe("true");
+});
+
+test("gift vouchers: one tile per group, linking to its anchor on the vouchers page", () => {
+  const gift = loadGiftVouchers();
+  const { container } = render(<V2HomePage />);
+  const section = container.querySelector("#gift-vouchers") as HTMLElement;
+  expect(within(section).getByText(gift.home.heading)).toBeDefined();
+  const tiles = [...section.querySelectorAll(".v2-gcat")];
+  expect(tiles.map((t) => t.getAttribute("href"))).toEqual(gift.groups.map((g) => `/gift-vouchers#${g.id}`));
+  expect(tiles.map((t) => t.querySelector("p")?.textContent)).toEqual(["From €225", "From €225", "€600"]);
+  expect(section.querySelector('[data-cta-id="gift_vouchers"]')?.getAttribute("href")).toBe(gift.home.cta.href);
 });
 
 test("hero image is the priority image; others are lazy", () => {

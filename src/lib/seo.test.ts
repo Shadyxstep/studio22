@@ -22,7 +22,7 @@ test("LocalBusiness JSON-LD carries the business facts from site.json", () => {
 
 test("sitemap covers the indexable routes; /faqs only once it has entries", () => {
   const urls = sitemap().map((e) => e.url.replace(SITE_URL, ""));
-  const expected = ["/", "/facility", "/packages", "/get-started", "/contact"];
+  const expected = ["/", "/facility", "/packages", "/get-started", "/contact", "/gift-vouchers"];
   if (loadFaqs().length > 0) expected.push("/faqs");
   expect(urls.sort()).toEqual(expected.sort());
 });

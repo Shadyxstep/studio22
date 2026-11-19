@@ -15,7 +15,7 @@ export default function V2Layout({ children }: { children: ReactNode }) {
   const v2 = loadV2Home();
   return (
     <div className={`v2 ${v2Font.variable}`} style={v2MotionVars() as CSSProperties}>
-      <a href="#offering" className="v2-skip">
+      <a href="#v2-main" className="v2-skip">
         {v2.skipLink}
       </a>
       <SmoothScroll />

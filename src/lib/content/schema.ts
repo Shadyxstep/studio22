@@ -471,7 +471,56 @@ export const V2HomeSchema = z.object({
   }),
 });
 
+/* ---------- gift vouchers (content/gift-vouchers.json) ---------- */
+
+const Slug = z.string().regex(/^[a-z0-9-]+$/);
+const PriceTemplate = Text.refine((s) => s.includes("{price}"), "must contain {price}");
+
+export const GiftVouchersSchema = z.object({
+  /** Page title and meta description for /gift-vouchers. */
+  title: Text,
+  description: Text,
+  hero: z.object({ eyebrow: Text, heading: Text, headingAccent: Text, lead: Text }),
+  stepsLabel: Text,
+  steps: z.array(z.object({ title: Text, body: Text })).length(3),
+  buyLabel: Text,
+  /** One group per kind of voucher; the id is the on-page anchor. */
+  groups: z
+    .array(
+      z.object({
+        id: Slug,
+        label: Text,
+        vouchers: z
+          .array(
+            z.object({
+              id: Slug,
+              name: Text,
+              description: Text,
+              price: z.number().positive(),
+              /** exercise.com purchase page for the voucher product. */
+              purchaseUrl: z.string().regex(/^https:\/\//, "purchaseUrl must be https"),
+              image: V2Image,
+            }),
+          )
+          .min(1),
+      }),
+    )
+    .min(1),
+  notes: z.object({
+    expiry: z.object({ heading: Text, body: Text }),
+    find: z.object({ heading: Text, lines: z.array(Text).min(1) }),
+    /** The body is followed by the studio email from site.json. */
+    questions: z.object({ heading: Text, body: Text }),
+  }),
+  /** The homepage section. "{price}" is the cheapest voucher in a group. */
+  home: z.object({ label: Text, heading: Text, body: Text, cta: Cta, from: PriceTemplate }),
+  /** The sticky pill, when V2_CONFIG.stickyPill.promo is "gift-vouchers". */
+  pill: z.object({ label: PriceTemplate, button: Text }),
+});
+
 /* ---------- inferred types ---------- */
+
+export type GiftVouchers = z.infer<typeof GiftVouchersSchema>;
 
 export type V2Home = z.infer<typeof V2HomeSchema>;
 export type V2ImageType = z.infer<typeof V2Image>;

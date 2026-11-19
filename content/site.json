@@ -61,6 +61,7 @@
     { "label": "Home", "href": "/" },
     { "label": "Our Facility", "href": "/facility" },
     { "label": "Our Packages", "href": "/packages" },
+    { "label": "Gift Vouchers", "href": "/gift-vouchers" },
     { "label": "FAQs", "href": "/faqs" },
     { "label": "Get Started", "href": "/get-started" },
     { "label": "Contact Us", "href": "/contact" }

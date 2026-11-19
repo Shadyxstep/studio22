@@ -256,3 +256,11 @@ Repo initialised with SPEC.md, ROADMAP.md, CLAUDE.md, TASK_LOG.md. No code exist
 - Critic issues found → resolved: stale .next types from the v2-homepage branch failed typecheck until a fresh build regenerated them (not a code issue)
 - Follow-ups (not built): carry the same credit into `v2-homepage` / `feature/v2-platform` before either launches
 - Decisions made where SPEC was silent: credit copy "Website by AEGIS Software Studio" linking to https://aegis-software.studio, requested by Leo; field is optional so existing DB content versions still validate
+
+## 2026-11-19 · Owner-directed — Gift vouchers (page, nav, homepage section, sticky pill) — APPROVED
+- Plan: add a /gift-vouchers page for the owner's five vouchers (exercise.com purchase links), link it from both navs, add a homepage section after Packages, and point the sticky pill at it.
+- Changes: content/gift-vouchers.json (new), content/v2-home.json + content/site.json (nav/footer links), src/lib/content/{schema,load}.ts (GiftVouchersSchema, loadGiftVouchers), src/app/(home)/gift-vouchers/page.tsx (new), src/app/(home)/_components/GiftVouchers.tsx (new), src/app/(home)/_lib/vouchers.ts (new), src/app/(home)/{page.tsx,layout.tsx,v2.css}, _components/{V2Nav,StickyPill}.tsx, _lib/config.ts, src/components/layout/SiteChrome.tsx, src/app/sitemap.ts, tests (gift-vouchers.test.tsx new; v2, seo, content updated)
+- Gates: typecheck ✓ · lint ✓ · test ✓ (124 passing) · build ✓
+- Critic issues found → resolved: six nav links wrapped between 760px and 960px → links now fold into the menu below 960px; pill label could overflow a 320px screen → tighter pill under 360px
+- Follow-ups (not built): owner's own voucher photos (the page reuses existing site photos; both Reformer cards share one); vouchers are not in llms.txt or the JSON-LD offers
+- Decisions made where SPEC was silent: copy, prices and purchase links are the owner's (Nov 2026 voucher page); the page sits in the (home) route group so it uses the homepage chrome, and SiteChrome skips the V1 nav/footer there; the sticky pill promotes gift vouchers via V2_CONFIG.stickyPill.promo ("trial" switches it back); skip link now targets #v2-main so it works on both pages; alt text for the second Reformer photo authored

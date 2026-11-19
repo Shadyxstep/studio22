@@ -33,7 +33,7 @@
           "name": "10 Reformer Pilates classes",
           "description": "A 10-class pack in our Reformer studio.",
           "price": 225,
-          "purchaseUrl": "https://fitness.studio-22.ie/products/23349/purchase",
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23349/purchase?location=2470",
           "image": {
             "src": "/images/pilates-studio.jpg",
             "alt": "A member seated on a mat beneath the backlit Pilates at Studio 22 sign",
@@ -45,7 +45,7 @@
           "name": "20 Reformer Pilates classes",
           "description": "A 20-class pack in our Reformer studio.",
           "price": 425,
-          "purchaseUrl": "https://fitness.studio-22.ie/products/23350/purchase",
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23350/purchase?location=2470",
           "image": {
             "src": "/images/pilates-reformer.jpg",
             "alt": "A member stretching on a reformer beneath the backlit Pilates at Studio 22 sign",
@@ -63,7 +63,7 @@
           "name": "5 hours on the TrackMan simulator",
           "description": "5 one-hour sessions in our TrackMan bay. Play a round or work on your swing.",
           "price": 225,
-          "purchaseUrl": "https://fitness.studio-22.ie/products/23910/purchase",
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23910/purchase?location=2470",
           "image": {
             "src": "/images/golf-simulator.jpg",
             "alt": "A golfer addressing the ball in the Studio 22 golf simulator",
@@ -75,7 +75,7 @@
           "name": "10 hours on the TrackMan simulator",
           "description": "10 one-hour sessions in our TrackMan bay. Play a round or work on your swing.",
           "price": 450,
-          "purchaseUrl": "https://fitness.studio-22.ie/products/23351/purchase",
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23351/purchase?location=2470",
           "image": {
             "src": "/images/golf-simulator-swing.jpg",
             "alt": "A golfer mid-swing in the Studio 22 simulator with TrackMan data on screen",
@@ -93,7 +93,7 @@
           "name": "2 months Full Studio membership",
           "description": "Two months of full access to Studio 22.",
           "price": 600,
-          "purchaseUrl": "https://fitness.studio-22.ie/products/23352/purchase",
+          "purchaseUrl": "https://fitness.studio-22.ie/products/23352/purchase?location=2470",
           "image": {
             "src": "/images/gym-floor.jpg",
             "alt": "The Studio 22 gym floor with dumbbell racks, squat racks and a sled track",

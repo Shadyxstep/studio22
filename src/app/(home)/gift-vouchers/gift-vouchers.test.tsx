@@ -14,11 +14,11 @@ const vouchers = gv.groups.flatMap((g) => g.vouchers);
 
 /* Prices and purchase links as supplied by the owner (Nov 2026). */
 const OWNER: Array<[string, number, string]> = [
-  ["10 Reformer Pilates classes", 225, "https://fitness.studio-22.ie/products/23349/purchase"],
-  ["20 Reformer Pilates classes", 425, "https://fitness.studio-22.ie/products/23350/purchase"],
-  ["5 hours on the TrackMan simulator", 225, "https://fitness.studio-22.ie/products/23910/purchase"],
-  ["10 hours on the TrackMan simulator", 450, "https://fitness.studio-22.ie/products/23351/purchase"],
-  ["2 months Full Studio membership", 600, "https://fitness.studio-22.ie/products/23352/purchase"],
+  ["10 Reformer Pilates classes", 225, "https://fitness.studio-22.ie/products/23349/purchase?location=2470"],
+  ["20 Reformer Pilates classes", 425, "https://fitness.studio-22.ie/products/23350/purchase?location=2470"],
+  ["5 hours on the TrackMan simulator", 225, "https://fitness.studio-22.ie/products/23910/purchase?location=2470"],
+  ["10 hours on the TrackMan simulator", 450, "https://fitness.studio-22.ie/products/23351/purchase?location=2470"],
+  ["2 months Full Studio membership", 600, "https://fitness.studio-22.ie/products/23352/purchase?location=2470"],
 ];
 
 test("content carries the owner's five vouchers, in order", () => {
